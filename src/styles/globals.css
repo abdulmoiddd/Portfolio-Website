@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* --- DARK MODE (Default) --- */
+  :root,
+  :root[data-theme="dark"] {
+    --border-radius: 6px;
+
+    /* Core Backgrounds */
+    --background: #0A0C10; /* near-black steel, cool undertone */
+    --foreground: #ECEEF2; /* primary text */
+    --foreground-muted: #838B99; /* muted text */
+
+    /* Brand Colors */
+    --primary: #FF3B30; /* crimson — alert/active signal */
+    --secondary: #1D2129; /* surface-alt */
+    --accent-blue: #3DA5FF; /* cold blue telemetry */
+
+    /* Supplementary UI States (Added) */
+    --success: #10B981; /* cyber-emerald for positive feedback/uptime */
+    --warning: #F59E0B; /* amber-gold for pending actions */
+    --glass-bg: rgba(10, 12, 16, 0.75); /* for frosted navbar backgrounds */
+    --neon-glow: 0 0 15px rgba(255, 59, 48, 0.4), 0 0 30px rgba(255, 59, 48, 0.2);
+
+    /* UI Elements */
+    --border-color: #23272F; /* border */
+    --card-bg: #14171D; /* surface */
+    --grid-line: rgba(35, 39, 47, 0.8);
+    --spotlight-opacity: 0.12;
+
+    /* Footer Specific */
+    --footer-bg: #0A0C10; 
+
+    /* Logo Colors */
+    --logo-base: #ffffff;
+    --logo-mongo-green: #ffffff;
+    --logo-upwork-green: #ffffff;
+    --logo-politico-red: #ffffff;
+
+    /* Gradients */
+    --card-gradient-start: #14171D;
+    --card-gradient-end: #0A0C10;
+
+    /* Hero Spotlight Gradient (Crimson & Steel Vibe) */
+    --hero-from: #2A0806; /* Deep crimson glow */
+    --hero-via: #0A0C10;
+    --hero-to: #0A0C10;
+
+    /* --- LEAD MAGNET SECTION --- */
+    --lead-from: #1D2129;
+    --lead-via: #0A0C10;
+    --lead-to: #0A0C10;
+    --lead-glow: rgba(255, 59, 48, 0.15); 
+
+    /* Overlay Gradients */
+    --overlay-gradient-start: rgba(10, 12, 16, 0.85);
+    --overlay-gradient-end: rgba(10, 12, 16, 0.98);
+
+    /* Blog/Project Overlay */
+    --image-overlay: rgba(255, 59, 48, 0.85); 
+  }
+
+  /* --- LIGHT MODE OVERRIDE --- */
+  :root[data-theme="light"] {
+    /* Core Backgrounds */
+    --background: #F5F6F8; /* cool steel-white */
+    --foreground: #0E1015; /* dark text */
+    --foreground-muted: #565C67; /* muted text */
+
+    /* Brand Colors */
+    --primary: #D92B22; /* deepened crimson for light contrast */
+    --secondary: #DCE0E6; /* surface-alt */
+    --accent-blue: #1E7FD9; /* accent-warm */
+
+    /* Supplementary UI States (Added) */
+    --success: #059669; /* deeper emerald for contrast */
+    --warning: #D97706; /* deeper amber */
+    --glass-bg: rgba(245, 246, 248, 0.8); /* for frosted navbar backgrounds */
+    --neon-glow: 0 4px 14px rgba(217, 43, 34, 0.25); /* softer shadow for light mode */
+
+    /* UI Elements */
+    --border-color: #D2D7DE; /* border */
+    --card-bg: #EAEDF1; /* surface */
+    --grid-line: rgba(210, 215, 222, 0.6);
+    --spotlight-opacity: 0.15;
+
+    /* Footer Specific */
+    --footer-bg: #EAEDF1;
+
+    /* Logo Colors */
+    --logo-base: #1e292c;
+    --logo-mongo-green: #2ed06e;
+    --logo-upwork-green: #25841f;
+    --logo-politico-red: #d71920;
+
+    /* Gradients */
+    --card-gradient-start: #EAEDF1;
+    --card-gradient-end: #F5F6F8;
+
+    /* Hero Spotlight Gradient */
+    --hero-from: #FCE8E7; /* Very light crimson tint */
+    --hero-via: #F5F6F8;
+    --hero-to: #F5F6F8;
+
+    /* --- LEAD MAGNET SECTION --- */
+    --lead-from: #DCE0E6;
+    --lead-via: #F5F6F8;
+    --lead-to: #F5F6F8;
+    --lead-glow: rgba(217, 43, 34, 0.08);
+
+    /* Overlay Gradients */
+    --overlay-gradient-start: rgba(245, 246, 248, 0.85);
+    --overlay-gradient-end: rgba(245, 246, 248, 0.98);
+
+    /* Blog/Project Overlay */
+    --image-overlay: rgba(217, 43, 34, 0.9);
+  }
+}
+
+/* Ensure the body transitions smoothly when toggling themes */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Utility class for the new glass effect */
+.glass-panel {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+}
