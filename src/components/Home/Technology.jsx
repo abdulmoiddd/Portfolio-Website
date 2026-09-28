@@ -59,7 +59,7 @@ const MARQUEE_ITEMS = [...TECH_LIST, ...TECH_LIST];
 
 const Technology = () => {
   return (
-    <section className="relative w-full py-12  overflow-hidden ">
+    <section className="relative w-full py-12 bg-[var(--background)] overflow-hidden border-y border-[var(--border-color)]/50">
       
       {/* Background Glow to tie it to the HUD aesthetic */}
       {/* <div className="absolute inset-0 bg-gradient-to-r from-[var(--background)] via-[var(--card-bg)] to-[var(--background)] opacity-50 pointer-events-none" /> */}

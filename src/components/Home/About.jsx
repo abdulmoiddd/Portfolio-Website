@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const ABOUT_DATA = [
   {
@@ -23,7 +23,7 @@ const ABOUT_DATA = [
     period: "Development Era",
     content:
       "Driven by a relentless desire to build what I designed, I transitioned into full-stack engineering. I constructed robust, scalable web applications using Next.js, React, and Firebase, mastering secure routing, server-side rendering, and complex database structures.",
-    techs: ["Next.js", "React 18/19", "Tailwind CSS", "Firebase RTDB", "Node.js"],
+    techs: ["Next.js", "React", "Tailwind CSS", "Firebase RTDB", "Node.js"],
     metricLabel: "System Uptime",
     metricValue: "99.9%",
     color: "var(--primary)", // Crimson
@@ -43,16 +43,27 @@ const ABOUT_DATA = [
 ];
 
 const About = () => {
-  // State to track which card the user is currently hovering over
   const [hoveredColor, setHoveredColor] = useState("var(--primary)");
+  const containerRef = useRef(null);
+
+  // --- SCROLL-LINKED TIMELINE LOGIC ---
+  // Tracks how far down the user has scrolled within the timeline container
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"],
+  });
+
+  // Maps the scroll progress to the height of the glowing laser line
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   // --- ANIMATION VARIANTS ---
   const itemVariants = {
-    hidden: { opacity: 0, x: 40 },
+    hidden: { opacity: 0, x: 30, filter: "blur(5px)" },
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+      filter: "blur(0px)",
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -61,17 +72,29 @@ const About = () => {
       id="about"
       className="relative w-full py-24 md:py-32 bg-[var(--background)] overflow-hidden border-t border-[var(--border-color)]/40"
     >
-      {/* --- DYNAMIC AMBIENT GLOW --- 
-          Smoothly transitions background colors based on hover state */}
+      {/* --- HUD GRID BACKGROUND --- */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: `linear-gradient(to right, var(--foreground) 1px, transparent 1px), linear-gradient(to bottom, var(--foreground) 1px, transparent 1px)`,
+            backgroundSize: "4rem 4rem",
+            maskImage: "radial-gradient(circle at 30% 50%, black, transparent 80%)",
+            WebkitMaskImage: "radial-gradient(circle at 30% 50%, black, transparent 80%)",
+          }}
+        />
+      </div>
+
+      {/* --- DYNAMIC AMBIENT GLOW --- */}
       <motion.div
         animate={{ backgroundColor: hoveredColor }}
         transition={{ duration: 1.5, ease: "easeInOut" }}
-        className="absolute top-1/4 right-[-10%] w-[60vw] h-[60vw] rounded-full mix-blend-screen opacity-[0.08] blur-[150px] pointer-events-none"
+        className="absolute top-1/4 right-[-10%] w-[50vw] h-[50vw] rounded-full mix-blend-screen opacity-[0.06] blur-[150px] pointer-events-none z-0"
       />
       <motion.div
         animate={{ backgroundColor: hoveredColor }}
         transition={{ duration: 1.5, ease: "easeInOut", delay: 0.2 }}
-        className="absolute bottom-1/4 left-[-10%] w-[40vw] h-[40vw] rounded-full mix-blend-screen opacity-[0.06] blur-[120px] pointer-events-none"
+        className="absolute bottom-1/4 left-[-10%] w-[40vw] h-[40vw] rounded-full mix-blend-screen opacity-[0.05] blur-[120px] pointer-events-none z-0"
       />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 w-full">
@@ -82,7 +105,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16 md:mb-24 text-center md:text-left flex flex-col md:items-center"
+          className="mb-20 md:mb-28 text-center md:text-left flex flex-col md:items-center"
         >
           <div className="flex items-center gap-3 mb-4 mx-auto md:mx-0">
             <div className="h-[2px] w-8 bg-[var(--primary)]" />
@@ -100,16 +123,16 @@ const About = () => {
         </motion.div>
 
         {/* --- THE TIMELINE --- */}
-        <div className="relative w-full">
+        <div ref={containerRef} className="relative w-full pb-10">
           
-          {/* The Vertical Connecting Laser Line */}
-          <div className="absolute left-[15px] md:left-[39px] top-4 bottom-4 w-[2px] bg-[var(--border-color)] z-0 rounded-full overflow-hidden">
+          {/* Base Track Line */}
+          <div className="absolute left-[15px] md:left-[39px] top-4 bottom-0 w-[2px] bg-[var(--border-color)]/50 z-0 rounded-full" />
+
+          {/* Glowing Scroll-Linked Laser Line */}
+          <div className="absolute left-[15px] md:left-[39px] top-4 bottom-0 w-[2px] z-0 rounded-full flex justify-center">
             <motion.div
-              className="w-full bg-gradient-to-b from-[var(--accent-blue)] via-[var(--primary)] to-[var(--success)]"
-              initial={{ height: 0 }}
-              whileInView={{ height: "100%" }}
-              viewport={{ once: true, margin: "-20%" }}
-              transition={{ duration: 2, ease: "easeInOut" }}
+              style={{ height: lineHeight }}
+              className="w-full bg-gradient-to-b from-[var(--accent-blue)] via-[var(--primary)] to-[var(--success)] shadow-[0_0_15px_var(--primary)]"
             />
           </div>
 
@@ -120,30 +143,33 @@ const About = () => {
                 variants={itemVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-15% 0px -15% 0px" }}
                 onMouseEnter={() => setHoveredColor(item.color)}
                 onMouseLeave={() => setHoveredColor("var(--primary)")}
                 className="relative pl-12 md:pl-24 group"
               >
                 {/* Glowing Node on the line */}
-                <div className="absolute left-[12px] md:left-[36px] top-6 md:top-8 flex items-center justify-center -translate-x-1/2">
+                <div className="absolute left-[16px] md:left-[40px] top-6 md:top-8 flex items-center justify-center -translate-x-1/2">
                   <div
                     className="absolute w-6 h-6 rounded-full opacity-0 group-hover:opacity-40 animate-ping transition-opacity duration-300"
                     style={{ backgroundColor: item.color }}
                   />
-                  <div
-                    className="w-3 h-3 rounded-full border-2 border-[var(--background)] z-10 transition-all duration-300 group-hover:scale-150 group-hover:shadow-[0_0_15px_currentColor]"
-                    style={{ backgroundColor: item.color, color: item.color }}
+                  {/* Outer Diamond */}
+                  <div 
+                    className="absolute w-4 h-4 rotate-45 border border-[var(--background)] transition-all duration-500 group-hover:rotate-90 group-hover:scale-150"
+                    style={{ backgroundColor: item.color }}
                   />
+                  {/* Inner Dot */}
+                  <div className="w-1.5 h-1.5 rounded-full bg-[var(--background)] z-10" />
                 </div>
 
                 {/* --- CONTENT CARD --- */}
-                <div className="p-6 md:p-10 rounded-2xl border border-[var(--border-color)] bg-[var(--card-bg)]/30 backdrop-blur-xl transition-all duration-500 hover:bg-[var(--card-bg)]/70 hover:-translate-y-1 hover:shadow-2xl overflow-hidden relative"
-                     style={{ borderLeftColor: item.color, borderLeftWidth: "2px" }}
+                <div className="p-6 md:p-10 rounded-2xl border border-[var(--border-color)]/60 bg-[var(--card-bg)]/40 backdrop-blur-xl transition-all duration-500 hover:bg-[var(--card-bg)]/80 hover:-translate-y-1 hover:shadow-2xl hover:border-[var(--border-color)] overflow-hidden relative"
+                     style={{ borderLeftColor: item.color, borderLeftWidth: "3px" }}
                 >
                   
                   {/* Subtle Background Number */}
-                  <div className="absolute -right-4 -bottom-10 text-[120px] font-black opacity-[0.03] pointer-events-none select-none" style={{ color: item.color }}>
+                  <div className="absolute -right-6 -bottom-12 text-[140px] font-black opacity-[0.03] pointer-events-none select-none transition-transform duration-700 group-hover:scale-110" style={{ color: item.color }}>
                     {item.id}
                   </div>
 
@@ -155,12 +181,12 @@ const About = () => {
                           PHASE {item.id} // {item.phase}
                         </span>
                       </div>
-                      <span className="px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest rounded bg-[var(--background)] border border-[var(--border-color)] text-[var(--foreground)]">
+                      <span className="px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest rounded bg-[var(--background)]/80 border border-[var(--border-color)] text-[var(--foreground)] backdrop-blur-md shadow-sm">
                         {item.period}
                       </span>
                     </div>
 
-                    <h4 className="text-3xl md:text-4xl font-black text-[var(--foreground)] tracking-tight mb-5">
+                    <h4 className="text-3xl md:text-4xl font-black text-[var(--foreground)] tracking-tight mb-5 transition-colors duration-300 group-hover:text-white">
                       {item.title}
                     </h4>
 
@@ -180,7 +206,7 @@ const About = () => {
                           {item.techs.map((tech, i) => (
                             <span 
                               key={i}
-                              className="px-3 py-1.5 rounded-lg text-[11px] font-mono bg-[var(--background)]/80 border border-[var(--border-color)] text-[var(--foreground)] group-hover:border-[var(--foreground-muted)] transition-colors"
+                              className="px-3 py-1.5 rounded-lg text-[11px] font-mono bg-[var(--background)]/80 border border-[var(--border-color)] text-[var(--foreground)] transition-all duration-300 hover:border-[var(--primary)] hover:text-[var(--primary)] cursor-default shadow-sm"
                             >
                               {tech}
                             </span>
@@ -195,7 +221,7 @@ const About = () => {
                         </span>
                         <div className="flex flex-col">
                           <span 
-                            className="text-4xl font-black tracking-tighter leading-none mb-1 transition-colors duration-300"
+                            className="text-4xl font-black tracking-tighter leading-none mb-1 transition-colors duration-300 drop-shadow-md"
                             style={{ color: item.color }}
                           >
                             {item.metricValue}
