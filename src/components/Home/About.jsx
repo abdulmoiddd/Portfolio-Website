@@ -14,7 +14,7 @@ const ABOUT_DATA = [
     techs: ["Adobe Creative Suite", "Figma", "UI/UX Architecture", "Wireframing"],
     metricLabel: "Design Fidelity",
     metricValue: "100%",
-    color: "var(--accent-blue)", // Cold blue
+    color: "var(--accent-blue)", 
   },
   {
     id: "02",
@@ -26,7 +26,7 @@ const ABOUT_DATA = [
     techs: ["Next.js", "React", "Tailwind CSS", "Firebase RTDB", "Node.js"],
     metricLabel: "System Uptime",
     metricValue: "99.9%",
-    color: "var(--primary)", // Crimson
+    color: "var(--primary)", 
   },
   {
     id: "03",
@@ -38,7 +38,7 @@ const ABOUT_DATA = [
     techs: ["OpenAI WebRTC", "OpenAI Vision", "Cloud Functions", "AWS Polly", "Telemetry"],
     metricLabel: "AI Integration",
     metricValue: "Native",
-    color: "var(--success)", // Emerald
+    color: "var(--success)", 
   },
 ];
 
@@ -46,17 +46,12 @@ const About = () => {
   const [hoveredColor, setHoveredColor] = useState("var(--primary)");
   const containerRef = useRef(null);
 
-  // --- SCROLL-LINKED TIMELINE LOGIC ---
-  // Tracks how far down the user has scrolled within the timeline container
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start center", "end center"],
   });
-
-  // Maps the scroll progress to the height of the glowing laser line
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
-  // --- ANIMATION VARIANTS ---
   const itemVariants = {
     hidden: { opacity: 0, x: 30, filter: "blur(5px)" },
     visible: {
@@ -178,7 +173,7 @@ const About = () => {
                     <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
                       <div className="flex items-center gap-3">
                         <span className="text-xs font-mono font-bold tracking-widest uppercase" style={{ color: item.color }}>
-                          PHASE {item.id} // {item.phase}
+                          PHASE {item.id}  {item.phase}
                         </span>
                       </div>
                       <span className="px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest rounded bg-[var(--background)]/80 border border-[var(--border-color)] text-[var(--foreground)] backdrop-blur-md shadow-sm">
