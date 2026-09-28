@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* --- DARK MODE (Default) --- */
+  :root {
+    --background: #0a0118;
+    --foreground: #f8fafc; /* Slightly cooler white to match the slate */
+    --foreground-muted: #94a3b8; /* Slate-tinted gray for readable muted text */
+
+    /* Brand Colors */
+    --primary: #10b981; /* Hacker Green */
+    --secondary: #1e293b; /* Dark Slate */
+    --accent-blue: #34d399; /* Light Emerald (Replaced old blue) */
+
+    /* UI Elements */
+    --border-color: #334155; /* Lighter Slate for crisp borders */
+    --card-bg: #1e293b; /* Dark Slate used as card background for great contrast! */
+    --grid-line: rgba(30, 41, 59, 0.8); /* Slate grid lines */
+    --spotlight-opacity: 0.12;
+
+    /* Footer Specific */
+    --footer-bg: #0f172a; /* Deep Slate */
+
+    /* Logo Colors */
+    --logo-base: #ffffff;
+    --logo-mongo-green: #ffffff;
+    --logo-upwork-green: #ffffff;
+    --logo-politico-red: #ffffff;
+
+    /* Gradients */
+    --card-gradient-start: #1e293b; /* Dark Slate */
+    --card-gradient-end: #0f172a; /* Deep Slate */
+
+    /* Hero Spotlight Gradient (Green & Slate Vibe) */
+    --hero-from: #064e3b; /* Deep Emerald */
+    --hero-via: #0a0118;
+    --hero-to: #0b0219;
+
+    /* --- LEAD MAGNET SECTION --- */
+    --lead-from: #0f172a; /* Deep Slate */
+    --lead-via: #0a0118;
+    --lead-to: #0b0219;
+    --lead-glow: rgba(16, 185, 129, 0.2); /* Hacker Green Glow */
+
+    /* Overlay Gradients */
+    --overlay-gradient-start: rgba(15, 23, 42, 0.8); /* Slate overlay */
+    --overlay-gradient-end: rgba(10, 1, 24, 0.8);
+
+    /* Blog Overlay */
+    --image-overlay: rgba(16, 185, 129, 0.8); /* Hacker Green overlay */
+  }
+
+  /* --- LIGHT MODE OVERRIDE --- */
+  [data-theme="light"] {
+    --background: #f8fafc; /* Light Slate tinted background */
+    --foreground: #0f172a; /* Deep Slate for high-contrast text */
+    --foreground-muted: #64748b; /* Medium Slate */
+
+    /* Brand Colors */
+    --primary: #10b981; /* Hacker Green */
+    --secondary: #1e293b; /* Dark Slate */
+    --accent-blue: #059669; /* Darker Emerald for light mode readability */
+
+    /* UI Elements */
+    --border-color: #e2e8f0; /* Light Slate borders */
+    --card-bg: #ffffff;
+    --grid-line: rgba(30, 41, 59, 0.05);
+    --spotlight-opacity: 0.15;
+
+    /* Footer Specific */
+    --footer-bg: #f1f5f9; /* Very light slate */
+
+    /* Logo Colors */
+    --logo-base: #1e292c;
+    --logo-mongo-green: #2ed06e;
+    --logo-upwork-green: #25841f;
+    --logo-politico-red: #d71920;
+
+    /* Gradients */
+    --card-gradient-start: #ffffff;
+    --card-gradient-end: #f8fafc;
+
+    /* Hero Spotlight Gradient */
+    --hero-from: #d1fae5; /* Very Light Green */
+    --hero-via: #f8fafc;
+    --hero-to: #ffffff;
+
+    /* --- LEAD MAGNET SECTION --- */
+    --lead-from: #e2e8f0; /* Light Slate */
+    --lead-via: #f8fafc;
+    --lead-to: #ffffff;
+    --lead-glow: rgba(16, 185, 129, 0.1); /* Subtle Hacker Green Glow */
+
+    /* Overlay Gradients */
+    --overlay-gradient-start: rgba(248, 250, 252, 0.8);
+    --overlay-gradient-end: rgba(248, 250, 252, 0.8);
+
+    /* Blog Overlay */
+    --image-overlay: rgba(16, 185, 129, 0.9);
+  }
+}
+
+/* Ensure the body transitions smoothly when toggling themes */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
