@@ -1,13 +1,10 @@
-import ThemeToggle from "@/components/ThemeToggle";
+import LoadingScreen from "@/components/Essential/LoadingScreen";
 
 export default function RootLayout({ children }) {
   return (
     <div>
-      
-      
-      <main>
-        {children}
-      </main>
+      <LoadingScreen />
+      <main>{children}</main>
     </div>
   );
 }

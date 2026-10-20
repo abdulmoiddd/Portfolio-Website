@@ -13,6 +13,13 @@
     --foreground: #ECEEF2; /* primary text */
     --foreground-muted: #838B99; /* muted text */
 
+    /* Tailwind Mappings */
+    --bg-primary: var(--background);
+    --bg-secondary: var(--secondary);
+    --text-primary: var(--foreground);
+    --text-secondary: var(--foreground-muted);
+    --brand-accent: var(--primary);
+
     /* Brand Colors */
     --primary: #FF3B30; /* crimson — alert/active signal */
     --secondary: #1D2129; /* surface-alt */
@@ -68,6 +75,13 @@
     --background: #F5F6F8; /* cool steel-white */
     --foreground: #0E1015; /* dark text */
     --foreground-muted: #565C67; /* muted text */
+
+    /* Tailwind Mappings */
+    --bg-primary: var(--background);
+    --bg-secondary: var(--secondary);
+    --text-primary: var(--foreground);
+    --text-secondary: var(--foreground-muted);
+    --brand-accent: var(--primary);
 
     /* Brand Colors */
     --primary: #D92B22; /* deepened crimson for light contrast */
