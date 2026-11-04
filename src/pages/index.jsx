@@ -32,6 +32,7 @@ export default function Home() {
           content="Abdul Moid, Software Engineer, Full Stack Developer, AI Engineer, OpenAI Realtime, WebRTC Voice, Next.js, React Native, Firebase, Make.com, Aicyro, CloseDesk, Technical Lead"
         />
         <meta name="author" content="Abdul Moid" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
 
         {/* --- Theme & Color-Scheme Support (Default Light) --- */}
         <meta name="color-scheme" content="light dark" />
