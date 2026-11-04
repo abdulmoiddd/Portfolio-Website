@@ -355,7 +355,7 @@ export default function Contact() {
                     onClick={() => sendChatMessage(promptText)}
                     className="interactive px-3 py-1.5 rounded-full text-xs font-mono bg-[var(--background-subtle)] text-[var(--foreground-muted)] hover:text-[var(--foreground)] border border-[var(--border-color)] hover:border-[var(--primary-vibrant)] transition-colors text-left"
                   >
-                    "{promptText}"
+                    &ldquo;{promptText}&rdquo;
                   </button>
                 ))}
               </div>
