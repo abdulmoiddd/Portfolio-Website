@@ -164,10 +164,10 @@ export default function Contact() {
           </div>
 
           {/* Mode Switcher Tabs */}
-          <div className="flex items-center p-1 rounded-xl bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] shadow-inner">
+          <div className="w-full sm:w-auto grid grid-cols-2 sm:flex items-center p-1 rounded-xl bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] shadow-inner">
             <button
               onClick={() => setActiveMode("standard")}
-              className={`px-4 py-2 rounded-lg font-mono text-xs font-bold transition-all duration-200 ease-in-out ${
+              className={`px-2.5 sm:px-4 py-2 rounded-lg font-mono text-[11px] sm:text-xs font-bold transition-all duration-200 ease-in-out text-center ${
                 activeMode === "standard"
                   ? "bg-[var(--clr-surface-card)] text-[var(--clr-ink)] shadow-md border border-[var(--clr-border)]"
                   : "text-[var(--clr-ink-muted)] hover:text-[var(--clr-ink)]"
@@ -177,7 +177,7 @@ export default function Contact() {
             </button>
             <button
               onClick={() => setActiveMode("terminal")}
-              className={`px-4 py-2 rounded-lg font-mono text-xs font-bold transition-all duration-200 ease-in-out flex items-center gap-1.5 ${
+              className={`px-2.5 sm:px-4 py-2 rounded-lg font-mono text-[11px] sm:text-xs font-bold transition-all duration-200 ease-in-out flex items-center justify-center gap-1.5 text-center ${
                 activeMode === "terminal"
                   ? "bg-[var(--clr-surface-card)] text-[var(--clr-ink)] shadow-md border border-[var(--clr-border)]"
                   : "text-[var(--clr-ink-muted)] hover:text-[var(--clr-ink)]"
@@ -200,7 +200,7 @@ export default function Contact() {
               className="grid grid-cols-1 lg:grid-cols-12 gap-[var(--bento-gap)]"
             >
               {/* Left Column: Direct Message Form */}
-              <div className="lg:col-span-7 bento-cell p-6 sm:p-8 flex flex-col justify-between">
+              <div className="lg:col-span-7 bento-cell p-4 sm:p-8 flex flex-col justify-between">
                 <div>
                   <h3 className="text-2xl font-black text-[var(--clr-ink)] tracking-tight mb-2">Send a Message</h3>
                   <p className="text-sm text-[var(--clr-ink-muted)] mb-8">
@@ -364,18 +364,20 @@ export default function Contact() {
 
                 {/* Terminal Input Line */}
                 <form onSubmit={handleTerminalSubmit} className="flex items-center gap-2 pt-1 bg-[var(--clr-surface-sub)] p-2 rounded-lg border border-[var(--clr-border)]">
-                  <span className="text-[var(--clr-accent)] font-bold text-xs pl-2">amoid@dispatch:~$</span>
+                  <span className="text-[var(--clr-accent)] font-bold text-xs pl-1 sm:pl-2 shrink-0">
+                    <span className="hidden sm:inline">amoid@dispatch:</span>$
+                  </span>
                   <input
                     type="text"
                     value={terminalInput}
                     onChange={(e) => setTerminalInput(e.target.value)}
                     placeholder="type command..."
-                    className="flex-1 bg-transparent text-[var(--clr-ink)] font-bold outline-none border-none font-mono text-xs placeholder:text-[var(--clr-ink-muted)]/50 placeholder:font-normal"
+                    className="flex-1 bg-transparent text-[var(--clr-ink)] font-bold outline-none border-none font-mono text-xs placeholder:text-[var(--clr-ink-muted)]/50 placeholder:font-normal min-w-0"
                     autoFocus
                   />
                   <button
                     type="submit"
-                    className="px-4 py-1.5 rounded-[6px] bg-[var(--clr-ink)] text-[var(--clr-surface)] font-mono text-xs font-bold hover:scale-105 transition-transform"
+                    className="px-3 sm:px-4 py-1.5 rounded-[6px] bg-[var(--clr-ink)] text-[var(--clr-surface)] font-mono text-xs font-bold hover:scale-105 transition-transform shrink-0"
                   >
                     RETURN
                   </button>
