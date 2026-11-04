@@ -9,6 +9,7 @@ import Services from "@/components/Home/Service";
 import BeyondTheCode from "@/components/Home/BeyondTheCode";
 import Contact from "@/components/Home/Contact";
 import CustomCursor from "@/components/Essential/CustomCursor";
+
 // DynamicBackground removed — ambient mesh now lives in layout.jsx (global)
 // and Hero.jsx (section-local mouse-reactive mesh)
 
@@ -86,6 +87,8 @@ export default function Home() {
         <div id="services">
           <Services />
         </div>
+
+
 
         {/* Core Tech Stack & Interactive Matrix */}
         <div id="skills">
