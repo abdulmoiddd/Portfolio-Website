@@ -51,7 +51,7 @@ export default function Navbar() {
             <div className="w-8 h-8 rounded-full bg-[var(--clr-accent)] flex items-center justify-center text-[var(--brand-charcoal)] font-mono font-bold text-xs shadow-sm group-hover:scale-105 transition-transform duration-300">
               AM
             </div>
-            <span className="font-bold tracking-tight text-[var(--clr-ink)] text-base sm:text-lg hidden xs:block">
+            <span className="font-bold tracking-tight text-[var(--clr-ink)] text-sm sm:text-base md:text-lg">
               Abdul Moid
             </span>
           </Link>
@@ -126,8 +126,8 @@ export default function Navbar() {
         <div
           className={`lg:hidden absolute top-full left-4 right-4 mt-3 transition-all duration-300 ease-in-out origin-top ${
             isMobileMenuOpen
-              ? "opacity-100 scale-y-100 translate-y-0 visible"
-              : "opacity-0 scale-y-95 -translate-y-4 invisible"
+              ? "opacity-100 scale-y-100 translate-y-0 visible pointer-events-auto"
+              : "opacity-0 scale-y-95 -translate-y-4 invisible pointer-events-none"
           }`}
         >
           <div className="p-2 bg-[var(--clr-surface-card)] backdrop-blur-2xl border border-[var(--clr-border)] rounded-2xl shadow-2xl flex flex-col gap-1">
