@@ -60,7 +60,6 @@ const FEATURED_PROJECTS = [
       { label: "SYNC ENGINE", value: "Realtime" },
     ],
     links: { live: "https://github.com/abdulmoiddd", github: "https://github.com/abdulmoiddd" },
-    image: "https://dummyimages.netlify.app/Mysite/muhamadhub.jpg",
   },
   {
     id: "brandwarranty",
@@ -84,7 +83,6 @@ const FEATURED_PROJECTS = [
       { label: "FIELD READINESS", value: "Offline" },
     ],
     links: { live: "https://github.com/abdulmoiddd", github: "https://github.com/abdulmoiddd" },
-    image: "https://dummyimages.netlify.app/Mysite/UDRA.jpg",
   },
 ];
 
@@ -174,7 +172,7 @@ export default function Projects() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
                 
                 {/* Left Specification Column (Span 7) */}
-                <div className="lg:col-span-7 flex flex-col justify-between">
+                <div className="lg:col-span-7 flex flex-col justify-between h-full">
                   <div>
                     {/* Eyebrow & Badges */}
                     <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -270,51 +268,43 @@ export default function Projects() {
             </div>
           </div>
 
-          {/* Bento Card 2: PocketPool (Span 6) */}
+          {/* Bento Card 2: PocketPool (Span 6 - Text Only Redesign) */}
           <div className="lg:col-span-6">
-            <div className="p-5 sm:p-6 rounded-2xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] hover:border-sky-400 shadow-sm flex flex-col justify-between h-full group transition-all">
+            <div className="p-6 sm:p-8 rounded-2xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] hover:border-sky-400 shadow-sm flex flex-col justify-between h-full group transition-all">
               <div>
-                <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden border border-[var(--clr-border)] mb-4 bg-[var(--clr-surface-sub)]">
-                  <Image
-                    src={FEATURED_PROJECTS[1].image}
-                    alt={FEATURED_PROJECTS[1].title}
-                    fill
-                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                  <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded text-[10px] font-mono font-bold tracking-wider uppercase bg-sky-500/20 text-sky-400 border border-sky-500/40 backdrop-blur-md">
+                {/* Badges moved to top */}
+                <div className="flex flex-wrap items-center gap-2 mb-4">
+                  <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20 uppercase tracking-wider">
                     {FEATURED_PROJECTS[1].badge}
-                  </div>
-                  <div className="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded bg-black/70 text-white text-[10px] font-mono">
-                    OFFLINE CACHE READY
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--clr-ink-muted)]">
+                  </span>
+                  <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-[var(--clr-surface-sub)] text-[var(--clr-ink-muted)] border border-[var(--clr-border)] uppercase">
                     {FEATURED_PROJECTS[1].type}
                   </span>
-                  <span className="font-mono text-[10px] font-bold text-sky-400">
+                  <span className="font-mono text-[10px] font-bold text-sky-400 ml-auto">
                     #{FEATURED_PROJECTS[1].index}
                   </span>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-black text-[var(--clr-ink)] tracking-tight mb-1 group-hover:text-sky-400 transition-colors">
+                <h3 className="text-2xl sm:text-3xl font-black text-[var(--clr-ink)] tracking-tight mb-2 group-hover:text-sky-400 transition-colors">
                   {FEATURED_PROJECTS[1].title}
                 </h3>
+                
+                <p className="text-sm sm:text-base font-semibold text-sky-400 mb-4">
+                  {FEATURED_PROJECTS[1].tagline}
+                </p>
 
-                <p className="text-xs sm:text-sm text-[var(--clr-ink-muted)] leading-relaxed mb-4">
+                <p className="text-sm text-[var(--clr-ink-muted)] leading-relaxed mb-6">
                   {FEATURED_PROJECTS[1].description}
                 </p>
 
                 {/* Micro Stats */}
-                <div className="grid grid-cols-3 gap-2 p-2.5 rounded-lg bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] mb-4">
+                <div className="grid grid-cols-3 gap-2 p-3 rounded-lg bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] mb-6">
                   {FEATURED_PROJECTS[1].stats.map((s) => (
                     <div key={s.label}>
                       <span className="text-[9px] font-mono text-[var(--clr-ink-muted)] uppercase block">
                         {s.label}
                       </span>
-                      <span className="text-xs font-mono font-bold text-[var(--clr-ink)]">
+                      <span className="text-xs sm:text-sm font-mono font-bold text-[var(--clr-ink)]">
                         {s.value}
                       </span>
                     </div>
@@ -323,7 +313,7 @@ export default function Projects() {
               </div>
 
               <div>
-                <div className="flex flex-wrap gap-1 mb-4">
+                <div className="flex flex-wrap gap-1.5 mb-5">
                   {FEATURED_PROJECTS[1].techStack.map((tech) => (
                     <span
                       key={tech}
@@ -334,7 +324,7 @@ export default function Projects() {
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between pt-3 border-t border-[var(--clr-border)]">
+                <div className="flex items-center justify-between pt-4 border-t border-[var(--clr-border)]">
                   <button
                     onClick={() => setSelectedProject(FEATURED_PROJECTS[1])}
                     className="text-xs font-mono font-semibold text-sky-400 hover:underline"
@@ -355,47 +345,39 @@ export default function Projects() {
             </div>
           </div>
 
-          {/* Bento Card 3: Brand Portfolio & Warranty (Hardware Security Bento with Interactive Simulator) */}
+          {/* Bento Card 3: Brand Portfolio & Warranty (Span 6 - Text Only Redesign) */}
           <div className="lg:col-span-6">
-            <div className="p-5 sm:p-6 rounded-2xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] hover:border-amber-400 shadow-sm flex flex-col justify-between h-full group transition-all">
+            <div className="p-6 sm:p-8 rounded-2xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] hover:border-amber-400 shadow-sm flex flex-col justify-between h-full group transition-all">
               <div>
-                <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden border border-[var(--clr-border)] mb-4 bg-[var(--clr-surface-sub)]">
-                  <Image
-                    src={FEATURED_PROJECTS[2].image}
-                    alt={FEATURED_PROJECTS[2].title}
-                    fill
-                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                  <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded text-[10px] font-mono font-bold tracking-wider uppercase bg-amber-400/20 text-amber-400 border border-amber-400/40 backdrop-blur-md">
+                {/* Badges moved to top */}
+                <div className="flex flex-wrap items-center gap-2 mb-4">
+                  <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-amber-400/10 text-amber-500 border border-amber-400/20 uppercase tracking-wider">
                     {FEATURED_PROJECTS[2].badge}
-                  </div>
-                  <div className="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded bg-black/70 text-white text-[10px] font-mono">
-                    8-DIGIT HASH SECURE
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--clr-ink-muted)]">
+                  </span>
+                  <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-[var(--clr-surface-sub)] text-[var(--clr-ink-muted)] border border-[var(--clr-border)] uppercase">
                     {FEATURED_PROJECTS[2].type}
                   </span>
-                  <span className="font-mono text-[10px] font-bold text-amber-400">
+                  <span className="font-mono text-[10px] font-bold text-amber-500 ml-auto">
                     #{FEATURED_PROJECTS[2].index}
                   </span>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-black text-[var(--clr-ink)] tracking-tight mb-1 group-hover:text-amber-400 transition-colors">
+                <h3 className="text-2xl sm:text-3xl font-black text-[var(--clr-ink)] tracking-tight mb-2 group-hover:text-amber-500 transition-colors">
                   {FEATURED_PROJECTS[2].title}
                 </h3>
+                
+                <p className="text-sm sm:text-base font-semibold text-amber-500 mb-4">
+                  {FEATURED_PROJECTS[2].tagline}
+                </p>
 
-                <p className="text-xs sm:text-sm text-[var(--clr-ink-muted)] leading-relaxed mb-3">
+                <p className="text-sm text-[var(--clr-ink-muted)] leading-relaxed mb-6">
                   {FEATURED_PROJECTS[2].description}
                 </p>
 
                 {/* Interactive Serial Verification Engine Simulator */}
-                <div className="p-3 rounded-xl bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] mb-4">
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-[9px] font-mono text-[var(--clr-ink-muted)] uppercase font-bold">
+                <div className="p-4 rounded-xl bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] mb-6">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[10px] font-mono text-[var(--clr-ink-muted)] uppercase font-bold tracking-wide">
                       LIVE SERIAL VALIDATOR SIMULATOR
                     </span>
                     <span className={`text-[10px] font-mono font-bold ${serialVerified ? "text-emerald-500" : "text-rose-500"}`}>
@@ -403,23 +385,23 @@ export default function Projects() {
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-1.5 mb-2">
+                  <div className="flex items-center gap-2 mb-2.5">
                     <input
                       type="text"
                       value={testSerial}
                       onChange={(e) => handleVerifySerial(e.target.value)}
                       placeholder="Enter 8-digit serial..."
-                      className="flex-1 px-2.5 py-1 text-xs font-mono rounded bg-[var(--clr-surface-card)] border border-[var(--clr-border)] text-[var(--clr-ink)] outline-none focus:border-[var(--clr-accent)]"
+                      className="flex-1 px-3 py-1.5 text-sm font-mono rounded-lg bg-[var(--clr-surface-card)] border border-[var(--clr-border)] text-[var(--clr-ink)] outline-none focus:border-[var(--clr-accent)]"
                     />
                     <button
                       onClick={() => handleVerifySerial("AM-8892-XT")}
-                      className="px-2 py-1 rounded text-[10px] font-mono font-semibold bg-[var(--clr-accent)] text-[var(--brand-charcoal)]"
+                      className="px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-[var(--clr-accent)] text-[var(--brand-charcoal)]"
                     >
                       TEST AM
                     </button>
                     <button
                       onClick={() => handleVerifySerial("STV-4921-OK")}
-                      className="px-2 py-1 rounded text-[10px] font-mono font-semibold bg-[var(--clr-surface-card)] border border-[var(--clr-border)] text-[var(--clr-ink)]"
+                      className="px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-[var(--clr-surface-card)] border border-[var(--clr-border)] text-[var(--clr-ink)] hidden sm:block"
                     >
                       STV-OK
                     </button>
@@ -432,7 +414,7 @@ export default function Projects() {
               </div>
 
               <div>
-                <div className="flex flex-wrap gap-1 mb-4">
+                <div className="flex flex-wrap gap-1.5 mb-5">
                   {FEATURED_PROJECTS[2].techStack.map((tech) => (
                     <span
                       key={tech}
@@ -443,10 +425,10 @@ export default function Projects() {
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between pt-3 border-t border-[var(--clr-border)]">
+                <div className="flex items-center justify-between pt-4 border-t border-[var(--clr-border)]">
                   <button
                     onClick={() => setSelectedProject(FEATURED_PROJECTS[2])}
-                    className="text-xs font-mono font-semibold text-amber-400 hover:underline"
+                    className="text-xs font-mono font-semibold text-amber-500 hover:underline"
                   >
                     [ VIEW ARCHITECTURE ]
                   </button>
@@ -547,7 +529,9 @@ export default function Projects() {
               <div className="inline-flex items-center gap-2 mb-2 text-xs font-mono font-semibold text-[var(--clr-accent)]">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--clr-accent)]" />
                 <span>{selectedProject.badge}</span>
-                <span className="text-[var(--clr-ink-muted)]">• {selectedProject.type}</span>
+                <span className="text-[var(--clr-ink-muted)]">
+                  {selectedProject.type}
+                </span>
               </div>
 
               <h3 className="text-2xl font-black text-[var(--clr-ink)] tracking-tight mb-2">
@@ -574,7 +558,7 @@ export default function Projects() {
 
               <div className="flex items-center gap-3 pt-3 border-t border-[var(--clr-border)]">
                 <Link
-                  href={selectedProject.links.live}
+                  href={selectedProject.links.live || selectedProject.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2 rounded-lg bg-[var(--clr-accent)] text-[var(--brand-charcoal)] text-xs font-mono font-bold tracking-wider hover:opacity-95 transition-opacity"
