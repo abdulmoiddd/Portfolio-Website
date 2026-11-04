@@ -4,7 +4,8 @@ import Link from "next/link";
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [theme, setTheme] = useState("dark");
+  // Default theme is explicitly 'light'
+  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,24 +16,25 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "dark";
+    // Default to 'light' mode
+    const savedTheme = localStorage.getItem("theme") || "light";
     setTheme(savedTheme);
-    if (savedTheme === "light") {
-      document.documentElement.setAttribute("data-theme", "light");
+    if (savedTheme === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
     } else {
-      document.documentElement.removeAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", "light");
     }
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
+    const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
 
-    if (newTheme === "light") {
-      document.documentElement.setAttribute("data-theme", "light");
+    if (newTheme === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
     } else {
-      document.documentElement.removeAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", "light");
     }
   };
 
@@ -41,6 +43,7 @@ export default function Navbar() {
     { name: "Services", href: "#services" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
+    { name: "Beyond Code", href: "#beyond-code" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -59,21 +62,21 @@ export default function Navbar() {
           <div
             className={`relative flex justify-between items-center transition-all duration-700 ${
               isScrolled
-                ? "bg-[var(--card-bg)]/90 backdrop-blur-2xl border border-[var(--border-color)] rounded-full py-2.5 px-6 shadow-2xl shadow-black/30"
+                ? "bg-[var(--card-bg)]/90 backdrop-blur-2xl border border-[var(--border-color)] rounded-full py-2.5 px-6 shadow-xl shadow-amber-500/5"
                 : "bg-transparent py-2 border-transparent rounded-none px-0"
             }`}
           >
             {/* Brand Logo */}
             <Link
               href="/"
-              className="relative text-2xl font-black tracking-tight cursor-pointer z-50 flex items-center gap-2.5 group"
+              className="interactive relative text-2xl font-black tracking-tight cursor-pointer z-50 flex items-center gap-2.5 group"
             >
-              <div className="text-[var(--primary)] transition-transform duration-300 group-hover:scale-110 drop-shadow-[0_0_12px_rgba(255,59,48,0.5)]">
+              <div className="text-[var(--primary)] transition-transform duration-300 group-hover:scale-110 drop-shadow-[0_0_12px_rgba(250,204,21,0.5)]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-7 h-7"
+                  className="w-7 h-7 text-amber-500 dark:text-yellow-400"
                 >
                   <path
                     fillRule="evenodd"
@@ -87,15 +90,15 @@ export default function Navbar() {
                 <span className="text-[var(--foreground)] font-black tracking-tight">
                   Abdul
                 </span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--accent-blue)] font-black">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 font-black">
                   Moid
                 </span>
 
-                {/* Live Status Pill */}
-                <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[var(--background)]/80 border border-[var(--border-color)] ml-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--success)] animate-pulse" />
-                  <span className="text-[9px] font-mono font-semibold uppercase text-[var(--success)]">
-                    ONLINE
+                {/* Live Status Indicator */}
+                <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[var(--background-subtle)] border border-[var(--border-color)] ml-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-[9px] font-mono font-semibold uppercase text-emerald-600 dark:text-emerald-400">
+                    OPEN TO WORK
                   </span>
                 </div>
               </div>
@@ -107,15 +110,15 @@ export default function Navbar() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="relative px-3 py-1.5 text-xs lg:text-sm font-mono tracking-wide transition-colors duration-300 group flex items-center"
+                    className="interactive relative px-3 py-1.5 text-xs lg:text-sm font-mono tracking-wide transition-colors duration-300 group flex items-center"
                   >
-                    <span className="text-[var(--primary)] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 mr-0.5">
+                    <span className="text-amber-500 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 mr-0.5">
                       [
                     </span>
                     <span className="group-hover:text-[var(--foreground)] transition-colors">
                       {link.name}
                     </span>
-                    <span className="text-[var(--accent-blue)] opacity-0 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ml-0.5">
+                    <span className="text-yellow-400 opacity-0 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ml-0.5">
                       ]
                     </span>
                   </Link>
@@ -128,9 +131,10 @@ export default function Navbar() {
               {/* Theme Toggle Button */}
               <button
                 onClick={toggleTheme}
-                className="relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[var(--background)]/60 border border-[var(--border-color)] text-[var(--foreground-muted)] hover:text-[var(--primary)] hover:border-[var(--primary)]/50 transition-all duration-300 focus:outline-none overflow-hidden"
+                className="interactive relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[var(--background-subtle)] border border-[var(--border-color)] text-[var(--foreground-muted)] hover:text-[var(--primary)] hover:border-[var(--primary-vibrant)] transition-all duration-300 focus:outline-none overflow-hidden"
                 aria-label="Toggle Theme"
               >
+                {/* Sun icon for light mode */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -138,8 +142,8 @@ export default function Navbar() {
                   strokeWidth={1.8}
                   stroke="currentColor"
                   className={`absolute w-4 h-4 transition-all duration-500 transform ${
-                    theme === "dark"
-                      ? "opacity-100 rotate-0 scale-100 text-yellow-400"
+                    theme === "light"
+                      ? "opacity-100 rotate-0 scale-100 text-amber-500"
                       : "opacity-0 -rotate-90 scale-50"
                   }`}
                 >
@@ -149,6 +153,8 @@ export default function Navbar() {
                     d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
                   />
                 </svg>
+
+                {/* Moon icon for dark mode */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -156,8 +162,8 @@ export default function Navbar() {
                   strokeWidth={1.8}
                   stroke="currentColor"
                   className={`absolute w-4 h-4 transition-all duration-500 transform ${
-                    theme === "light"
-                      ? "opacity-100 rotate-0 scale-100 text-slate-800"
+                    theme === "dark"
+                      ? "opacity-100 rotate-0 scale-100 text-yellow-300"
                       : "opacity-0 rotate-90 scale-50"
                   }`}
                 >
@@ -172,16 +178,16 @@ export default function Navbar() {
               {/* Contact CTA */}
               <a
                 href="#contact"
-                className="hidden sm:inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-[var(--primary)] text-white text-xs font-mono font-bold tracking-wide transition-all duration-300 shadow-[0_0_15px_rgba(255,59,48,0.35)] hover:shadow-[0_0_25px_rgba(255,59,48,0.55)] hover:-translate-y-0.5"
+                className="interactive hidden sm:inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 text-white dark:text-zinc-950 text-xs font-mono font-bold tracking-wide transition-all duration-300 shadow-[0_0_15px_rgba(250,204,21,0.4)] hover:shadow-[0_0_25px_rgba(250,204,21,0.65)] hover:-translate-y-0.5"
               >
                 <span>CONNECT</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
               </a>
 
               {/* Mobile Hamburger Toggle */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden flex items-center justify-center w-9 h-9 rounded-full bg-[var(--background)]/60 border border-[var(--border-color)] text-[var(--foreground)] hover:text-[var(--primary)] transition-colors focus:outline-none"
+                className="interactive md:hidden flex items-center justify-center w-9 h-9 rounded-full bg-[var(--background-subtle)] border border-[var(--border-color)] text-[var(--foreground)] hover:text-[var(--primary)] transition-colors focus:outline-none"
                 aria-label="Toggle Navigation Menu"
               >
                 {isMobileMenuOpen ? (
@@ -193,11 +199,7 @@ export default function Navbar() {
                     stroke="currentColor"
                     className="w-5 h-5"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 ) : (
                   <div className="flex flex-col gap-1.5 w-4">
@@ -224,10 +226,10 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-[var(--primary)]/10 text-[var(--foreground-muted)] hover:text-[var(--primary)] transition-colors duration-300 text-sm font-mono group"
+                  className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-amber-400/10 text-[var(--foreground-muted)] hover:text-[var(--primary)] transition-colors duration-300 text-sm font-mono group"
                 >
                   <span>{link.name}</span>
-                  <span className="text-[var(--primary)] text-xs">→</span>
+                  <span className="text-amber-500 text-xs">→</span>
                 </Link>
               </li>
             ))}
@@ -235,7 +237,7 @@ export default function Navbar() {
               <a
                 href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="w-full flex justify-center items-center gap-2 px-6 py-3 bg-[var(--primary)] text-white font-mono text-xs font-bold rounded-xl shadow-[0_0_20px_rgba(255,59,48,0.3)] transition-all duration-300"
+                className="w-full flex justify-center items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-yellow-400 text-white dark:text-zinc-950 font-mono text-xs font-bold rounded-xl shadow-md transition-all duration-300"
               >
                 INITIALIZE CONTACT
               </a>

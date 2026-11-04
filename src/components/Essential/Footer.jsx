@@ -9,6 +9,7 @@ export default function Footer() {
     { name: "Services", href: "#services" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
+    { name: "Beyond Code", href: "#beyond-code" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -19,34 +20,33 @@ export default function Footer() {
   return (
     <footer className="relative bg-[var(--background)] pt-20 pb-10 overflow-hidden font-sans border-t border-[var(--border-color)]/60">
       {/* Top Accent Gradient Border */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[1px] bg-gradient-to-r from-transparent via-[var(--primary)] to-transparent opacity-60"></div>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[1px] bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-60"></div>
 
       {/* Cyber Mesh Background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--border-color)_1px,transparent_1px),linear-gradient(to_bottom,var(--border-color)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_100%_at_50%_100%,#000_20%,transparent_100%)] opacity-20 pointer-events-none z-0"></div>
 
       {/* Ambient Glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-gradient-to-t from-[var(--primary)]/10 to-transparent blur-[120px] rounded-t-full pointer-events-none z-0"></div>
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-gradient-to-t from-yellow-400/10 to-transparent blur-[120px] rounded-t-full pointer-events-none z-0"></div>
 
       {/* Watermark */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[9vw] font-black text-[var(--foreground)] opacity-[0.015] pointer-events-none select-none z-0 tracking-tighter whitespace-nowrap">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[9vw] font-black text-[var(--foreground)] opacity-[0.02] pointer-events-none select-none z-0 tracking-tighter whitespace-nowrap">
         ABDUL MOID
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* Main Footer Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
           {/* Brand & Bio (Span 6) */}
           <div className="lg:col-span-6 flex flex-col items-start">
             <Link
               href="/"
-              className="relative text-2xl font-black tracking-tight cursor-pointer flex items-center gap-3 group mb-4"
+              className="interactive relative text-2xl font-black tracking-tight cursor-pointer flex items-center gap-3 group mb-4"
             >
-              <div className="text-[var(--primary)] group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_15px_rgba(255,59,48,0.5)]">
+              <div className="text-[var(--primary)] group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_15px_rgba(250,204,21,0.5)]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-7 h-7"
+                  className="w-7 h-7 text-amber-500 dark:text-yellow-400"
                 >
                   <path
                     fillRule="evenodd"
@@ -58,7 +58,7 @@ export default function Footer() {
               <span className="text-[var(--foreground)] font-black">
                 Abdul
               </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--accent-blue)] font-black">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 font-black">
                 Moid
               </span>
             </Link>
@@ -71,7 +71,7 @@ export default function Footer() {
 
             {/* Live Platform SLA Telemetry Chip */}
             <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-[var(--card-bg)] border border-[var(--border-color)] text-xs font-mono mb-6">
-              <span className="w-2 h-2 rounded-full bg-[var(--success)] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="text-[var(--foreground)] font-semibold">
                 SYSTEM SLA: 99.9%
               </span>
@@ -80,13 +80,12 @@ export default function Footer() {
 
             {/* Social Channels */}
             <div className="flex items-center gap-3">
-              {/* LinkedIn */}
               <a
                 href="https://www.linkedin.com/in/abdulmoiddd"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn Profile"
-                className="w-10 h-10 rounded-xl border border-[var(--border-color)] bg-[var(--card-bg)] flex items-center justify-center text-[var(--foreground-muted)] hover:text-white hover:bg-[var(--primary)] hover:border-[var(--primary)] hover:-translate-y-1 transition-all duration-300"
+                className="interactive w-10 h-10 rounded-xl border border-[var(--border-color)] bg-[var(--card-bg)] flex items-center justify-center text-[var(--foreground-muted)] hover:text-white hover:bg-[var(--primary)] hover:border-[var(--primary)] hover:-translate-y-1 transition-all duration-300"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path
@@ -97,13 +96,12 @@ export default function Footer() {
                 </svg>
               </a>
 
-              {/* GitHub */}
               <a
                 href="https://github.com/abdulmoiddd"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub Profile"
-                className="w-10 h-10 rounded-xl border border-[var(--border-color)] bg-[var(--card-bg)] flex items-center justify-center text-[var(--foreground-muted)] hover:text-white hover:bg-[var(--primary)] hover:border-[var(--primary)] hover:-translate-y-1 transition-all duration-300"
+                className="interactive w-10 h-10 rounded-xl border border-[var(--border-color)] bg-[var(--card-bg)] flex items-center justify-center text-[var(--foreground-muted)] hover:text-white hover:bg-[var(--primary)] hover:border-[var(--primary)] hover:-translate-y-1 transition-all duration-300"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path
@@ -114,11 +112,10 @@ export default function Footer() {
                 </svg>
               </a>
 
-              {/* Email */}
               <a
                 href="mailto:moidsekhry@gmail.com"
                 aria-label="Direct Email"
-                className="w-10 h-10 rounded-xl border border-[var(--border-color)] bg-[var(--card-bg)] flex items-center justify-center text-[var(--foreground-muted)] hover:text-white hover:bg-[var(--primary)] hover:border-[var(--primary)] hover:-translate-y-1 transition-all duration-300"
+                className="interactive w-10 h-10 rounded-xl border border-[var(--border-color)] bg-[var(--card-bg)] flex items-center justify-center text-[var(--foreground-muted)] hover:text-white hover:bg-[var(--primary)] hover:border-[var(--primary)] hover:-translate-y-1 transition-all duration-300"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -132,7 +129,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Navigation Links (Span 3) */}
+          {/* Quick Links (Span 3) */}
           <div className="lg:col-span-3">
             <h3 className="text-xs font-mono uppercase tracking-widest text-[var(--foreground)] font-bold mb-4 pb-2 border-b border-[var(--border-color)]/60">
               System Navigation
@@ -154,7 +151,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Core Focus / Location (Span 3) */}
+          {/* Operations Center (Span 3) */}
           <div className="lg:col-span-3">
             <h3 className="text-xs font-mono uppercase tracking-widest text-[var(--foreground)] font-bold mb-4 pb-2 border-b border-[var(--border-color)]/60">
               Operations Center
@@ -166,7 +163,7 @@ export default function Footer() {
               </div>
               <div>
                 <span className="block text-[var(--foreground)] font-semibold">DIRECT CONTACT</span>
-                <span className="text-[var(--primary)]">moidsekhry@gmail.com</span>
+                <span className="text-[var(--primary)] font-semibold">moidsekhry@gmail.com</span>
                 <br />
                 <span>+92 347 2539535</span>
               </div>
@@ -178,17 +175,13 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Sub-Footer Bar */}
+        {/* Sub-Footer Bar */}
         <div className="pt-8 border-t border-[var(--border-color)]/60 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-[var(--foreground-muted)] gap-4">
           <p>© {currentYear} Abdul Moid. All Rights Reserved.</p>
-
-          <p className="flex items-center gap-1.5">
-            <span>Engineered with Next.js, Framer Motion & Tailwind</span>
-          </p>
-
+          <p>Engineered with Next.js, Framer Motion & Tailwind</p>
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 hover:text-[var(--primary)] transition-colors"
+            className="interactive flex items-center gap-1.5 hover:text-[var(--primary)] transition-colors"
           >
             <span>BACK TO TOP</span>
             <span>↑</span>

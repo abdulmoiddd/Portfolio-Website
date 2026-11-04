@@ -6,11 +6,14 @@ import About from "@/components/Home/About";
 import Skills from "@/components/Home/Skills";
 import Projects from "@/components/Home/Project";
 import Services from "@/components/Home/Service";
+import BeyondTheCode from "@/components/Home/BeyondTheCode";
 import Contact from "@/components/Home/Contact";
+import CustomCursor from "@/components/Essential/CustomCursor";
+import DynamicBackground from "@/components/Essential/DynamicBackground";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] flex flex-col font-sans overflow-x-hidden scroll-smooth">
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] flex flex-col font-sans overflow-x-hidden scroll-smooth relative">
       <Head>
         {/* --- Primary SEO Tags --- */}
         <title>Abdul Moid | AI & Full-Stack Software Engineer | Technical Lead</title>
@@ -28,9 +31,9 @@ export default function Home() {
         />
         <meta name="author" content="Abdul Moid" />
 
-        {/* --- Theme & Color-Scheme Support --- */}
+        {/* --- Theme & Color-Scheme Support (Default Light) --- */}
         <meta name="color-scheme" content="light dark" />
-        <meta name="theme-color" content="#0A0C10" />
+        <meta name="theme-color" content="#FAF7F2" />
 
         {/* --- Search Engine Crawling --- */}
         <meta name="robots" content="index, follow" />
@@ -60,35 +63,53 @@ export default function Home() {
         <meta name="twitter:image" content="/og-image.jpg" />
       </Head>
 
-      {/* Navbar rendered globally */}
+      {/* Interactive Custom Animated Cursor (Desktop only) */}
+      <CustomCursor />
+
+      {/* Dynamic Ambient Background Blobs & Mesh */}
+      <DynamicBackground />
+
+      {/* Global Navigation Bar */}
       <Navbar />
 
-      <main>
+      <main className="relative z-10">
+        {/* Existing Hero Section (Preserved completely untouched) */}
         <div id="home">
           <Hero />
         </div>
 
+        {/* Architectural Evolution & Live Metrics */}
         <div id="about">
           <About />
         </div>
 
+        {/* Capabilities & Engineering Modules */}
         <div id="services">
           <Services />
         </div>
 
+        {/* Core Tech Stack & Interactive Matrix */}
         <div id="skills">
           <Skills />
         </div>
 
+        {/* Featured Projects (Bento Box with 3D Tilt) */}
         <div id="projects">
           <Projects />
         </div>
 
+        {/* Beyond the Code: Personal Creative Pursuits (Horizontal Scroll) */}
+        <div id="beyond-code">
+          <BeyondTheCode />
+        </div>
+
+        {/* Interactive Terminal / Chat-Bubble Contact Interface */}
         <div id="contact">
           <Contact />
         </div>
       </main>
 
+      {/* Global Footer */}
       <Footer />
     </div>
   );

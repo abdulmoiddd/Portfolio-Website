@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
-import { useState } from "react";
 
 const SERVICES_DATA = [
   {
@@ -17,8 +16,7 @@ const SERVICES_DATA = [
       "gpt-4o-mini Vision Automated Diagnostics",
     ],
     status: "LATENCY <180ms",
-    statusType: "online",
-    color: "var(--primary)",
+    color: "#FACC15",
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
@@ -44,8 +42,7 @@ const SERVICES_DATA = [
       "Native OAuth2 & Dynamic SMTP Engines",
     ],
     status: "99.9% SLA UPTIME",
-    statusType: "secure",
-    color: "var(--accent-blue)",
+    color: "#EAB308",
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
@@ -71,8 +68,7 @@ const SERVICES_DATA = [
       "Pixel-Perfect Mobile UI/UX",
     ],
     status: "OFFLINE-CAPABLE",
-    statusType: "active",
-    color: "var(--accent-purple)",
+    color: "#38BDF8",
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
@@ -98,8 +94,7 @@ const SERVICES_DATA = [
       "Bespoke Health Tracing & Anomaly Logging",
     ],
     status: "CONTINUOUS MONITORING",
-    statusType: "active",
-    color: "var(--success)",
+    color: "#F59E0B",
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
@@ -114,8 +109,7 @@ const SERVICES_DATA = [
   },
 ];
 
-// Reusable Interactive Service Card with Holographic Cursor Glare & Live Graphic
-const ServiceCard = ({ service, index }) => {
+function ServiceCard({ service, index }) {
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
 
@@ -134,11 +128,12 @@ const ServiceCard = ({ service, index }) => {
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       onPointerMove={handlePointerMove}
-      className="group relative flex flex-col justify-between p-8 sm:p-10 rounded-3xl bg-[var(--card-bg)]/60 hover:bg-[var(--card-bg)]/90 backdrop-blur-xl border border-[var(--border-color)] hover:border-[var(--border-color-hover)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_45px_-15px_rgba(0,0,0,0.5)] overflow-hidden"
+      whileHover={{ y: -6 }}
+      className="interactive group relative flex flex-col justify-between p-8 sm:p-10 rounded-3xl bg-[var(--card-bg)]/85 hover:bg-[var(--card-bg-elevated)] backdrop-blur-xl border border-[var(--border-color)] hover:border-[var(--primary-vibrant)] transition-all duration-500 hover:shadow-[0_20px_45px_-10px_rgba(250,204,21,0.25)] overflow-hidden"
     >
       {/* Top Accent Gradient Border */}
       <div
-        className="absolute top-0 left-0 right-0 h-[3px] transition-all duration-500 opacity-70 group-hover:opacity-100"
+        className="absolute top-0 left-0 right-0 h-[3px] transition-all duration-500 opacity-80 group-hover:opacity-100"
         style={{ backgroundColor: service.color }}
       />
 
@@ -158,17 +153,16 @@ const ServiceCard = ({ service, index }) => {
             <span
               className="text-[10px] font-mono px-2 py-0.5 rounded font-bold uppercase"
               style={{
-                backgroundColor: `${service.color}15`,
+                backgroundColor: `${service.color}18`,
                 color: service.color,
-                border: `1px solid ${service.color}35`,
+                border: `1px solid ${service.color}40`,
               }}
             >
               {service.tag}
             </span>
           </div>
 
-          {/* Live Status Pill */}
-          <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-[var(--background)]/80 border border-[var(--border-color)]">
+          <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-[var(--background-subtle)] border border-[var(--border-color)]">
             <span
               className="w-1.5 h-1.5 rounded-full animate-ping"
               style={{ backgroundColor: service.color }}
@@ -185,18 +179,17 @@ const ServiceCard = ({ service, index }) => {
         {/* Icon & Live Interactive Graphic Visualizer */}
         <div className="flex items-center justify-between gap-4 mb-6">
           <div
-            className="w-14 h-14 rounded-2xl flex items-center justify-center border shadow-inner transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3 bg-[var(--background)] relative overflow-hidden"
+            className="w-14 h-14 rounded-2xl flex items-center justify-center border shadow-inner transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3 bg-[var(--background-subtle)] relative overflow-hidden"
             style={{
               color: service.color,
-              borderColor: `${service.color}40`,
+              borderColor: `${service.color}45`,
             }}
           >
             {service.icon}
           </div>
 
-          {/* Mini Live Element Animation */}
           {service.liveGraphic === "waveform" && (
-            <div className="flex items-center gap-1 h-8 px-3 rounded-lg bg-[var(--background)]/60 border border-[var(--border-color)]">
+            <div className="flex items-center gap-1 h-8 px-3 rounded-xl bg-[var(--background-subtle)] border border-[var(--border-color)]">
               {[40, 85, 55, 100, 65, 90, 45].map((height, i) => (
                 <span
                   key={i}
@@ -215,10 +208,10 @@ const ServiceCard = ({ service, index }) => {
           )}
 
           {service.liveGraphic === "nodes" && (
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--background)]/60 border border-[var(--border-color)]">
-              <span className="w-2 h-2 rounded-full bg-[var(--accent-blue)] animate-pulse" />
-              <div className="w-6 h-[1px] bg-[var(--accent-blue)]/50" />
-              <span className="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse" />
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[var(--background-subtle)] border border-[var(--border-color)]">
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+              <div className="w-6 h-[1px] bg-amber-400/50" />
+              <span className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
               <span className="text-[9px] font-mono text-[var(--foreground-muted)]">
                 MULTI-TENANT
               </span>
@@ -226,18 +219,18 @@ const ServiceCard = ({ service, index }) => {
           )}
 
           {service.liveGraphic === "mobile" && (
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--background)]/60 border border-[var(--border-color)]">
-              <span className="text-[10px] font-mono text-[var(--accent-purple)]">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[var(--background-subtle)] border border-[var(--border-color)]">
+              <span className="text-[10px] font-mono text-sky-500">
                 iOS / ANDROID
               </span>
-              <span className="w-2 h-2 rounded-full bg-[var(--accent-purple)] animate-ping" />
+              <span className="w-2 h-2 rounded-full bg-sky-500 animate-ping" />
             </div>
           )}
 
           {service.liveGraphic === "pipeline" && (
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[var(--background)]/60 border border-[var(--border-color)]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--success)]" />
-              <span className="text-[9px] font-mono text-[var(--success)]">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[var(--background-subtle)] border border-[var(--border-color)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+              <span className="text-[9px] font-mono text-amber-500 font-semibold">
                 HOOK → CRON → SYNC
               </span>
             </div>
@@ -283,23 +276,21 @@ const ServiceCard = ({ service, index }) => {
       </div>
     </motion.div>
   );
-};
+}
 
-const Services = () => {
+export default function Services() {
   return (
     <section
       id="services"
-      className="relative w-full py-28 md:py-36 bg-[var(--background)] overflow-hidden border-t border-[var(--border-color)]/50"
+      className="relative w-full py-28 md:py-36 bg-[var(--background)] overflow-hidden border-t border-[var(--border-color)]/60"
     >
-      {/* Background Ambience & Grid */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
+      {/* Background Ambience */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
         <div
           className="w-full h-full"
           style={{
-            backgroundImage: `radial-gradient(var(--border-color) 1px, transparent 1px)`,
-            backgroundSize: "32px 32px",
-            maskImage: "radial-gradient(ellipse at center, black 40%, transparent 90%)",
-            WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 90%)",
+            backgroundImage:
+              "radial-gradient(circle at 15% 20%, rgba(250, 204, 21, 0.12) 0%, transparent 55%), radial-gradient(circle at 85% 80%, rgba(245, 158, 11, 0.08) 0%, transparent 50%)",
           }}
         />
       </div>
@@ -307,21 +298,22 @@ const Services = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-[var(--border-color)]/70 pb-12"
         >
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="h-[2px] w-8 bg-[var(--primary)]" />
-              <h2 className="text-xs font-mono tracking-widest text-[var(--foreground-muted)] uppercase">
+              <div className="h-[2px] w-8 bg-[var(--primary-vibrant)]" />
+              <h2 className="text-xs font-mono tracking-widest text-[var(--foreground-muted)] uppercase font-semibold">
                 Core Capabilities & Offerings
               </h2>
             </div>
             <h3 className="text-4xl md:text-6xl font-black text-[var(--foreground)] tracking-tight">
               Engineering <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] via-[var(--accent-blue)] to-[var(--accent-purple)]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 dark:from-yellow-300 dark:via-amber-400 dark:to-yellow-500">
                 Without Limits.
               </span>
             </h3>
@@ -333,7 +325,7 @@ const Services = () => {
           </p>
         </motion.div>
 
-        {/* 2x2 Interactive Services Grid */}
+        {/* 2x2 Services Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
           {SERVICES_DATA.map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} />
@@ -342,6 +334,4 @@ const Services = () => {
       </div>
     </section>
   );
-};
-
-export default Services;
+}
