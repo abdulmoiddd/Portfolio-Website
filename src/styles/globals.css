@@ -6,7 +6,7 @@
    PORTFOLIO REDESIGN — GLOBAL CSS FOUNDATION
    Color System (6 canonical tokens, spec-exact hex values):
      Charcoal Black   #292C31  — dark background
-     Warm Off-White   #F2F0E7  — light background
+     Crisp Off-White  #F9FAFB  — light background (Neutralized)
      Yellow           #CACA60  — muted yellow, borders, secondary accents
      Cyber Yellow     #F5E623  — primary accent, CTAs, glow
      Pure White       #FFFFFF  — high-contrast text on dark
@@ -16,9 +16,9 @@
 @layer base {
 
   /* ---------------------------------------------------------------------------
-     LIGHT THEME  (Default)
-     Background: Warm Off-White  #F2F0E7
-     Foreground: Charcoal Black  #292C31
+     LIGHT THEME  (Updated: Crisp & Clean)
+     Background: Crisp Off-White  #F9FAFB
+     Foreground: Charcoal Black   #292C31
   --------------------------------------------------------------------------- */
   :root,
   :root[data-theme="light"] {
@@ -26,20 +26,20 @@
 
     /* ── Canonical Brand Palette (never altered) ── */
     --brand-charcoal:   #292C31;
-    --brand-off-white:  #F2F0E7;
+    --brand-off-white:  #F9FAFB;           /* Clean, cool off-white */
     --brand-yellow:     #CACA60;
     --brand-cyber:      #F5E623;
     --brand-white:      #FFFFFF;
     --brand-gray:       #A6A6A6;
 
     /* ── Semantic Surface Tokens ── */
-    --clr-surface:       #F2F0E7;          /* page background */
-    --clr-surface-sub:   #E8E5D8;          /* slightly recessed panels */
-    --clr-surface-card:  rgba(255,255,255,0.88); /* Bento card face */
+    --clr-surface:       #F9FAFB;          /* page background */
+    --clr-surface-sub:   #F3F4F6;          /* slightly recessed panels */
+    --clr-surface-card:  rgba(255,255,255,0.95); /* Crisp white Bento card face */
 
     /* ── Ink (Text) ── */
     --clr-ink:           #292C31;          /* primary text */
-    --clr-ink-muted:     #A6A6A6;          /* descriptions, secondary */
+    --clr-ink-muted:     #6B7280;          /* slightly darker gray for better readability on white */
 
     /* ── Accent ── */
     --clr-accent:        #F5E623;          /* Cyber Yellow — CTAs, highlights */
@@ -47,9 +47,9 @@
     --clr-accent-glow:   rgba(245,230,35,0.35);
 
     /* ── Borders ── */
-    --clr-border:        rgba(202,202,96,0.30);   /* subtle yellow-tinted border */
-    --clr-border-hover:  rgba(245,230,35,0.65);   /* hover / focus state */
-    --clr-grid-line:     rgba(41,44,49,0.06);     /* architectural grid backdrop */
+    --clr-border:        rgba(41,44,49,0.08);   /* Neutral gray border (removes sickly yellow tint) */
+    --clr-border-hover:  rgba(245,230,35,0.65); /* hover / focus state */
+    --clr-grid-line:     rgba(41,44,49,0.04);   /* architectural grid backdrop */
 
     /* ── Bento Grid Geometry ── */
     --bento-gap:         12px;
@@ -57,15 +57,15 @@
     --bento-radius-sm:   12px;
 
     /* ── Glow / Shadow ── */
-    --shadow-card:       0 2px 16px rgba(41,44,49,0.07);
-    --shadow-card-hover: 0 8px 40px rgba(245,230,35,0.22), 0 2px 12px rgba(41,44,49,0.08);
+    --shadow-card:       0 2px 16px rgba(41,44,49,0.04);
+    --shadow-card-hover: 0 8px 40px rgba(245,230,35,0.18), 0 2px 12px rgba(41,44,49,0.06);
     --neon-glow:         0 0 24px rgba(245,230,35,0.40), 0 0 48px rgba(245,230,35,0.14);
 
     /* ── Gradient Presets ── */
     --gradient-accent:   linear-gradient(135deg, #F5E623 0%, #CACA60 100%);
-    --gradient-text:     linear-gradient(135deg, #CACA60 0%, #A89A20 100%);
-    --gradient-mesh:     radial-gradient(at 0% 0%, rgba(245,230,35,0.09) 0px, transparent 55%),
-                         radial-gradient(at 100% 100%, rgba(202,202,96,0.07) 0px, transparent 55%);
+    --gradient-text:     linear-gradient(135deg, #A89A20 0%, #7C7113 100%); /* Darkened slightly for contrast against white */
+    --gradient-mesh:     radial-gradient(at 0% 0%, rgba(245,230,35,0.06) 0px, transparent 55%),
+                         radial-gradient(at 100% 100%, rgba(41,44,49,0.03) 0px, transparent 55%);
 
     /* ── Legacy alias support (keeps old components working during migration) ── */
     --background:            var(--clr-surface);
@@ -88,7 +88,7 @@
     --border-color:          var(--clr-border);
     --border-color-hover:    var(--clr-border-hover);
     --border-radius:         var(--bento-radius);
-    --glass-bg:              rgba(242,240,231,0.85);
+    --glass-bg:              rgba(249, 250, 251, 0.85); /* Neutralized glass tint */
     --glass-card:            rgba(255,255,255,0.80);
     --neon-glow:             var(--shadow-card-hover);
   }
@@ -327,20 +327,20 @@ body {
 
 @keyframes blob-drift-1 {
   0%, 100% { transform: translate(0px,   0px) scale(1); }
-  33%       { transform: translate(28px, -36px) scale(1.07); }
-  66%       { transform: translate(-22px, 18px) scale(0.95); }
+  33%      { transform: translate(28px, -36px) scale(1.07); }
+  66%      { transform: translate(-22px, 18px) scale(0.95); }
 }
 
 @keyframes blob-drift-2 {
   0%, 100% { transform: translate(0px,   0px) scale(1); }
-  33%       { transform: translate(-32px, 30px) scale(0.96); }
-  66%       { transform: translate(26px, -22px) scale(1.05); }
+  33%      { transform: translate(-32px, 30px) scale(0.96); }
+  66%      { transform: translate(26px, -22px) scale(1.05); }
 }
 
 /* Waveform kept for Contact section usage */
 @keyframes waveform {
   0%, 100% { height: 4px; }
-  50%       { height: 20px; }
+  50%      { height: 20px; }
 }
 .animate-waveform {
   animation: waveform 1.1s ease-in-out infinite;
@@ -353,7 +353,7 @@ body {
   *,
   *::before,
   *::after {
-    animation-duration:   0.01ms !important;
+    animation-duration:  0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration:  0.01ms !important;
   }
