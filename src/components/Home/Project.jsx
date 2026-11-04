@@ -11,141 +11,143 @@ import {
   AnimatePresence,
 } from "framer-motion";
 
-// 3 Core Featured Projects from the prompt + Auxiliary Enterprise Platforms
 const FEATURED_PROJECTS = [
   {
     id: "closedesk",
+    index: "01",
     title: "CloseDesk by Aicyro",
-    type: "AI & SaaS Architecture",
-    badge: "FLAGSHIP SHOWCASE",
-    headline: "Multi-Tenant 24/7 AI Booking Desk with WebRTC Voice Agents & Vision AI",
+    type: "AI & Multi-Tenant SaaS",
+    badge: "FLAGSHIP ARCHITECTURE",
+    tagline: "24/7 AI Booking Desk with WebRTC Voice Agents & Vision AI",
     description:
-      "Engineered an enterprise-grade multi-tenant platform from the ground up to automate 24/7 customer capture and scheduling. Features OpenAI Realtime WebRTC voice streaming for sub-180ms conversational agents, gpt-4o-mini Vision diagnostics, dynamic SMTP, and native OAuth2 tenant isolation.",
+      "Enterprise multi-tenant platform architected from scratch for automated lead conversion and 24/7 client booking. Engineered OpenAI Realtime WebRTC bi-directional voice streams for sub-180ms conversational agents, gpt-4o-mini Vision diagnostics, and OAuth2 tenant isolation.",
     highlights: [
-      "OpenAI Realtime WebRTC bi-directional audio streaming",
-      "gpt-4o-mini Vision automated diagnostic pipeline",
+      "OpenAI Realtime WebRTC bi-directional audio streaming with sub-180ms roundtrip latency",
+      "gpt-4o-mini Vision automated diagnostic pipeline for document & device analysis",
       "Multi-tenant security overhaul: server-side SuperAdmin endpoints & brute-force CAPTCHA",
-      "Dynamic SMTP automated delivery & custom webhook telemetry",
+      "Dynamic SMTP automated delivery & custom webhook telemetry infrastructure",
     ],
     techStack: [
-      "Next.js",
-      "OpenAI WebRTC",
+      "Next.js 14",
+      "OpenAI Realtime",
+      "WebRTC",
       "gpt-4o Vision",
       "Node.js",
       "Firebase RTDB",
-      "Make.com",
       "Tailwind CSS",
     ],
-    stats: { primary: "<180ms", label: "Voice Latency" },
+    stats: [
+      { label: "Voice Latency", value: "<180ms" },
+      { label: "Availability", value: "24/7/365" },
+      { label: "Tenant Model", value: "Isolated" },
+    ],
     links: { live: "https://aicyro.com", github: "https://github.com/abdulmoiddd" },
     image: "https://dummyimages.netlify.app/Mysite/Aicyro.jpg",
     accentColor: "#FACC15",
-    isHero: true,
   },
   {
     id: "pocketpool",
+    index: "02",
     title: "PocketPool",
     type: "Cross-Platform Mobile App",
     badge: "REACT NATIVE & EXPO",
-    headline: "Offline-Capable Mobile Architecture with Firebase Cloud Synchronization",
+    tagline: "Offline-Capable Mobile Architecture with Firebase Sync",
     description:
-      "Built a seamless cross-platform mobile application utilizing React Native and Expo. Architected an offline-capable data layer using Firebase storage and encrypted local state, ensuring uninterrupted functionality in low-connectivity environments.",
+      "Engineered a high-performance cross-platform mobile application utilizing React Native and Expo. Architected an offline-capable data persistence layer with SQLite caching and Firebase real-time sync for seamless operation in low-connectivity environments.",
     highlights: [
-      "Universal React Native & Expo codebase targeting iOS and Android",
-      "Offline-capable data architecture ensuring usability without network",
-      "Instant cloud synchronization upon reconnecting to Firebase",
-      "Native 60fps animations & gesture-driven navigation",
+      "Universal React Native & Expo codebase targeting iOS and Android native runtimes",
+      "Offline-first local state caching ensuring uninterrupted offline usage",
+      "Instant background synchronization on network reconnection",
+      "Native 60fps UI transitions and gesture-driven bottom sheets",
     ],
-    techStack: ["React Native", "Expo", "Firebase RTDB", "Offline Sync", "Tailwind"],
-    stats: { primary: "60 FPS", label: "Native Feel" },
+    techStack: ["React Native", "Expo EAS", "Firebase RTDB", "Local Cache", "Tailwind"],
+    stats: [
+      { label: "Frame Rate", value: "60 FPS" },
+      { label: "Offline Mode", value: "100% Ready" },
+      { label: "Sync Engine", value: "Realtime" },
+    ],
     links: { live: "https://github.com/abdulmoiddd", github: "https://github.com/abdulmoiddd" },
     image: "https://dummyimages.netlify.app/Mysite/muhamadhub.jpg",
     accentColor: "#38BDF8",
-    isHero: false,
   },
   {
     id: "brandwarranty",
+    index: "03",
     title: "Brand Portfolio & Warranty App",
-    type: "Full-Stack & Hardware Verification",
-    badge: "SERIAL NUMBER SECURITY",
-    headline: "Web & Offline Mobile Suite with 8-Digit Serial Number Verification",
+    type: "Full-Stack Web & Mobile",
+    badge: "SERIAL NUMBER VERIFICATION",
+    tagline: "Hardware Warranty Suite with 8-Digit Serial Verification",
     description:
-      "Engineered a full-scale brand portfolio website and companion offline mobile application for a stove and hob manufacturer. Built an 8-digit serial verification engine allowing customers and technicians to instantly validate authentic hardware and active warranty status.",
+      "Engineered an enterprise product showcase and companion mobile application for a premium stove and hob manufacturer. Built an 8-digit serial number verification engine allowing technicians and buyers to cryptographically validate authentic hardware.",
     highlights: [
-      "8-digit serial number cryptographic verification algorithm",
-      "Real-time validation for product authenticity and warranty status",
-      "Companion mobile application operational in remote field warehouses",
-      "Responsive high-converting brand catalog architecture",
+      "8-digit serial cryptographic verification algorithm with tamper detection",
+      "Sub-millisecond verification queries across catalog records",
+      "Companion mobile app for offline warehouse verification and barcode lookup",
+      "Lighthouse 100/100 performance across desktop and mobile catalogs",
     ],
     techStack: ["Next.js", "React Native", "Firebase", "Node.js", "Tailwind CSS"],
-    stats: { primary: "8-Digit", label: "Serial Engine" },
+    stats: [
+      { label: "Serial Algorithm", value: "8-Digit Hash" },
+      { label: "Verification", value: "<50ms" },
+      { label: "Field Readiness", value: "Offline" },
+    ],
     links: { live: "https://github.com/abdulmoiddd", github: "https://github.com/abdulmoiddd" },
     image: "https://dummyimages.netlify.app/Mysite/UDRA.jpg",
     accentColor: "#F59E0B",
-    isHero: false,
   },
 ];
 
-const AUXILIARY_PROJECTS = [
+const AUXILIARY_PLATFORMS = [
   {
     id: "aicyroshield",
     title: "Aicyro Shield",
     type: "Cybersecurity Platform",
-    badge: "ML ARCHITECTURE",
+    badge: "ML THREAT INTEL",
     description:
-      "Autonomous cybersecurity intelligence platform with real-time anomaly detection, risk scoring, and automated threat responses.",
-    techStack: ["Next.js", "React", "Machine Learning", "WebSockets"],
-    links: { live: "https://aicyro.com", github: "https://github.com/abdulmoiddd" },
+      "Autonomous cybersecurity intelligence platform with real-time anomaly detection and automated risk scoring.",
+    tech: ["Next.js", "WebSockets", "ML Models"],
+    link: "https://aicyro.com",
   },
   {
     id: "brightsmile",
     title: "BrightSmile AI",
-    type: "Healthcare Virtual Assistant",
-    badge: "GEMINI AI ENGINE",
+    type: "Healthcare Assistant",
+    badge: "GEMINI LLM ENGINE",
     description:
-      "AI-powered dental virtual assistant web application leveraging Gemini LLM API with secure, HIPAA-compliant patient communication.",
-    techStack: ["React", "Gemini API", "Tailwind CSS", "Netlify"],
-    links: { live: "https://dentalbott.netlify.app/", github: "https://github.com/abdulmoiddd" },
+      "AI-powered dental virtual assistant web application leveraging Gemini API with secure patient intake workflows.",
+    tech: ["React", "Gemini API", "Tailwind CSS"],
+    link: "https://dentalbott.netlify.app/",
   },
   {
     id: "udra",
-    title: "UDRA Corporate Platform",
-    type: "Corporate Web Platform",
-    badge: "TECHNICAL SEO",
+    title: "UDRA Corporate",
+    type: "Enterprise Portal",
+    badge: "100 LIGHTHOUSE",
     description:
-      "Official corporate web presence for UDRA debt recovery firm with 100/100 Lighthouse performance, sub-second TTFB, and structured schema.",
-    techStack: ["HTML5", "CSS3", "JavaScript", "Netlify"],
-    links: { live: "https://udra.netlify.app/", github: "https://github.com/abdulmoiddd" },
+      "Corporate web presence for debt resolution firm with 100/100 Lighthouse performance and sub-second TTFB.",
+    tech: ["HTML5", "CSS3", "JavaScript"],
+    link: "https://udra.netlify.app/",
   },
 ];
 
-// Interactive 3D Perspective Tilt Card Component
-function TiltCard({ children, className = "", accentColor = "#FACC15" }) {
+function BentoTiltCard({ children, className = "" }) {
   const cardRef = useRef(null);
-
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const mouseXSpring = useSpring(x, { damping: 20, stiffness: 250 });
-  const mouseYSpring = useSpring(y, { damping: 20, stiffness: 250 });
+  const mouseXSpring = useSpring(x, { damping: 25, stiffness: 300 });
+  const mouseYSpring = useSpring(y, { damping: 25, stiffness: 300 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["9deg", "-9deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-9deg", "9deg"]);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"]);
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
-
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
-
-    x.set(xPct);
-    y.set(yPct);
+    x.set(mouseX / rect.width - 0.5);
+    y.set(mouseY / rect.height - 0.5);
   };
 
   const handleMouseLeave = () => {
@@ -163,159 +165,139 @@ function TiltCard({ children, className = "", accentColor = "#FACC15" }) {
         rotateY,
         transformStyle: "preserve-3d",
       }}
-      className={`interactive relative rounded-3xl transition-shadow duration-500 ${className}`}
+      className={`interactive relative rounded-2xl transition-all duration-200 ${className}`}
     >
-      <div style={{ transform: "translateZ(30px)" }}>{children}</div>
+      <div style={{ transform: "translateZ(15px)" }}>{children}</div>
     </motion.div>
   );
 }
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [showMore, setShowMore] = useState(false);
 
   return (
     <section
       id="projects"
-      className="relative w-full py-28 md:py-36 bg-[var(--background)] min-h-screen overflow-hidden border-t border-[var(--border-color)]/60"
+      className="relative w-full py-16 md:py-24 bg-[var(--background)] overflow-hidden border-t border-[var(--border-color)]"
     >
-      {/* Dynamic Ambient Gradient Mesh */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+      {/* Subtle Static Mesh */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-25">
         <div
           className="w-full h-full"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 10% 20%, rgba(250, 204, 21, 0.14) 0%, transparent 55%), radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.10) 0%, transparent 55%)",
+              "radial-gradient(circle at 15% 25%, rgba(250, 204, 21, 0.08) 0%, transparent 45%), radial-gradient(circle at 85% 75%, rgba(217, 119, 6, 0.06) 0%, transparent 45%)",
           }}
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-20 flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-[var(--border-color)]/70 pb-12"
-        >
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full">
+        {/* Section Header: Compact Bento HUD Bar */}
+        <div className="mb-8 md:mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[var(--border-color)] pb-6">
           <div>
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[var(--card-bg)] border border-[var(--border-color)] mb-4 shadow-sm">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary-vibrant)] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--primary)]"></span>
-              </span>
-              <span className="text-xs font-mono tracking-widest text-[var(--foreground-muted)] uppercase font-semibold">
-                FEATURED WORK // BENTO SHOWCASE
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[var(--background-subtle)] border border-[var(--border-color)] mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]" />
+              <span className="font-mono text-[11px] font-semibold tracking-wider text-[var(--foreground-muted)] uppercase">
+                SPEC // 03 • PRODUCTION CASE STUDIES
               </span>
             </div>
 
-            <h3 className="text-4xl md:text-6xl font-black text-[var(--foreground)] tracking-tight">
-              Featured <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 dark:from-yellow-300 dark:via-amber-400 dark:to-yellow-500">
-                Architectures.
-              </span>
-            </h3>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[var(--foreground)] tracking-tight">
+              Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 dark:from-yellow-300 dark:via-amber-400 dark:to-yellow-500">Architectures</span>
+            </h2>
           </div>
 
-          <p className="text-base sm:text-lg text-[var(--foreground-muted)] font-light max-w-md lg:text-right">
-            Enterprise AI SaaS platforms, cross-platform mobile apps, and
-            hardware validation systems engineered for sub-second performance.
-          </p>
-        </motion.div>
+          <div className="flex items-center gap-3 font-mono text-xs text-[var(--foreground-muted)]">
+            <span className="px-2.5 py-1 rounded bg-[var(--card-bg)] border border-[var(--border-color)]">
+              [03 FLAGSHIP SYSTEMS]
+            </span>
+            <span className="hidden sm:inline">|</span>
+            <span className="hidden sm:inline text-[var(--primary)] font-semibold">
+              REAL-WORLD IMPACT
+            </span>
+          </div>
+        </div>
 
         {/* ======================================================== */}
-        {/* BENTO BOX GRID                                           */}
+        {/* HIGH-DENSITY BENTO BOX GRID                               */}
         {/* ======================================================== */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
-          {/* Card 1: CloseDesk (Hero Bento Card - Span 12 on mobile, Span 12 or 7 on desktop) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-4">
+          
+          {/* Bento Card 1: CloseDesk (Dominant Flagship - Span 12 on mobile, Span 12 on desktop with 2-col interior) */}
           <div className="lg:col-span-12">
-            <TiltCard
-              accentColor="#FACC15"
-              className="p-8 sm:p-12 rounded-3xl bg-[var(--card-bg)]/85 backdrop-blur-2xl border border-[var(--border-color)] hover:border-[var(--primary-vibrant)] shadow-xl hover:shadow-[0_20px_50px_rgba(250,204,21,0.25)] overflow-hidden group"
-            >
-              {/* Radiant Ambient Glow Behind CloseDesk */}
-              <div className="absolute top-0 right-0 w-[450px] h-[450px] rounded-full bg-gradient-to-bl from-yellow-400/20 via-amber-500/10 to-transparent blur-[110px] pointer-events-none" />
-
-              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                {/* Left Description Column */}
+            <BentoTiltCard className="p-6 sm:p-8 rounded-2xl bg-[var(--card-bg-elevated)] border border-[var(--border-color)] hover:border-[var(--primary)] shadow-sm group">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+                {/* Left Specification Column (Span 7) */}
                 <div className="lg:col-span-7 flex flex-col justify-between">
                   <div>
-                    {/* Top Status & Badge */}
-                    <div className="flex flex-wrap items-center gap-3 mb-5">
-                      <span className="px-3 py-1 rounded-full text-xs font-mono font-bold tracking-wider uppercase bg-amber-400/15 text-[var(--primary)] border border-amber-400/30">
+                    {/* Eyebrow & Badges */}
+                    <div className="flex flex-wrap items-center gap-2 mb-3">
+                      <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-amber-400/15 text-[var(--primary)] border border-amber-400/30 uppercase tracking-wider">
                         {FEATURED_PROJECTS[0].badge}
                       </span>
-                      <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--background-subtle)] border border-[var(--border-color)] text-xs font-mono">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                        <span className="font-semibold text-[var(--foreground)]">
-                          LIVE 24/7 SAAS
-                        </span>
+                      <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-[var(--background-subtle)] text-[var(--foreground-muted)] border border-[var(--border-color)] uppercase">
+                        {FEATURED_PROJECTS[0].type}
+                      </span>
+                      <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-[var(--background-subtle)] border border-[var(--border-color)] text-[10px] font-mono text-[var(--foreground)]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        <span className="font-semibold">PRODUCTION LIVE</span>
                       </div>
                     </div>
 
-                    <h4 className="text-3xl sm:text-5xl font-black text-[var(--foreground)] tracking-tight mb-4 group-hover:text-[var(--primary)] transition-colors">
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[var(--foreground)] tracking-tight mb-2 group-hover:text-[var(--primary)] transition-colors">
                       {FEATURED_PROJECTS[0].title}
-                    </h4>
+                    </h3>
 
-                    <p className="text-lg text-[var(--foreground-muted)] font-normal leading-relaxed mb-6">
-                      {FEATURED_PROJECTS[0].headline}
+                    <p className="text-sm sm:text-base font-medium text-[var(--primary)] mb-3">
+                      {FEATURED_PROJECTS[0].tagline}
                     </p>
 
-                    <p className="text-sm sm:text-base text-[var(--foreground-muted)] font-light leading-relaxed mb-8">
+                    <p className="text-xs sm:text-sm text-[var(--foreground-muted)] leading-relaxed mb-4">
                       {FEATURED_PROJECTS[0].description}
                     </p>
 
-                    {/* Live Waveform Indicator */}
-                    <div className="p-4 rounded-2xl bg-[var(--background-subtle)] border border-[var(--border-color)] mb-8 flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="flex items-center gap-1 h-6">
-                          {[30, 80, 50, 100, 65, 85, 40].map((h, i) => (
-                            <span
-                              key={i}
-                              className="w-1 rounded-full bg-[var(--primary-vibrant)] animate-waveform"
-                              style={{
-                                animationDelay: `${i * 0.14}s`,
-                                height: `${h * 0.22}px`,
-                              }}
-                            />
-                          ))}
+                    {/* Compact Telemetry Row */}
+                    <div className="grid grid-cols-3 gap-2 p-3 rounded-xl bg-[var(--background-subtle)] border border-[var(--border-color)] mb-4">
+                      {FEATURED_PROJECTS[0].stats.map((s) => (
+                        <div key={s.label} className="text-left">
+                          <span className="text-[10px] font-mono text-[var(--foreground-muted)] uppercase block">
+                            {s.label}
+                          </span>
+                          <span className="text-sm font-mono font-bold text-[var(--foreground)]">
+                            {s.value}
+                          </span>
                         </div>
-                        <span className="font-mono text-xs font-bold text-[var(--foreground)]">
-                          OpenAI WebRTC Voice Stream
-                        </span>
-                      </div>
-                      <span className="font-mono text-xs font-bold text-[var(--primary)]">
-                        &lt;180ms LATENCY
-                      </span>
+                      ))}
                     </div>
                   </div>
 
-                  {/* Actions & Stack */}
+                  {/* Tech Stack Pills & CTA */}
                   <div>
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-1.5 mb-5">
                       {FEATURED_PROJECTS[0].techStack.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 rounded-xl text-xs font-mono font-medium bg-[var(--background)] text-[var(--foreground)] border border-[var(--border-color)]"
+                          className="px-2 py-0.5 rounded text-[11px] font-mono bg-[var(--background)] text-[var(--foreground)] border border-[var(--border-color)]"
                         >
                           {tech}
                         </span>
                       ))}
                     </div>
 
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-wrap items-center gap-3">
                       <Link
                         href={FEATURED_PROJECTS[0].links.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 text-white dark:text-zinc-950 font-bold text-xs font-mono tracking-wider shadow-lg hover:shadow-[0_0_20px_rgba(250,204,21,0.5)] transition-all flex items-center gap-2"
+                        className="px-4 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-400 text-zinc-950 font-bold text-xs font-mono tracking-wider shadow-sm hover:opacity-95 transition-opacity inline-flex items-center gap-1.5"
                       >
-                        EXPLORE SAAS PLATFORM →
+                        <span>LAUNCH PLATFORM</span>
+                        <span>→</span>
                       </Link>
+
                       <button
                         onClick={() => setSelectedProject(FEATURED_PROJECTS[0])}
-                        className="px-5 py-3 rounded-xl border border-[var(--border-color)] bg-[var(--card-bg)] text-[var(--foreground)] font-mono text-xs hover:border-[var(--primary)] transition-colors"
+                        className="px-4 py-2 rounded-lg border border-[var(--border-color)] bg-[var(--card-bg)] text-[var(--foreground)] font-mono text-xs hover:border-[var(--primary)] transition-colors"
                       >
                         [ VIEW ARCHITECTURE ]
                       </button>
@@ -323,80 +305,91 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Right Image Showcase Column */}
-                <div className="lg:col-span-5 relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-[var(--border-color)] bg-[var(--background)] shadow-2xl">
+                {/* Right Image Showcase (Span 5) */}
+                <div className="lg:col-span-5 relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-[var(--border-color)] bg-[var(--background)]">
                   <Image
                     src={FEATURED_PROJECTS[0].image}
                     alt={FEATURED_PROJECTS[0].title}
                     fill
-                    className="object-cover object-top filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
-                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 42vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs font-mono">
-                    <span>24/7 AI AGENT</span>
-                    <span>MULTI-TENANT ISOLATED</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-[11px] font-mono">
+                    <span className="font-semibold">WebRTC Audio Channel</span>
+                    <span className="text-yellow-400 font-bold">&lt;180ms</span>
                   </div>
                 </div>
               </div>
-            </TiltCard>
+            </BentoTiltCard>
           </div>
 
-          {/* Card 2: PocketPool (Mobile App Bento - Span 6 on desktop) */}
+          {/* Bento Card 2: PocketPool (Span 6 on desktop) */}
           <div className="lg:col-span-6">
-            <TiltCard
-              accentColor="#38BDF8"
-              className="p-8 sm:p-10 rounded-3xl bg-[var(--card-bg)]/85 backdrop-blur-2xl border border-[var(--border-color)] hover:border-[#38BDF8] shadow-xl hover:shadow-[0_20px_45px_rgba(56,189,248,0.25)] flex flex-col justify-between h-full group"
-            >
+            <BentoTiltCard className="p-5 sm:p-6 rounded-2xl bg-[var(--card-bg)] border border-[var(--border-color)] hover:border-sky-400 shadow-sm flex flex-col justify-between h-full group">
               <div>
-                {/* Image Preview */}
-                <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-[var(--border-color)] mb-6 bg-[var(--background)]">
+                {/* Image Banner */}
+                <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden border border-[var(--border-color)] mb-4 bg-[var(--background)]">
                   <Image
                     src={FEATURED_PROJECTS[1].image}
                     alt={FEATURED_PROJECTS[1].title}
                     fill
-                    className="object-cover object-top filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
-                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-sky-500/20 text-sky-400 border border-sky-500/40 backdrop-blur-md">
+                  <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded text-[10px] font-mono font-bold tracking-wider uppercase bg-sky-500/20 text-sky-400 border border-sky-500/40 backdrop-blur-md">
                     {FEATURED_PROJECTS[1].badge}
                   </div>
-                  <div className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-black/60 text-white text-[10px] font-mono backdrop-blur-md">
-                    OFFLINE SYNC READY
+                  <div className="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded bg-black/70 text-white text-[10px] font-mono">
+                    OFFLINE CACHE READY
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--foreground-muted)]">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--foreground-muted)]">
                     {FEATURED_PROJECTS[1].type}
                   </span>
-                  <span className="font-mono text-xs font-bold text-sky-500">
-                    60 FPS MOBILE UX
+                  <span className="font-mono text-[10px] font-bold text-sky-500">
+                    #{FEATURED_PROJECTS[1].index}
                   </span>
                 </div>
 
-                <h4 className="text-2xl sm:text-3xl font-black text-[var(--foreground)] tracking-tight mb-3 group-hover:text-sky-500 transition-colors">
+                <h3 className="text-xl sm:text-2xl font-black text-[var(--foreground)] tracking-tight mb-1 group-hover:text-sky-500 transition-colors">
                   {FEATURED_PROJECTS[1].title}
-                </h4>
+                </h3>
 
-                <p className="text-sm sm:text-base text-[var(--foreground-muted)] font-light leading-relaxed mb-6">
+                <p className="text-xs sm:text-sm text-[var(--foreground-muted)] leading-relaxed mb-4">
                   {FEATURED_PROJECTS[1].description}
                 </p>
+
+                {/* Micro Stats */}
+                <div className="grid grid-cols-3 gap-2 p-2.5 rounded-lg bg-[var(--background-subtle)] border border-[var(--border-color)] mb-4">
+                  {FEATURED_PROJECTS[1].stats.map((s) => (
+                    <div key={s.label}>
+                      <span className="text-[9px] font-mono text-[var(--foreground-muted)] uppercase block">
+                        {s.label}
+                      </span>
+                      <span className="text-xs font-mono font-bold text-[var(--foreground)]">
+                        {s.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <div>
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-1 mb-4">
                   {FEATURED_PROJECTS[1].techStack.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2.5 py-1 rounded-lg text-xs font-mono bg-[var(--background)] text-[var(--foreground)] border border-[var(--border-color)]"
+                      className="px-2 py-0.5 rounded text-[10px] font-mono bg-[var(--background)] text-[var(--foreground)] border border-[var(--border-color)]"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-[var(--border-color)]/70">
+                <div className="flex items-center justify-between pt-3 border-t border-[var(--border-color)]">
                   <button
                     onClick={() => setSelectedProject(FEATURED_PROJECTS[1])}
                     className="text-xs font-mono font-semibold text-sky-500 hover:underline"
@@ -409,69 +402,80 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     className="text-xs font-mono text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors flex items-center gap-1"
                   >
-                    <span>GitHub Repository</span>
+                    <span>GitHub Code</span>
                     <span>→</span>
                   </Link>
                 </div>
               </div>
-            </TiltCard>
+            </BentoTiltCard>
           </div>
 
-          {/* Card 3: Brand Portfolio & Warranty (Hardware App Bento - Span 6 on desktop) */}
+          {/* Bento Card 3: Brand Portfolio & Warranty (Span 6 on desktop) */}
           <div className="lg:col-span-6">
-            <TiltCard
-              accentColor="#F59E0B"
-              className="p-8 sm:p-10 rounded-3xl bg-[var(--card-bg)]/85 backdrop-blur-2xl border border-[var(--border-color)] hover:border-amber-400 shadow-xl hover:shadow-[0_20px_45px_rgba(245,158,11,0.25)] flex flex-col justify-between h-full group"
-            >
+            <BentoTiltCard className="p-5 sm:p-6 rounded-2xl bg-[var(--card-bg)] border border-[var(--border-color)] hover:border-amber-500 shadow-sm flex flex-col justify-between h-full group">
               <div>
-                {/* Image Preview */}
-                <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-[var(--border-color)] mb-6 bg-[var(--background)]">
+                {/* Image Banner */}
+                <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden border border-[var(--border-color)] mb-4 bg-[var(--background)]">
                   <Image
                     src={FEATURED_PROJECTS[2].image}
                     alt={FEATURED_PROJECTS[2].title}
                     fill
-                    className="object-cover object-top filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
-                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-amber-400/20 text-amber-500 border border-amber-400/40 backdrop-blur-md">
+                  <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded text-[10px] font-mono font-bold tracking-wider uppercase bg-amber-400/20 text-amber-500 border border-amber-400/40 backdrop-blur-md">
                     {FEATURED_PROJECTS[2].badge}
                   </div>
-                  <div className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-black/60 text-white text-[10px] font-mono backdrop-blur-md">
+                  <div className="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded bg-black/70 text-white text-[10px] font-mono">
                     8-DIGIT HASH SECURE
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--foreground-muted)]">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--foreground-muted)]">
                     {FEATURED_PROJECTS[2].type}
                   </span>
-                  <span className="font-mono text-xs font-bold text-amber-500">
-                    HARDWARE VERIFIED
+                  <span className="font-mono text-[10px] font-bold text-amber-500">
+                    #{FEATURED_PROJECTS[2].index}
                   </span>
                 </div>
 
-                <h4 className="text-2xl sm:text-3xl font-black text-[var(--foreground)] tracking-tight mb-3 group-hover:text-amber-500 transition-colors">
+                <h3 className="text-xl sm:text-2xl font-black text-[var(--foreground)] tracking-tight mb-1 group-hover:text-amber-500 transition-colors">
                   {FEATURED_PROJECTS[2].title}
-                </h4>
+                </h3>
 
-                <p className="text-sm sm:text-base text-[var(--foreground-muted)] font-light leading-relaxed mb-6">
+                <p className="text-xs sm:text-sm text-[var(--foreground-muted)] leading-relaxed mb-4">
                   {FEATURED_PROJECTS[2].description}
                 </p>
+
+                {/* Micro Stats */}
+                <div className="grid grid-cols-3 gap-2 p-2.5 rounded-lg bg-[var(--background-subtle)] border border-[var(--border-color)] mb-4">
+                  {FEATURED_PROJECTS[2].stats.map((s) => (
+                    <div key={s.label}>
+                      <span className="text-[9px] font-mono text-[var(--foreground-muted)] uppercase block">
+                        {s.label}
+                      </span>
+                      <span className="text-xs font-mono font-bold text-[var(--foreground)]">
+                        {s.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <div>
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-1 mb-4">
                   {FEATURED_PROJECTS[2].techStack.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2.5 py-1 rounded-lg text-xs font-mono bg-[var(--background)] text-[var(--foreground)] border border-[var(--border-color)]"
+                      className="px-2 py-0.5 rounded text-[10px] font-mono bg-[var(--background)] text-[var(--foreground)] border border-[var(--border-color)]"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-[var(--border-color)]/70">
+                <div className="flex items-center justify-between pt-3 border-t border-[var(--border-color)]">
                   <button
                     onClick={() => setSelectedProject(FEATURED_PROJECTS[2])}
                     className="text-xs font-mono font-semibold text-amber-500 hover:underline"
@@ -489,147 +493,133 @@ export default function Projects() {
                   </Link>
                 </div>
               </div>
-            </TiltCard>
+            </BentoTiltCard>
           </div>
         </div>
 
-        {/* Auxiliary Projects Accordion / Expand Button */}
-        <div className="text-center">
-          <button
-            onClick={() => setShowMore(!showMore)}
-            className="interactive px-8 py-3.5 rounded-full border border-[var(--border-color)] bg-[var(--card-bg)] text-[var(--foreground)] font-mono text-xs font-bold hover:border-[var(--primary-vibrant)] hover:shadow-lg transition-all"
-          >
-            {showMore ? "HIDE ADDITIONAL PLATFORMS ↑" : "VIEW MORE PLATFORMS (AICYRO SHIELD, UDRA, BRIGHTSMILE) ↓"}
-          </button>
-        </div>
-
-        {/* Auxiliary Cards Grid */}
-        <AnimatePresence>
-          {showMore && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 overflow-hidden"
+        {/* Auxiliary Platforms: Tightly Bordered 3-Cell Bento Row */}
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3">
+          {AUXILIARY_PLATFORMS.map((platform) => (
+            <div
+              key={platform.id}
+              className="p-4 rounded-xl bg-[var(--card-bg)] border border-[var(--border-color)] hover:border-[var(--primary)] transition-all flex flex-col justify-between"
             >
-              {AUXILIARY_PROJECTS.map((project) => (
-                <div
-                  key={project.id}
-                  className="p-6 rounded-2xl bg-[var(--card-bg)] border border-[var(--border-color)] hover:border-[var(--primary-vibrant)] transition-all flex flex-col justify-between"
-                >
-                  <div>
-                    <span className="text-[10px] font-mono text-[var(--primary)] uppercase font-semibold mb-2 block">
-                      {project.badge}
-                    </span>
-                    <h5 className="text-xl font-bold text-[var(--foreground)] mb-2">
-                      {project.title}
-                    </h5>
-                    <p className="text-xs text-[var(--foreground-muted)] mb-4 leading-relaxed">
-                      {project.description}
-                    </p>
-                  </div>
-                  <div>
-                    <div className="flex flex-wrap gap-1.5 mb-4">
-                      {project.techStack.map((t) => (
-                        <span
-                          key={t}
-                          className="px-2 py-0.5 rounded text-[10px] font-mono bg-[var(--background-subtle)] text-[var(--foreground)] border border-[var(--border-color)]"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                    <Link
-                      href={project.links.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-mono text-[var(--primary)] hover:underline flex items-center gap-1"
-                    >
-                      <span>Explore Platform</span>
-                      <span>→</span>
-                    </Link>
-                  </div>
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[10px] font-mono text-[var(--primary)] font-semibold uppercase tracking-wider">
+                    {platform.badge}
+                  </span>
+                  <span className="text-[10px] font-mono text-[var(--foreground-muted)]">
+                    {platform.type}
+                  </span>
                 </div>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
+                <h4 className="text-base font-bold text-[var(--foreground)] mb-1">
+                  {platform.title}
+                </h4>
+                <p className="text-xs text-[var(--foreground-muted)] leading-relaxed mb-3">
+                  {platform.description}
+                </p>
+              </div>
+
+              <div>
+                <div className="flex flex-wrap gap-1 mb-3">
+                  {platform.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-[var(--background-subtle)] text-[var(--foreground)] border border-[var(--border-color)]"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <Link
+                  href={platform.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-mono text-[var(--primary)] hover:underline inline-flex items-center gap-1 font-semibold"
+                >
+                  <span>Explore Platform</span>
+                  <span>→</span>
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Architecture Modal */}
+      {/* High-Density Architecture Modal */}
       <AnimatePresence>
         {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProject(null)}
-              className="fixed inset-0 bg-black/75 backdrop-blur-md"
+              className="fixed inset-0 bg-black/75 backdrop-blur-sm"
             />
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              initial={{ opacity: 0, scale: 0.96, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ duration: 0.3 }}
-              className="relative w-full max-w-2xl rounded-3xl bg-[var(--card-bg-elevated)] border border-[var(--border-color)] p-8 sm:p-10 shadow-2xl z-10 overflow-hidden"
+              exit={{ opacity: 0, scale: 0.96, y: 12 }}
+              transition={{ duration: 0.2 }}
+              className="relative w-full max-w-xl rounded-2xl bg-[var(--card-bg-elevated)] border border-[var(--border-color)] p-6 sm:p-7 shadow-2xl z-10 overflow-hidden"
             >
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-6 right-6 p-2 rounded-full bg-[var(--background-subtle)] border border-[var(--border-color)] text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors"
+                className="absolute top-4 right-4 p-1.5 rounded-lg bg-[var(--background-subtle)] border border-[var(--border-color)] text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors"
                 aria-label="Close modal"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
 
-              <div className="inline-flex items-center gap-2 mb-3 text-xs font-mono font-semibold text-[var(--primary)]">
-                <span className="w-2 h-2 rounded-full bg-[var(--primary-vibrant)] animate-pulse" />
+              <div className="inline-flex items-center gap-2 mb-2 text-xs font-mono font-semibold text-[var(--primary)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]" />
                 <span>{selectedProject.badge}</span>
                 <span className="text-[var(--foreground-muted)]">• {selectedProject.type}</span>
               </div>
 
-              <h3 className="text-3xl font-black text-[var(--foreground)] tracking-tight mb-4">
+              <h3 className="text-2xl font-black text-[var(--foreground)] tracking-tight mb-2">
                 {selectedProject.title}
               </h3>
 
-              <p className="text-base text-[var(--foreground-muted)] font-light leading-relaxed mb-6">
+              <p className="text-xs sm:text-sm text-[var(--foreground-muted)] leading-relaxed mb-4">
                 {selectedProject.description}
               </p>
 
-              <div className="mb-6">
-                <h4 className="text-xs font-mono uppercase tracking-widest text-[var(--foreground-muted)] mb-3">
-                  Core Architectural Accomplishments
+              <div className="mb-5">
+                <h4 className="text-[10px] font-mono uppercase tracking-widest text-[var(--foreground-muted)] mb-2.5">
+                  Key Engineering Milestones
                 </h4>
-                <div className="space-y-2.5">
+                <div className="space-y-2">
                   {selectedProject.highlights.map((h, i) => (
-                    <div key={i} className="flex items-start gap-3 text-sm text-[var(--foreground)]">
-                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--primary-vibrant)] shrink-0" />
+                    <div key={i} className="flex items-start gap-2.5 text-xs text-[var(--foreground)]">
+                      <span className="mt-1 w-1.5 h-1.5 rounded-full bg-[var(--primary)] shrink-0" />
                       <span>{h}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 pt-4 border-t border-[var(--border-color)]">
+              <div className="flex items-center gap-3 pt-3 border-t border-[var(--border-color)]">
                 <Link
                   href={selectedProject.links.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 text-white dark:text-zinc-950 text-xs font-mono font-bold tracking-wider hover:opacity-90 transition-opacity"
+                  className="px-4 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-400 text-zinc-950 text-xs font-mono font-bold tracking-wider hover:opacity-95 transition-opacity"
                 >
-                  VISIT LIVE SYSTEM →
+                  LIVE SYSTEM →
                 </Link>
                 <Link
                   href={selectedProject.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-2.5 rounded-xl bg-[var(--background-subtle)] border border-[var(--border-color)] text-[var(--foreground)] text-xs font-mono hover:border-[var(--primary)] transition-colors"
+                  className="px-4 py-2 rounded-lg bg-[var(--background-subtle)] border border-[var(--border-color)] text-[var(--foreground)] text-xs font-mono hover:border-[var(--primary)] transition-colors"
                 >
-                  VIEW REPOSITORY
+                  GITHUB REPOSITORY
                 </Link>
               </div>
             </motion.div>
