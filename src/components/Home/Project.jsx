@@ -168,7 +168,7 @@ export default function Projects() {
           
           {/* Bento Card 1: CloseDesk by Aicyro (Dominant Flagship - Span 12) */}
           <div className="lg:col-span-12">
-            <div className="p-6 sm:p-8 rounded-2xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] hover:border-[var(--clr-accent)] shadow-sm transition-all group">
+            <div className="p-4 sm:p-8 rounded-2xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] hover:border-[var(--clr-accent)] shadow-sm transition-all group">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
                 
                 {/* Left Specification Column (Span 7) */}
@@ -201,10 +201,10 @@ export default function Projects() {
                     </p>
 
                     {/* Telemetry Row */}
-                    <div className="grid grid-cols-3 gap-2 p-3 rounded-xl bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] mb-4">
+                    <div className="grid grid-cols-3 gap-1.5 sm:gap-2 p-2.5 sm:p-3 rounded-xl bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] mb-4">
                       {FEATURED_PROJECTS[0].stats.map((s) => (
                         <div key={s.label}>
-                          <span className="text-[9px] font-mono text-[var(--clr-ink-muted)] uppercase block">
+                          <span className="text-[8px] sm:text-[9px] font-mono text-[var(--clr-ink-muted)] uppercase block truncate">
                             {s.label}
                           </span>
                           <span className="text-xs sm:text-sm font-mono font-bold text-[var(--clr-ink)]">
@@ -221,19 +221,19 @@ export default function Projects() {
                       {FEATURED_PROJECTS[0].techStack.map((tech) => (
                         <span
                           key={tech}
-                          className="px-2 py-0.5 rounded text-[11px] font-mono bg-[var(--clr-surface-sub)] text-[var(--clr-ink)] border border-[var(--clr-border)]"
+                          className="px-2 py-0.5 rounded text-[10px] sm:text-[11px] font-mono bg-[var(--clr-surface-sub)] text-[var(--clr-ink)] border border-[var(--clr-border)]"
                         >
                           {tech}
                         </span>
                       ))}
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-3">
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
                       <Link
                         href={FEATURED_PROJECTS[0].links.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-4 py-2 rounded-lg bg-[var(--clr-accent)] text-[var(--brand-charcoal)] font-bold text-xs font-mono tracking-wider shadow-sm hover:shadow-[0_0_16px_rgba(245,230,35,0.4)] transition-all inline-flex items-center gap-1.5"
+                        className="px-4 py-2.5 rounded-lg bg-[var(--clr-accent)] text-[var(--brand-charcoal)] font-bold text-xs font-mono tracking-wider shadow-sm hover:shadow-[0_0_16px_rgba(245,230,35,0.4)] transition-all inline-flex items-center justify-center gap-1.5 text-center"
                       >
                         <span>LAUNCH PLATFORM</span>
                         <span>→</span>
@@ -241,7 +241,7 @@ export default function Projects() {
 
                       <button
                         onClick={() => setSelectedProject(FEATURED_PROJECTS[0])}
-                        className="px-4 py-2 rounded-lg border border-[var(--clr-border)] bg-[var(--clr-surface-sub)] text-[var(--clr-ink)] font-mono text-xs hover:border-[var(--clr-accent)] transition-colors"
+                        className="px-4 py-2.5 rounded-lg border border-[var(--clr-border)] bg-[var(--clr-surface-sub)] text-[var(--clr-ink)] font-mono text-xs hover:border-[var(--clr-accent)] transition-colors text-center"
                       >
                         [ VIEW ARCHITECTURE ]
                       </button>
@@ -270,7 +270,7 @@ export default function Projects() {
 
           {/* Bento Card 2: PocketPool (Span 6 - Text Only Redesign) */}
           <div className="lg:col-span-6">
-            <div className="p-6 sm:p-8 rounded-2xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] hover:border-sky-400 shadow-sm flex flex-col justify-between h-full group transition-all">
+            <div className="p-4 sm:p-8 rounded-2xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] hover:border-sky-400 shadow-sm flex flex-col justify-between h-full group transition-all">
               <div>
                 {/* Badges moved to top */}
                 <div className="flex flex-wrap items-center gap-2 mb-4">
@@ -298,10 +298,10 @@ export default function Projects() {
                 </p>
 
                 {/* Micro Stats */}
-                <div className="grid grid-cols-3 gap-2 p-3 rounded-lg bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] mb-6">
+                <div className="grid grid-cols-3 gap-1.5 sm:gap-2 p-2.5 sm:p-3 rounded-lg bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] mb-6">
                   {FEATURED_PROJECTS[1].stats.map((s) => (
                     <div key={s.label}>
-                      <span className="text-[9px] font-mono text-[var(--clr-ink-muted)] uppercase block">
+                      <span className="text-[8px] sm:text-[9px] font-mono text-[var(--clr-ink-muted)] uppercase block truncate">
                         {s.label}
                       </span>
                       <span className="text-xs sm:text-sm font-mono font-bold text-[var(--clr-ink)]">
@@ -324,10 +324,10 @@ export default function Projects() {
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-[var(--clr-border)]">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 pt-4 border-t border-[var(--clr-border)]">
                   <button
                     onClick={() => setSelectedProject(FEATURED_PROJECTS[1])}
-                    className="text-xs font-mono font-semibold text-sky-400 hover:underline"
+                    className="text-xs font-mono font-semibold text-sky-400 hover:underline text-left"
                   >
                     [ VIEW ARCHITECTURE ]
                   </button>
@@ -347,7 +347,7 @@ export default function Projects() {
 
           {/* Bento Card 3: Brand Portfolio & Warranty (Span 6 - Text Only Redesign) */}
           <div className="lg:col-span-6">
-            <div className="p-6 sm:p-8 rounded-2xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] hover:border-amber-400 shadow-sm flex flex-col justify-between h-full group transition-all">
+            <div className="p-4 sm:p-8 rounded-2xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] hover:border-amber-400 shadow-sm flex flex-col justify-between h-full group transition-all">
               <div>
                 {/* Badges moved to top */}
                 <div className="flex flex-wrap items-center gap-2 mb-4">
@@ -425,10 +425,10 @@ export default function Projects() {
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-[var(--clr-border)]">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 pt-4 border-t border-[var(--clr-border)]">
                   <button
                     onClick={() => setSelectedProject(FEATURED_PROJECTS[2])}
-                    className="text-xs font-mono font-semibold text-amber-500 hover:underline"
+                    className="text-xs font-mono font-semibold text-amber-500 hover:underline text-left"
                   >
                     [ VIEW ARCHITECTURE ]
                   </button>
@@ -500,7 +500,7 @@ export default function Projects() {
       {/* Architecture Inspection Modal */}
       <AnimatePresence>
         {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -514,7 +514,7 @@ export default function Projects() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: 12 }}
               transition={{ duration: 0.2 }}
-              className="relative w-full max-w-xl rounded-2xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] p-6 sm:p-7 shadow-2xl z-10 overflow-hidden"
+              className="relative w-full max-w-xl max-h-[90dvh] overflow-y-auto rounded-2xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] p-5 sm:p-7 shadow-2xl z-10"
             >
               <button
                 onClick={() => setSelectedProject(null)}
@@ -534,7 +534,7 @@ export default function Projects() {
                 </span>
               </div>
 
-              <h3 className="text-2xl font-black text-[var(--clr-ink)] tracking-tight mb-2">
+              <h3 className="text-xl sm:text-2xl font-black text-[var(--clr-ink)] tracking-tight mb-2 pr-8">
                 {selectedProject.title}
               </h3>
 
@@ -556,12 +556,12 @@ export default function Projects() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 pt-3 border-t border-[var(--clr-border)]">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-3 border-t border-[var(--clr-border)]">
                 <Link
                   href={selectedProject.links.live || selectedProject.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-[var(--clr-accent)] text-[var(--brand-charcoal)] text-xs font-mono font-bold tracking-wider hover:opacity-95 transition-opacity"
+                  className="px-4 py-2.5 rounded-lg bg-[var(--clr-accent)] text-[var(--brand-charcoal)] text-xs font-mono font-bold tracking-wider hover:opacity-95 transition-opacity text-center"
                 >
                   LIVE SYSTEM →
                 </Link>
@@ -569,7 +569,7 @@ export default function Projects() {
                   href={selectedProject.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] text-[var(--clr-ink)] text-xs font-mono hover:border-[var(--clr-accent)] transition-colors"
+                  className="px-4 py-2.5 rounded-lg bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] text-[var(--clr-ink)] text-xs font-mono hover:border-[var(--clr-accent)] transition-colors text-center"
                 >
                   GITHUB REPOSITORY
                 </Link>
