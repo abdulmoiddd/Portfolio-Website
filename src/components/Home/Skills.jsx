@@ -286,13 +286,7 @@ export default function Skills() {
           style={{ borderColor: "var(--clr-border)" }}
         >
           <div>
-            <div
-              className="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg border mb-3"
-              style={{ background: "var(--clr-surface-sub)", borderColor: "var(--clr-border)" }}
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--clr-accent)]" />
-              <span className="label-mono">SPEC // 02 · CORE RUNTIME MODULES</span>
-            </div>
+            
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight" style={{ color: "var(--clr-ink)" }}>
               Technical{" "}
               <span
@@ -308,12 +302,7 @@ export default function Skills() {
             </h2>
           </div>
           <div className="flex items-center gap-3 label-mono" style={{ color: "var(--clr-ink-muted)" }}>
-            <span
-              className="px-2.5 py-1 rounded-lg border"
-              style={{ background: "var(--clr-surface-card)", borderColor: "var(--clr-border)" }}
-            >
-              [08 / 08 ACTIVE]
-            </span>
+            
             <span className="hidden sm:inline font-bold" style={{ color: "#F5E623" }}>
               PRODUCTION READY
             </span>
