@@ -495,26 +495,7 @@ const Hero = () => {
                   {/* ════ END PRESERVED ID BADGE ════ */}
                 </motion.div>
 
-                {/* Interactive hint below badge */}
-                <div className="absolute bottom-2 font-mono text-[10px] tracking-widest uppercase flex items-center gap-2 transition-all duration-300">
-                  {isPullingDown ? (
-                    <span className="text-[var(--clr-accent)] font-bold animate-pulse">
-                      ▼ Release to Switch to {theme === "dark" ? "Light" : "Dark"} Mode
-                    </span>
-                  ) : switchedThemeNotice ? (
-                    <span className="text-emerald-500 font-bold">
-                      ✓ Switched to {theme === "dark" ? "Dark" : "Light"} Mode
-                    </span>
-                  ) : (
-                    <>
-                      <span className="text-[var(--clr-accent)] font-semibold">
-                        Pull Down to Switch Theme
-                      </span>
-                      <span className="text-[var(--clr-accent)]">•</span>
-                      <span className="text-[var(--clr-ink-muted)]">Double-Click to Scan</span>
-                    </>
-                  )}
-                </div>
+                
               </div>
             </div>
           </motion.div>
