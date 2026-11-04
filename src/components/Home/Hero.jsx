@@ -189,10 +189,10 @@ const Hero = () => {
 
   return (
     <>
-      <section className="relative w-full min-h-[95vh] flex flex-col justify-center overflow-hidden pt-32 pb-20">
+      <section className="relative w-full min-h-[90dvh] sm:min-h-[95vh] flex flex-col justify-center overflow-hidden pt-28 sm:pt-36 pb-16 sm:pb-20">
         <AmbientMesh />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 w-full flex flex-col lg:flex-row items-center gap-16 lg:gap-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
           
           {/* ════════════════════════════════════════════════════════════════════
               LEFT COLUMN — Typography & Actions
@@ -205,13 +205,13 @@ const Hero = () => {
               initial="hidden"
               animate="visible"
               variants={fadeUpVariants}
-              className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[var(--clr-surface-card)] border border-[var(--clr-border)] shadow-sm mb-8"
+              className="inline-flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[var(--clr-surface-card)] border border-[var(--clr-border)] shadow-sm mb-6 sm:mb-8"
             >
-              <span className="relative flex h-2.5 w-2.5">
+              <span className="relative flex h-2 sm:h-2.5 w-2 sm:w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--clr-accent)] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--clr-accent)]"></span>
+                <span className="relative inline-flex rounded-full h-2 sm:h-2.5 w-2 sm:w-2.5 bg-[var(--clr-accent)]"></span>
               </span>
-              <span className="font-mono text-xs font-medium tracking-wide text-[var(--clr-ink)] uppercase">
+              <span className="font-mono text-[11px] sm:text-xs font-medium tracking-wide text-[var(--clr-ink)] uppercase">
                 Systems 100% Operational
               </span>
             </motion.div>
@@ -223,7 +223,7 @@ const Hero = () => {
               animate="visible"
               variants={fadeUpVariants}
             >
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-[5rem] font-black tracking-tighter text-[var(--clr-ink)] leading-[1.05] mb-4">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-[5rem] font-black tracking-tighter text-[var(--clr-ink)] leading-[1.08] sm:leading-[1.05] mb-4">
                 Architecting <br />
                 <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[var(--clr-accent)] to-[#CACA60]">
                   Scalable AI.
@@ -237,7 +237,7 @@ const Hero = () => {
               initial="hidden"
               animate="visible"
               variants={fadeUpVariants}
-              className="text-lg sm:text-xl text-[var(--clr-ink-muted)] leading-relaxed max-w-2xl mb-10 font-light"
+              className="text-base sm:text-xl text-[var(--clr-ink-muted)] leading-relaxed max-w-2xl mb-8 sm:mb-10 font-light"
             >
               Transitioned from visual design to deep full-stack engineering.
               Specialized in multi-tenant SaaS, low-latency OpenAI Realtime
@@ -250,14 +250,14 @@ const Hero = () => {
               initial="hidden"
               animate="visible"
               variants={fadeUpVariants}
-              className="flex flex-wrap items-center gap-4 mb-14"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto mb-10 sm:mb-14"
             >
               {/* Primary Button */}
               <Link
                 href="#projects"
-                className="group relative inline-flex items-center justify-center px-8 py-3.5 font-bold text-sm tracking-wide text-[var(--brand-charcoal)] bg-[var(--clr-accent)] rounded-full overflow-hidden transition-transform active:scale-95 hover:shadow-[0_0_24px_rgba(245,230,35,0.4)]"
+                className="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3.5 font-bold text-sm tracking-wide text-[var(--brand-charcoal)] bg-[var(--clr-accent)] rounded-full overflow-hidden transition-transform active:scale-95 hover:shadow-[0_0_24px_rgba(245,230,35,0.4)] text-center"
               >
-                <span className="relative z-10 flex items-center gap-2">
+                <span className="relative z-10 flex items-center justify-center gap-2">
                   Explore Platforms
                   <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -268,7 +268,7 @@ const Hero = () => {
               {/* Secondary Button */}
               <Link
                 href="#contact"
-                className="group inline-flex items-center justify-center px-8 py-3.5 font-bold text-sm tracking-wide text-[var(--clr-ink)] bg-transparent border border-[var(--clr-border)] rounded-full transition-all hover:border-[var(--clr-ink)] hover:bg-[var(--clr-ink)] hover:text-[var(--clr-surface)] active:scale-95"
+                className="group inline-flex items-center justify-center px-6 sm:px-8 py-3.5 font-bold text-sm tracking-wide text-[var(--clr-ink)] bg-transparent border border-[var(--clr-border)] rounded-full transition-all hover:border-[var(--clr-ink)] hover:bg-[var(--clr-ink)] hover:text-[var(--clr-surface)] active:scale-95 text-center"
               >
                 Initialize Dispatch
               </Link>
@@ -280,14 +280,14 @@ const Hero = () => {
               initial="hidden"
               animate="visible"
               variants={fadeUpVariants}
-              className="w-full grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-[var(--clr-border)]"
+              className="w-full grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 pt-6 sm:pt-8 border-t border-[var(--clr-border)]"
             >
               {METRICS.map((metric, i) => (
-                <div key={i} className="flex flex-col gap-1">
-                  <span className="text-2xl font-black text-[var(--clr-ink)] tracking-tight">
+                <div key={i} className="flex flex-col gap-0.5 sm:gap-1">
+                  <span className="text-xl sm:text-2xl font-black text-[var(--clr-ink)] tracking-tight">
                     {metric.value}
                   </span>
-                  <span className="font-mono text-xs text-[var(--clr-ink-muted)] uppercase tracking-wider">
+                  <span className="font-mono text-[10px] sm:text-xs text-[var(--clr-ink-muted)] uppercase tracking-wider">
                     {metric.label}
                   </span>
                 </div>
@@ -309,13 +309,13 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-[var(--clr-accent)]/5 to-transparent rounded-full blur-[100px] pointer-events-none -z-10" />
             
             <div 
-              className="relative w-full max-w-md flex flex-col items-center justify-center p-8 rounded-[2.5rem] border border-[var(--clr-border)] bg-[var(--clr-surface-card)]/30 backdrop-blur-sm shadow-2xl"
+              className="relative w-full max-w-md flex flex-col items-center justify-center p-4 sm:p-8 rounded-3xl sm:rounded-[2.5rem] border border-[var(--clr-border)] bg-[var(--clr-surface-card)]/30 backdrop-blur-sm shadow-2xl"
               data-cursor="drag"
             >
               {/* ── BADGE ORIGIN ANCHOR ── */}
               <div
                 ref={originRef}
-                className="relative flex justify-center items-center w-full h-[580px] pointer-events-none perspective-[1200px]"
+                className="relative flex justify-center items-center w-full h-[520px] sm:h-[580px] pointer-events-none perspective-[1200px]"
               >
                 {/* ════ REALISTIC SUSPENDED ID BADGE — PRESERVED VERBATIM ════ */}
                 <motion.div
