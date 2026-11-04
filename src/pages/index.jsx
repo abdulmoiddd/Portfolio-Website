@@ -102,9 +102,9 @@ export default function Home() {
         </div>
 
         {/* Beyond the Code: Personal Creative Pursuits (Horizontal Scroll) */}
-        <div id="beyond-code">
+        {/* <div id="beyond-code">
           <BeyondTheCode />
-        </div>
+        </div> */}
 
         {/* Interactive Terminal / Chat-Bubble Contact Interface */}
         <div id="contact">
