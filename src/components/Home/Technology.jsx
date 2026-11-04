@@ -136,9 +136,9 @@ export default function Technology() {
         onMouseLeave={() => setIsPaused(false)}
         style={{
           maskImage:
-            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            "linear-gradient(to right, transparent, black 4%, black 96%, transparent)",
           WebkitMaskImage:
-            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            "linear-gradient(to right, transparent, black 4%, black 96%, transparent)",
         }}
       >
         <motion.div
