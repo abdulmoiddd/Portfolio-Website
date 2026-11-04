@@ -148,15 +148,7 @@ export default function Contact() {
         {/* Section Header */}
         <div className="mb-10 md:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[var(--clr-border)] pb-8">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] mb-4">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--success)] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--success)]"></span>
-              </span>
-              <span className="font-mono text-xs font-semibold tracking-widest text-[var(--clr-ink)] uppercase">
-                Available for New Opportunities
-              </span>
-            </div>
+            
 
             <h2 className="text-4xl sm:text-5xl font-black text-[var(--clr-ink)] tracking-tight">
               Let&apos;s Build <span className="text-gradient">Together</span>
