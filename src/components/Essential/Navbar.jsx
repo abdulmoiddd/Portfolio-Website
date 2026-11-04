@@ -12,6 +12,8 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+      // Optional: Close mobile menu when scrolling for a cleaner experience
+      if (window.scrollY > 20) setIsMobileMenuOpen(false);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -28,48 +30,39 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full top-0 z-[100] transition-all duration-300 ${
-        isScrolled ? "pt-2.5 sm:pt-3.5" : "pt-4 sm:pt-5"
+      className={`fixed w-full top-0 z-[100] transition-all duration-500 ease-out ${
+        isScrolled ? "pt-4 sm:pt-6" : "pt-6 sm:pt-8"
       }`}
     >
-      <div
-        className={`mx-auto transition-all duration-300 ${
-          isScrolled ? "max-w-6xl px-4" : "max-w-7xl px-4 sm:px-6"
-        }`}
-      >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 relative">
+        {/* ── MAIN NAVBAR WRAPPER ── */}
         <div
-          className={`relative flex justify-between items-center transition-all duration-300 ${
+          className={`relative flex items-center justify-between transition-all duration-500 ease-out ${
             isScrolled
-              ? "bg-[var(--clr-surface-card)] backdrop-blur-xl border border-[var(--clr-border)] rounded-2xl py-2 px-4 sm:px-5 shadow-lg"
-              : "bg-[var(--clr-surface-card)]/80 backdrop-blur-md border border-[var(--clr-border)] rounded-2xl py-2.5 px-4 sm:px-6"
+              ? "mx-auto max-w-5xl bg-[var(--clr-surface-card)] backdrop-blur-xl border border-[var(--clr-border)] rounded-full py-2.5 px-3 shadow-[0_8px_32px_rgba(0,0,0,0.06)]"
+              : "bg-transparent border-transparent py-2 px-2 rounded-none"
           }`}
         >
           {/* Brand Logo */}
           <Link
             href="/"
-            className="interactive relative font-black tracking-tight cursor-pointer flex items-center gap-2.5 group"
+            className="group flex items-center gap-3 pl-2 sm:pl-3"
           >
-            <div className="w-8 h-8 rounded-lg bg-[var(--clr-accent)] flex items-center justify-center text-[var(--brand-charcoal)] font-mono font-black text-xs shadow-[0_0_12px_rgba(245,230,35,0.4)] group-hover:scale-105 transition-transform">
+            <div className="w-8 h-8 rounded-full bg-[var(--clr-accent)] flex items-center justify-center text-[var(--brand-charcoal)] font-mono font-bold text-xs shadow-sm group-hover:scale-105 transition-transform duration-300">
               AM
             </div>
-
-            <div className="flex items-center gap-2">
-              <span className="text-[var(--clr-ink)] font-black text-base sm:text-lg tracking-tight">
-                Abdul Moid
-              </span>
-              <span className="hidden md:inline-block px-2 py-0.5 rounded text-[9px] font-mono font-bold uppercase bg-[var(--clr-surface-sub)] text-[var(--clr-ink-muted)] border border-[var(--clr-border)]">
-                AI &amp; FULL-STACK
-              </span>
-            </div>
+            <span className="font-bold tracking-tight text-[var(--clr-ink)] text-base sm:text-lg hidden xs:block">
+              Abdul Moid
+            </span>
           </Link>
 
           {/* Desktop Navigation Links */}
-          <ul className="hidden lg:flex items-center space-x-1 font-mono text-xs">
+          <ul className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <li key={link.name}>
                 <Link
                   href={link.href}
-                  className="interactive px-3 py-1.5 rounded-lg text-[var(--clr-ink-muted)] hover:text-[var(--clr-ink)] hover:bg-[var(--clr-surface-sub)] transition-colors duration-150 flex items-center"
+                  className="px-4 py-2 rounded-full text-[13px] font-medium text-[var(--clr-ink-muted)] hover:text-[var(--clr-ink)] hover:bg-[var(--clr-surface-sub)] transition-all duration-200"
                 >
                   {link.name}
                 </Link>
@@ -78,17 +71,14 @@ export default function Navbar() {
           </ul>
 
           {/* Right Action Bar */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Live Telemetry Pill */}
-            <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] text-[10px] font-mono">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--clr-accent)]" />
-              <span className="text-[var(--clr-ink)] font-semibold">AVAILABLE</span>
-            </div>
+          <div className="flex items-center gap-2 sm:gap-3 pr-1 sm:pr-2">
+            
+           
 
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
-              className="interactive flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] text-[var(--clr-ink)] hover:border-[var(--clr-accent)] transition-colors"
+              className="flex items-center justify-center w-9 h-9 rounded-full bg-[var(--clr-surface-sub)] text-[var(--clr-ink)] hover:bg-[var(--clr-border)] hover:scale-105 transition-all duration-200"
               aria-label="Toggle Theme"
             >
               {theme === "light" ? (
@@ -105,19 +95,18 @@ export default function Navbar() {
               )}
             </button>
 
-            {/* Direct Connect CTA */}
+            {/* Direct Connect CTA - Solid High Contrast */}
             <Link
               href="#contact"
-              className="interactive inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 rounded-lg bg-[var(--clr-accent)] text-[var(--brand-charcoal)] font-mono font-bold text-xs shadow-sm hover:shadow-[0_0_16px_rgba(245,230,35,0.4)] transition-all"
+              className="hidden sm:flex items-center justify-center gap-2 px-5 py-2 rounded-full bg-[var(--clr-ink)] text-[var(--clr-surface)] text-xs font-bold tracking-wide hover:scale-105 hover:shadow-[0_4px_14px_rgba(0,0,0,0.1)] transition-all duration-200"
             >
-              <span>CONNECT</span>
-              <span className="hidden sm:inline">→</span>
+              <span>Connect</span>
             </Link>
 
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="interactive lg:hidden flex items-center justify-center w-8 h-8 rounded-lg bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] text-[var(--clr-ink)]"
+              className="lg:hidden flex items-center justify-center w-9 h-9 rounded-full bg-[var(--clr-surface-sub)] text-[var(--clr-ink)] hover:bg-[var(--clr-border)] transition-colors"
               aria-label="Toggle Mobile Menu"
             >
               {isMobileMenuOpen ? (
@@ -133,21 +122,34 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden mt-2 p-4 rounded-xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] shadow-xl flex flex-col gap-2">
+        {/* ── MOBILE DROPDOWN MENU ── */}
+        <div
+          className={`lg:hidden absolute top-full left-4 right-4 mt-3 transition-all duration-300 ease-in-out origin-top ${
+            isMobileMenuOpen
+              ? "opacity-100 scale-y-100 translate-y-0 visible"
+              : "opacity-0 scale-y-95 -translate-y-4 invisible"
+          }`}
+        >
+          <div className="p-2 bg-[var(--clr-surface-card)] backdrop-blur-2xl border border-[var(--clr-border)] rounded-2xl shadow-2xl flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="px-3 py-2 rounded-lg text-sm font-mono text-[var(--clr-ink-muted)] hover:text-[var(--clr-ink)] hover:bg-[var(--clr-surface-sub)]"
+                className="px-4 py-3 rounded-xl text-sm font-medium text-[var(--clr-ink-muted)] hover:text-[var(--clr-ink)] hover:bg-[var(--clr-surface-sub)] transition-colors"
               >
                 {link.name}
               </Link>
             ))}
+            <Link
+              href="#contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="mt-2 px-4 py-3 rounded-xl bg-[var(--clr-ink)] text-[var(--clr-surface)] text-center text-sm font-bold shadow-md"
+            >
+              Connect →
+            </Link>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );
