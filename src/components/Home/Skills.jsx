@@ -151,7 +151,7 @@ function TiltIconCard({ tech, isSelected, onClick }) {
       {/* Gradient border reveal — CSS pseudo-element via inline style */}
       <div
         className="
-          relative p-4 rounded-[var(--bento-radius)] flex flex-col gap-3
+          relative p-3 sm:p-4 rounded-[var(--bento-radius)] flex flex-col gap-2.5 sm:gap-3
           border transition-all duration-300
           overflow-hidden
         "
@@ -340,9 +340,9 @@ export default function Skills() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-            className="bento-cell p-5"
+            className="bento-cell p-4 sm:p-5"
           >
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-5 items-center">
 
               {/* Identity */}
               <div className="md:col-span-4 flex items-center gap-3.5">
@@ -371,8 +371,7 @@ export default function Skills() {
 
               {/* Capability */}
               <div
-                className="md:col-span-4 md:border-l md:pl-5"
-                style={{ borderColor: "var(--clr-border)" }}
+                className="md:col-span-4 pt-3.5 border-t border-[var(--clr-border)] md:border-t-0 md:border-l md:pl-5 md:pt-0"
               >
                 <span className="label-mono block mb-1.5">Capability Scope</span>
                 <p className="text-xs leading-relaxed" style={{ color: "var(--clr-ink)" }}>
@@ -382,8 +381,7 @@ export default function Skills() {
 
               {/* Production use */}
               <div
-                className="md:col-span-4 md:border-l md:pl-5"
-                style={{ borderColor: "var(--clr-border)" }}
+                className="md:col-span-4 pt-3.5 border-t border-[var(--clr-border)] md:border-t-0 md:border-l md:pl-5 md:pt-0"
               >
                 <span className="label-mono block mb-1.5 font-bold" style={{ color: "#F5E623" }}>
                   Production Application
