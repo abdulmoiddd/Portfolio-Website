@@ -2,16 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==========================================================================
+   PALETTE CONFIGURATION — CUSTOMIZE YOUR WEBSITE COLORS HERE
+   To change your site's color scheme, edit the variables below:
+   - Primary Accent: Change `--primary` (e.g. crimson #FF3B30, cyan #00F0FF, violet #8B5CF6, emerald #10B981)
+   - Secondary Accent: Change `--accent-blue` (e.g. telemetry ice #3DA5FF, purple #A855F7)
+   - Backgrounds: Change `--background` and `--card-bg`
+   ========================================================================== */
+
 @layer base {
-  /* --- DARK MODE (Default) --- */
+  /* --- DARK THEME (Default) --- */
   :root,
   :root[data-theme="dark"] {
-    --border-radius: 6px;
+    color-scheme: dark;
+    --border-radius: 8px;
 
-    /* Core Backgrounds */
+    /* Brand Primary Accent */
+    --primary: #FF3B30; /* crimson — energetic active signal */
+    --primary-rgb: 255, 59, 48;
+    --primary-glow: rgba(255, 59, 48, 0.4);
+
+    /* Secondary & Telemetry Accents */
+    --accent-blue: #3DA5FF; /* cold blue telemetry */
+    --accent-blue-rgb: 61, 165, 255;
+    --accent-purple: #A855F7; /* AI & neural violet */
+    --success: #10B981; /* cyber emerald for uptime & positive feedback */
+    --success-rgb: 16, 185, 129;
+    --warning: #F59E0B; /* amber-gold */
+
+    /* Core Backgrounds & Surfaces */
     --background: #0A0C10; /* near-black steel, cool undertone */
     --foreground: #ECEEF2; /* primary text */
     --foreground-muted: #838B99; /* muted text */
+    --secondary: #1D2129; /* surface-alt */
+    --card-bg: #14171D; /* card surface */
+    --card-bg-elevated: #1B2028;
+    --border-color: #23272F; /* crisp tech border */
+    --border-color-hover: #3A4150;
+    --grid-line: rgba(35, 39, 47, 0.7);
 
     /* Tailwind Mappings */
     --bg-primary: var(--background);
@@ -20,61 +48,67 @@
     --text-secondary: var(--foreground-muted);
     --brand-accent: var(--primary);
 
-    /* Brand Colors */
-    --primary: #FF3B30; /* crimson — alert/active signal */
-    --secondary: #1D2129; /* surface-alt */
-    --accent-blue: #3DA5FF; /* cold blue telemetry */
+    /* Glass & Glow */
+    --glass-bg: rgba(10, 12, 16, 0.8);
+    --glass-card: rgba(20, 23, 29, 0.75);
+    --neon-glow: 0 0 20px rgba(255, 59, 48, 0.4), 0 0 40px rgba(255, 59, 48, 0.15);
+    --spotlight-opacity: 0.14;
 
-    /* Supplementary UI States (Added) */
-    --success: #10B981; /* cyber-emerald for positive feedback/uptime */
-    --warning: #F59E0B; /* amber-gold for pending actions */
-    --glass-bg: rgba(10, 12, 16, 0.75); /* for frosted navbar backgrounds */
-    --neon-glow: 0 0 15px rgba(255, 59, 48, 0.4), 0 0 30px rgba(255, 59, 48, 0.2);
+    /* Hero Spotlight Gradient (Preserved for Hero section) */
+    --hero-from: #2A0806;
+    --hero-via: #0A0C10;
+    --hero-to: #0A0C10;
 
-    /* UI Elements */
-    --border-color: #23272F; /* border */
-    --card-bg: #14171D; /* surface */
-    --grid-line: rgba(35, 39, 47, 0.8);
-    --spotlight-opacity: 0.12;
+    /* Card Gradients */
+    --card-gradient-start: #14171D;
+    --card-gradient-end: #0A0C10;
 
-    /* Footer Specific */
-    --footer-bg: #0A0C10; 
+    /* Lead Magnet */
+    --lead-from: #1D2129;
+    --lead-via: #0A0C10;
+    --lead-to: #0A0C10;
+    --lead-glow: rgba(255, 59, 48, 0.15);
 
-    /* Logo Colors */
+    /* Overlays */
+    --overlay-gradient-start: rgba(10, 12, 16, 0.85);
+    --overlay-gradient-end: rgba(10, 12, 16, 0.98);
+    --image-overlay: rgba(255, 59, 48, 0.85);
+    --footer-bg: #0A0C10;
+
+    /* Logos */
     --logo-base: #ffffff;
     --logo-mongo-green: #ffffff;
     --logo-upwork-green: #ffffff;
     --logo-politico-red: #ffffff;
-
-    /* Gradients */
-    --card-gradient-start: #14171D;
-    --card-gradient-end: #0A0C10;
-
-    /* Hero Spotlight Gradient (Crimson & Steel Vibe) */
-    --hero-from: #2A0806; /* Deep crimson glow */
-    --hero-via: #0A0C10;
-    --hero-to: #0A0C10;
-
-    /* --- LEAD MAGNET SECTION --- */
-    --lead-from: #1D2129;
-    --lead-via: #0A0C10;
-    --lead-to: #0A0C10;
-    --lead-glow: rgba(255, 59, 48, 0.15); 
-
-    /* Overlay Gradients */
-    --overlay-gradient-start: rgba(10, 12, 16, 0.85);
-    --overlay-gradient-end: rgba(10, 12, 16, 0.98);
-
-    /* Blog/Project Overlay */
-    --image-overlay: rgba(255, 59, 48, 0.85); 
   }
 
-  /* --- LIGHT MODE OVERRIDE --- */
+  /* --- LIGHT THEME OVERRIDE --- */
   :root[data-theme="light"] {
-    /* Core Backgrounds */
-    --background: #F5F6F8; /* cool steel-white */
-    --foreground: #0E1015; /* dark text */
-    --foreground-muted: #565C67; /* muted text */
+    color-scheme: light;
+
+    /* Brand Primary Accent */
+    --primary: #D92B22; /* deepened crimson for contrast */
+    --primary-rgb: 217, 43, 34;
+    --primary-glow: rgba(217, 43, 34, 0.25);
+
+    /* Secondary & Telemetry Accents */
+    --accent-blue: #1E7FD9;
+    --accent-blue-rgb: 30, 127, 217;
+    --accent-purple: #7C3AED;
+    --success: #059669;
+    --success-rgb: 5, 150, 105;
+    --warning: #D97706;
+
+    /* Core Backgrounds & Surfaces */
+    --background: #F5F6F8; /* cool steel white */
+    --foreground: #0E1015; /* crisp dark text */
+    --foreground-muted: #565C67; /* muted slate */
+    --secondary: #DCE0E6;
+    --card-bg: #EAEDF1;
+    --card-bg-elevated: #FDFDFE;
+    --border-color: #D2D7DE;
+    --border-color-hover: #B4BCC8;
+    --grid-line: rgba(210, 215, 222, 0.6);
 
     /* Tailwind Mappings */
     --bg-primary: var(--background);
@@ -83,69 +117,128 @@
     --text-secondary: var(--foreground-muted);
     --brand-accent: var(--primary);
 
-    /* Brand Colors */
-    --primary: #D92B22; /* deepened crimson for light contrast */
-    --secondary: #DCE0E6; /* surface-alt */
-    --accent-blue: #1E7FD9; /* accent-warm */
-
-    /* Supplementary UI States (Added) */
-    --success: #059669; /* deeper emerald for contrast */
-    --warning: #D97706; /* deeper amber */
-    --glass-bg: rgba(245, 246, 248, 0.8); /* for frosted navbar backgrounds */
-    --neon-glow: 0 4px 14px rgba(217, 43, 34, 0.25); /* softer shadow for light mode */
-
-    /* UI Elements */
-    --border-color: #D2D7DE; /* border */
-    --card-bg: #EAEDF1; /* surface */
-    --grid-line: rgba(210, 215, 222, 0.6);
+    /* Glass & Glow */
+    --glass-bg: rgba(245, 246, 248, 0.82);
+    --glass-card: rgba(234, 237, 241, 0.8);
+    --neon-glow: 0 4px 18px rgba(217, 43, 34, 0.2);
     --spotlight-opacity: 0.15;
 
-    /* Footer Specific */
-    --footer-bg: #EAEDF1;
-
-    /* Logo Colors */
-    --logo-base: #1e292c;
-    --logo-mongo-green: #2ed06e;
-    --logo-upwork-green: #25841f;
-    --logo-politico-red: #d71920;
-
-    /* Gradients */
-    --card-gradient-start: #EAEDF1;
-    --card-gradient-end: #F5F6F8;
-
     /* Hero Spotlight Gradient */
-    --hero-from: #FCE8E7; /* Very light crimson tint */
+    --hero-from: #FCE8E7;
     --hero-via: #F5F6F8;
     --hero-to: #F5F6F8;
 
-    /* --- LEAD MAGNET SECTION --- */
+    /* Card Gradients */
+    --card-gradient-start: #EAEDF1;
+    --card-gradient-end: #F5F6F8;
+
+    /* Lead Magnet */
     --lead-from: #DCE0E6;
     --lead-via: #F5F6F8;
     --lead-to: #F5F6F8;
     --lead-glow: rgba(217, 43, 34, 0.08);
 
-    /* Overlay Gradients */
+    /* Overlays */
     --overlay-gradient-start: rgba(245, 246, 248, 0.85);
     --overlay-gradient-end: rgba(245, 246, 248, 0.98);
-
-    /* Blog/Project Overlay */
     --image-overlay: rgba(217, 43, 34, 0.9);
+    --footer-bg: #EAEDF1;
+
+    /* Logos */
+    --logo-base: #1e292c;
+    --logo-mongo-green: #2ed06e;
+    --logo-upwork-green: #25841f;
+    --logo-politico-red: #d71920;
   }
 }
 
-/* Ensure the body transitions smoothly when toggling themes */
+/* Base Body Smoothing */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
-/* Utility class for the new glass effect */
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Custom Utility Classes */
 .glass-panel {
   background-color: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-color);
+}
+
+.glass-card {
+  background-color: var(--glass-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+}
+
+/* Live Animation Utilities */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes waveform {
+  0%, 100% { height: 4px; }
+  50% { height: 18px; }
+}
+
+.animate-waveform {
+  animation: waveform 1.2s ease-in-out infinite;
+}
+
+/* High Contrast / Accessibility Overrides */
+@media (forced-colors: active) {
+  .glass-card,
+  .glass-panel {
+    border: 1px solid ButtonText !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
