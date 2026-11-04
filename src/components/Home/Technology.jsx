@@ -114,7 +114,7 @@ export default function Technology() {
   return (
     <section className="relative w-full py-6 md:py-8 bg-[var(--clr-surface)] overflow-hidden border-y border-[var(--clr-border)]">
       {/* Top Telemetry Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-3 flex items-center justify-between relative z-20">
+      {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-3 flex items-center justify-between relative z-20">
         <div className="flex items-center gap-2.5">
           <span className="w-1.5 h-1.5 rounded-full bg-[var(--clr-accent)]" />
           <span className="text-[11px] font-mono tracking-widest text-[var(--clr-ink-muted)] uppercase font-semibold">
@@ -127,7 +127,7 @@ export default function Technology() {
           <span className="mx-1">•</span>
           <span>MULTI-TENANT ARCHITECTURE</span>
         </div>
-      </div>
+      </div> */}
 
       {/* Infinite Marquee */}
       <div
