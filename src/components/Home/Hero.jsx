@@ -232,22 +232,7 @@ const Hero = () => {
               ════════════════════════════════════════════════════════════════════ */}
           <div className="w-full lg:w-7/12 flex flex-col items-start text-left">
             
-            {/* HUD Status Pill */}
-            <motion.div
-              custom={0}
-              initial="hidden"
-              animate="visible"
-              variants={fadeUpVariants}
-              className="inline-flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[var(--clr-surface-card)] border border-[var(--clr-border)] shadow-sm mb-6 sm:mb-8"
-            >
-              <span className="relative flex h-2 sm:h-2.5 w-2 sm:w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--clr-accent)] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 sm:h-2.5 w-2 sm:w-2.5 bg-[var(--clr-accent)]"></span>
-              </span>
-              <span className="font-mono text-[11px] sm:text-xs font-medium tracking-wide text-[var(--clr-ink)] uppercase">
-                Systems 100% Operational
-              </span>
-            </motion.div>
+            
 
             {/* Headline */}
             <motion.div
@@ -257,9 +242,9 @@ const Hero = () => {
               variants={fadeUpVariants}
             >
               <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-[5rem] font-black tracking-tighter text-[var(--clr-ink)] leading-[1.08] sm:leading-[1.05] mb-4">
-                Architecting <br />
+                Mr. <br />
                 <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-[var(--clr-accent)] to-[#CACA60]">
-                  Scalable AI.
+                  Abdul Moid
                 </span>
               </h1>
             </motion.div>
