@@ -6,23 +6,22 @@ import { motion, useSpring, useMotionValue } from "framer-motion";
 export default function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [cursorText, setCursorText] = useState("");
+  const [isClicking, setIsClicking] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(true);
 
-  // Mouse coordinates with high-performance springs
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
 
-  const springConfig = { damping: 25, stiffness: 350, mass: 0.5 };
-  const cursorX = useSpring(mouseX, springConfig);
-  const cursorY = useSpring(mouseY, springConfig);
+  // Snappy, high-precision spring physics (minimal latency)
+  const dotSpringConfig = { damping: 30, stiffness: 600, mass: 0.2 };
+  const cursorX = useSpring(mouseX, dotSpringConfig);
+  const cursorY = useSpring(mouseY, dotSpringConfig);
 
-  const ringSpringConfig = { damping: 20, stiffness: 200, mass: 0.8 };
+  const ringSpringConfig = { damping: 25, stiffness: 350, mass: 0.4 };
   const ringX = useSpring(mouseX, ringSpringConfig);
   const ringY = useSpring(mouseY, ringSpringConfig);
 
   useEffect(() => {
-    // Only enable on non-touch devices with fine pointers
     const mediaQuery = window.matchMedia("(pointer: fine)");
     if (!mediaQuery.matches) {
       setIsTouchDevice(true);
@@ -37,27 +36,22 @@ export default function CustomCursor() {
       if (!isVisible) setIsVisible(true);
     };
 
+    const handleMouseDown = () => setIsClicking(true);
+    const handleMouseUp = () => setIsClicking(false);
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
-    // Detect clickable element interactions
     const handleMouseOver = (e) => {
       const target = e.target;
       const interactiveEl = target.closest(
         'button, a, input, textarea, select, [role="button"], .interactive, [data-cursor]'
       );
-
-      if (interactiveEl) {
-        setIsHovered(true);
-        const customText = interactiveEl.getAttribute("data-cursor");
-        setCursorText(customText || "");
-      } else {
-        setIsHovered(false);
-        setCursorText("");
-      }
+      setIsHovered(!!interactiveEl);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousedown", handleMouseDown);
+    window.addEventListener("mouseup", handleMouseUp);
     document.addEventListener("mouseleave", handleMouseLeave);
     document.addEventListener("mouseenter", handleMouseEnter);
     document.addEventListener("mouseover", handleMouseOver);
@@ -65,6 +59,8 @@ export default function CustomCursor() {
     return () => {
       document.body.classList.remove("has-custom-cursor");
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mousedown", handleMouseDown);
+      window.removeEventListener("mouseup", handleMouseUp);
       document.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("mouseenter", handleMouseEnter);
       document.removeEventListener("mouseover", handleMouseOver);
@@ -75,7 +71,7 @@ export default function CustomCursor() {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden">
-      {/* Outer Magnetic Ring */}
+      {/* Outer Geometric Ring */}
       <motion.div
         style={{
           x: ringX,
@@ -84,26 +80,21 @@ export default function CustomCursor() {
           translateY: "-50%",
         }}
         animate={{
-          width: isHovered ? (cursorText ? 68 : 52) : 32,
-          height: isHovered ? (cursorText ? 68 : 52) : 32,
-          backgroundColor: isHovered
-            ? "rgba(250, 204, 21, 0.22)"
-            : "rgba(250, 204, 21, 0.05)",
+          width: isHovered ? 40 : 26,
+          height: isHovered ? 40 : 26,
+          scale: isClicking ? 0.85 : 1,
           borderColor: isHovered
             ? "var(--primary-vibrant)"
-            : "rgba(234, 179, 8, 0.4)",
+            : "rgba(217, 119, 6, 0.4)",
+          backgroundColor: isHovered
+            ? "rgba(250, 204, 21, 0.08)"
+            : "transparent",
         }}
-        transition={{ type: "spring", damping: 20, stiffness: 300 }}
-        className="rounded-full border backdrop-blur-[1px] flex items-center justify-center shadow-[0_0_15px_rgba(250,204,21,0.25)]"
-      >
-        {cursorText && (
-          <span className="text-[9px] font-mono font-bold tracking-widest text-[var(--foreground)] uppercase select-none">
-            {cursorText}
-          </span>
-        )}
-      </motion.div>
+        transition={{ type: "spring", damping: 25, stiffness: 400 }}
+        className="rounded-full border border-dashed flex items-center justify-center transition-colors duration-150"
+      />
 
-      {/* Inner Pin Dot */}
+      {/* Inner Precision Cross-Dot */}
       <motion.div
         style={{
           x: cursorX,
@@ -112,11 +103,13 @@ export default function CustomCursor() {
           translateY: "-50%",
         }}
         animate={{
-          scale: isHovered ? 0.4 : 1,
-          backgroundColor: "var(--primary-vibrant)",
+          scale: isHovered ? 1.4 : isClicking ? 0.7 : 1,
+          backgroundColor: isHovered
+            ? "var(--primary-vibrant)"
+            : "var(--foreground)",
         }}
-        transition={{ type: "spring", damping: 25, stiffness: 400 }}
-        className="w-2.5 h-2.5 rounded-full shadow-[0_0_8px_var(--primary-vibrant)]"
+        transition={{ type: "spring", damping: 30, stiffness: 600 }}
+        className="w-1.5 h-1.5 rounded-full shadow-[0_0_6px_var(--primary-vibrant)]"
       />
     </div>
   );
