@@ -24,7 +24,7 @@ export default function Navbar() {
     { name: "Services", href: "#services" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
-    { name: "Beyond Code", href: "#beyond-code" },
+    // { name: "Beyond Code", href: "#beyond-code" },
     { name: "Contact", href: "#contact" },
   ];
 
