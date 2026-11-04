@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 export default function Contact() {
   const [activeMode, setActiveMode] = useState("terminal"); // "terminal" or "chat"
@@ -13,7 +13,7 @@ export default function Contact() {
   const phone = "+92 347 2539535";
   const rawPhone = "03472539535";
 
-  // --- Live Local Time Clock for Rawalpindi / Islamabad (Asia/Karachi) ---
+  // Live Local Time for Rawalpindi / Islamabad (Asia/Karachi)
   useEffect(() => {
     const updateTime = () => {
       try {
@@ -26,7 +26,7 @@ export default function Contact() {
         }).format(new Date());
         setLocalTime(timeStr);
       } catch (e) {
-        setLocalTime("18:45 PKT");
+        setLocalTime("Active PKT");
       }
     };
     updateTime();
@@ -37,19 +37,19 @@ export default function Contact() {
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(email);
     setCopiedEmail(true);
-    setTimeout(() => setCopiedEmail(false), 2200);
+    setTimeout(() => setCopiedEmail(false), 2000);
   };
 
   const handleCopyPhone = () => {
     navigator.clipboard.writeText(rawPhone);
     setCopiedPhone(true);
-    setTimeout(() => setCopiedPhone(false), 2200);
+    setTimeout(() => setCopiedPhone(false), 2000);
   };
 
-  // --- Terminal State & Engine ---
+  // Terminal State & Engine
   const [terminalHistory, setTerminalHistory] = useState([
-    { type: "system", text: "SYSTEM DISPATCH CONSOLE v2.4 — ABDUL MOID" },
-    { type: "system", text: "Type 'help' or click any command below to initialize connection." },
+    { type: "system", text: "SYSTEM DISPATCH CONSOLE v2.4 — ABDUL MOID [READY]" },
+    { type: "system", text: "Type 'help' or click quick commands below to initialize connection." },
   ]);
   const [terminalInput, setTerminalInput] = useState("");
   const terminalEndRef = useRef(null);
@@ -68,26 +68,26 @@ export default function Contact() {
     if (lower === "help") {
       newHistory.push({
         type: "output",
-        text: "Available commands:\n  • email      - Send or copy direct email address\n  • phone      - View direct mobile & WhatsApp line\n  • github     - Open GitHub profile (@abdulmoiddd)\n  • linkedin   - Open LinkedIn profile (@abdulmoiddd)\n  • status     - Check live availability & local telemetry\n  • message    - Launch interactive message composer\n  • clear      - Clear terminal screen",
+        text: "Available commands:\n  • email      - Copy email & launch mail client\n  • phone      - Copy mobile & WhatsApp direct line\n  • github     - Open GitHub profile (@abdulmoiddd)\n  • linkedin   - Open LinkedIn profile (@abdulmoiddd)\n  • status     - Check live availability & local telemetry\n  • clear      - Clear terminal buffer",
       });
     } else if (lower === "email") {
       handleCopyEmail();
       newHistory.push({
         type: "output",
-        text: `✓ Copied email (${email}) to clipboard! Opening mail client...`,
+        text: `✓ Copied ${email} to clipboard! Launching mail client...`,
       });
       window.open(`mailto:${email}?subject=Project%20Inquiry%20from%20Portfolio`, "_blank");
     } else if (lower === "phone") {
       handleCopyPhone();
       newHistory.push({
         type: "output",
-        text: `✓ Copied phone (${phone}) to clipboard! Available for direct WhatsApp or calls.`,
+        text: `✓ Copied ${phone} to clipboard! Available for WhatsApp and direct calls.`,
       });
     } else if (lower === "github") {
-      newHistory.push({ type: "output", text: "Redirecting to https://github.com/abdulmoiddd..." });
+      newHistory.push({ type: "output", text: "Opening https://github.com/abdulmoiddd..." });
       window.open("https://github.com/abdulmoiddd", "_blank");
     } else if (lower === "linkedin") {
-      newHistory.push({ type: "output", text: "Redirecting to https://www.linkedin.com/in/abdulmoiddd..." });
+      newHistory.push({ type: "output", text: "Opening https://www.linkedin.com/in/abdulmoiddd..." });
       window.open("https://www.linkedin.com/in/abdulmoiddd", "_blank");
     } else if (lower === "status") {
       newHistory.push({
@@ -97,10 +97,10 @@ export default function Contact() {
     } else if (lower.startsWith("message") || lower.startsWith("msg")) {
       const msgContent = cleanCmd.replace(/^(message|msg)\s*/i, "").trim();
       const subject = encodeURIComponent("Project Inquiry via Portfolio Terminal");
-      const body = encodeURIComponent(msgContent || "Hi Abdul, I'd like to discuss a project...");
+      const body = encodeURIComponent(msgContent || "Hi Abdul, I would like to discuss a project...");
       newHistory.push({
         type: "output",
-        text: `✓ Prepared message draft! Redirecting to email dispatcher...`,
+        text: "✓ Prepared message draft! Redirecting to email dispatcher...",
       });
       window.open(`mailto:${email}?subject=${subject}&body=${body}`, "_blank");
     } else if (lower === "clear") {
@@ -110,7 +110,7 @@ export default function Contact() {
     } else {
       newHistory.push({
         type: "error",
-        text: `Command '${cleanCmd}' not recognized. Type 'help' to inspect command directory.`,
+        text: `Command '${cleanCmd}' not recognized. Type 'help' to inspect command list.`,
       });
     }
 
@@ -123,11 +123,11 @@ export default function Contact() {
     executeCommand(terminalInput);
   };
 
-  // --- Interactive Chat Bubble State ---
+  // Chat Bubble State
   const [chatMessages, setChatMessages] = useState([
     {
       sender: "abdul",
-      text: "Hey! I'm Abdul Moid. Full-Stack Software Engineer & AI Technical Lead. How can I help you bring your vision to life?",
+      text: "Hello! I am Abdul Moid, Full-Stack Engineer & AI Technical Lead. How can I help you build your system?",
       time: "Just now",
     },
   ]);
@@ -141,116 +141,106 @@ export default function Contact() {
     setChatMessages((prev) => [...prev, userMsg]);
     setChatInput("");
 
-    // Simulated responsive AI dispatch
     setTimeout(() => {
       setChatMessages((prev) => [
         ...prev,
         {
           sender: "abdul",
-          text: `Got your note: "${text}". Let's jump into the details over email or a quick consultation call!`,
+          text: `Received note: "${text}". Opening mail dispatcher for direct conversation!`,
           time: "Just now",
         },
       ]);
 
       setTimeout(() => {
-        const subject = encodeURIComponent("Consultation Request - Abdul Moid Portfolio");
+        const subject = encodeURIComponent("Project Consultation - Abdul Moid Portfolio");
         const body = encodeURIComponent(`Hi Abdul,\n\n${text}\n\nLooking forward to speaking with you!`);
         window.open(`mailto:${email}?subject=${subject}&body=${body}`, "_blank");
-      }, 900);
-    }, 600);
+      }, 700);
+    }, 400);
   };
 
   return (
     <section
       id="contact"
-      className="relative w-full py-28 md:py-36 bg-[var(--background)] overflow-hidden border-t border-[var(--border-color)]/60"
+      className="relative w-full py-16 md:py-24 bg-[var(--background)] overflow-hidden border-t border-[var(--border-color)]"
     >
-      {/* Background Radiant Yellow Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[65vw] h-[65vw] max-w-[800px] max-h-[800px] bg-gradient-to-tr from-amber-400/12 via-yellow-400/8 to-transparent blur-[160px] rounded-full pointer-events-none" />
+      {/* Background Subtle Mesh */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-25">
+        <div
+          className="w-full h-full"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 50% 50%, rgba(250, 204, 21, 0.08) 0%, transparent 60%)",
+          }}
+        />
+      </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 w-full">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-14 text-center max-w-3xl mx-auto"
-        >
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[var(--card-bg)] border border-[var(--border-color)] mb-4 shadow-sm">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary-vibrant)] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--primary)]"></span>
-            </span>
-            <span className="text-xs font-mono tracking-widest text-[var(--foreground-muted)] uppercase font-semibold">
-              REAL-TIME DISPATCH // INITIALIZE CONNECTION
-            </span>
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 w-full">
+        {/* Section Header: Compact Bento HUD Bar */}
+        <div className="mb-8 md:mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[var(--border-color)] pb-6">
+          <div>
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[var(--background-subtle)] border border-[var(--border-color)] mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]" />
+              <span className="font-mono text-[11px] font-semibold tracking-wider text-[var(--foreground-muted)] uppercase">
+                SPEC // 05 • DISPATCH INTERFACE
+              </span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[var(--foreground)] tracking-tight">
+              Initialize <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 dark:from-yellow-300 dark:via-amber-400 dark:to-yellow-500">Connection</span>
+            </h2>
           </div>
 
-          <h3 className="text-4xl md:text-6xl font-black text-[var(--foreground)] tracking-tight mb-4">
-            Let&apos;s Engineer the <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 dark:from-yellow-300 dark:via-amber-400 dark:to-yellow-500">
-              Future Together.
-            </span>
-          </h3>
-
-          <p className="text-base sm:text-lg text-[var(--foreground-muted)] font-light leading-relaxed">
-            Choose your preferred interface below—enter commands directly in the
-            interactive terminal or chat with the dispatch assistant.
-          </p>
-        </motion.div>
-
-        {/* Mode Switcher Tabs */}
-        <div className="flex justify-center mb-8">
-          <div className="p-1 rounded-2xl bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center gap-1 shadow-sm">
+          {/* Mode Switcher Tabs */}
+          <div className="flex items-center gap-1.5 p-1 rounded-lg bg-[var(--background-subtle)] border border-[var(--border-color)]">
             <button
               onClick={() => setActiveMode("terminal")}
-              className={`interactive px-5 py-2.5 rounded-xl font-mono text-xs font-bold transition-all flex items-center gap-2 ${
+              className={`px-3 py-1.5 rounded font-mono text-xs font-semibold transition-colors flex items-center gap-1.5 ${
                 activeMode === "terminal"
-                  ? "bg-[var(--foreground)] text-[var(--background)] shadow-md"
+                  ? "bg-[var(--card-bg-elevated)] text-[var(--foreground)] shadow-sm border border-[var(--border-color)]"
                   : "text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
               }`}
             >
-              <span>&gt;_ DEVELOPER TERMINAL</span>
+              <span>&gt;_ CLI TERMINAL</span>
             </button>
             <button
               onClick={() => setActiveMode("chat")}
-              className={`interactive px-5 py-2.5 rounded-xl font-mono text-xs font-bold transition-all flex items-center gap-2 ${
+              className={`px-3 py-1.5 rounded font-mono text-xs font-semibold transition-colors flex items-center gap-1.5 ${
                 activeMode === "chat"
-                  ? "bg-[var(--foreground)] text-[var(--background)] shadow-md"
+                  ? "bg-[var(--card-bg-elevated)] text-[var(--foreground)] shadow-sm border border-[var(--border-color)]"
                   : "text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
               }`}
             >
-              <span>💬 CHAT BUBBLE ASSISTANT</span>
+              <span>DISPATCH CHAT</span>
             </button>
           </div>
         </div>
 
         {/* Main Interface Window */}
-        <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--card-bg)]/90 backdrop-blur-2xl shadow-2xl overflow-hidden mb-12">
+        <div className="rounded-2xl border border-[var(--border-color)] bg-[var(--card-bg-elevated)] shadow-sm overflow-hidden mb-5">
           {/* Window Titlebar */}
-          <div className="px-6 py-4 bg-[var(--background-subtle)] border-b border-[var(--border-color)]/70 flex items-center justify-between">
+          <div className="px-4 py-2.5 bg-[var(--background-subtle)] border-b border-[var(--border-color)] flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-rose-500/80" />
-              <span className="w-3 h-3 rounded-full bg-amber-500/80" />
-              <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
-              <span className="text-xs font-mono text-[var(--foreground-muted)] ml-2">
-                {activeMode === "terminal" ? "bash — abdulmoid@dispatch: ~" : "dispatch-agent — active"}
+              <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+              <span className="text-[11px] font-mono text-[var(--foreground-muted)] ml-2">
+                {activeMode === "terminal" ? "bash — amoid@dispatch: ~" : "dispatch-agent — active"}
               </span>
             </div>
 
-            <div className="flex items-center gap-2 font-mono text-[11px] text-[var(--foreground-muted)]">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>{localTime || "18:45 PKT"}</span>
+            <div className="flex items-center gap-2 font-mono text-[10px] text-[var(--foreground-muted)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span>{localTime || "Active PKT"}</span>
               <span className="hidden sm:inline">• RAWALPINDI / ISLAMABAD</span>
             </div>
           </div>
 
           {/* VIEW 1: DEVELOPER TERMINAL */}
           {activeMode === "terminal" && (
-            <div className="p-6 sm:p-8 font-mono text-xs sm:text-sm">
+            <div className="p-4 sm:p-6 font-mono text-xs sm:text-sm">
               {/* Output History */}
-              <div className="space-y-3 min-h-[260px] max-h-[380px] overflow-y-auto mb-4 scrollbar-none">
+              <div className="space-y-2 min-h-[200px] max-h-[300px] overflow-y-auto mb-4 scrollbar-none">
                 {terminalHistory.map((item, idx) => (
                   <div key={idx} className="leading-relaxed">
                     {item.type === "system" && (
@@ -263,12 +253,12 @@ export default function Contact() {
                       </div>
                     )}
                     {item.type === "output" && (
-                      <pre className="text-emerald-600 dark:text-emerald-400 whitespace-pre-wrap font-mono mt-1">
+                      <pre className="text-emerald-600 dark:text-emerald-400 whitespace-pre-wrap font-mono mt-0.5 text-xs">
                         {item.text}
                       </pre>
                     )}
                     {item.type === "error" && (
-                      <div className="text-rose-500 mt-1">{item.text}</div>
+                      <div className="text-rose-500 mt-0.5 text-xs">{item.text}</div>
                     )}
                   </div>
                 ))}
@@ -276,7 +266,7 @@ export default function Contact() {
               </div>
 
               {/* Command Quick-Click Pills */}
-              <div className="pt-4 border-t border-[var(--border-color)]/60 mb-4 flex flex-wrap gap-2 items-center">
+              <div className="pt-3 border-t border-[var(--border-color)] mb-3 flex flex-wrap gap-1.5 items-center">
                 <span className="text-[10px] text-[var(--foreground-muted)] uppercase tracking-wider mr-1">
                   QUICK RUN:
                 </span>
@@ -284,7 +274,7 @@ export default function Contact() {
                   <button
                     key={cmd}
                     onClick={() => executeCommand(cmd)}
-                    className="interactive px-2.5 py-1 rounded-md text-[11px] bg-[var(--background-subtle)] hover:bg-[var(--primary)] hover:text-white border border-[var(--border-color)] transition-colors"
+                    className="interactive px-2 py-0.5 rounded text-[10px] bg-[var(--background-subtle)] hover:bg-[var(--primary)] hover:text-zinc-950 border border-[var(--border-color)] transition-colors"
                   >
                     {cmd}
                   </button>
@@ -292,19 +282,19 @@ export default function Contact() {
               </div>
 
               {/* Terminal Input Line */}
-              <form onSubmit={handleTerminalSubmit} className="flex items-center gap-2 pt-2">
-                <span className="text-amber-500 dark:text-yellow-400 font-bold">amoid@dispatch:~$</span>
+              <form onSubmit={handleTerminalSubmit} className="flex items-center gap-2 pt-1">
+                <span className="text-amber-500 dark:text-yellow-400 font-bold text-xs">amoid@dispatch:~$</span>
                 <input
                   type="text"
                   value={terminalInput}
                   onChange={(e) => setTerminalInput(e.target.value)}
                   placeholder="type 'email', 'status', 'help' or any custom message..."
-                  className="flex-1 bg-transparent text-[var(--foreground)] outline-none border-none font-mono text-xs sm:text-sm placeholder:text-[var(--foreground-muted)]/50"
+                  className="flex-1 bg-transparent text-[var(--foreground)] outline-none border-none font-mono text-xs placeholder:text-[var(--foreground-muted)]/50"
                   autoFocus
                 />
                 <button
                   type="submit"
-                  className="interactive px-4 py-1.5 rounded-lg bg-[var(--primary)] text-white text-xs font-bold hover:opacity-90"
+                  className="interactive px-3 py-1 rounded bg-[var(--primary)] text-zinc-950 font-mono text-xs font-bold hover:opacity-90"
                 >
                   EXECUTE
                 </button>
@@ -314,37 +304,32 @@ export default function Contact() {
 
           {/* VIEW 2: INTERACTIVE CHAT BUBBLE ASSISTANT */}
           {activeMode === "chat" && (
-            <div className="p-6 sm:p-8">
+            <div className="p-4 sm:p-6">
               {/* Chat Thread */}
-              <div className="space-y-4 min-h-[260px] max-h-[360px] overflow-y-auto mb-6 scrollbar-none">
+              <div className="space-y-3 min-h-[200px] max-h-[300px] overflow-y-auto mb-4 scrollbar-none">
                 {chatMessages.map((msg, i) => {
                   const isAbdul = msg.sender === "abdul";
                   return (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className={`flex ${isAbdul ? "justify-start" : "justify-end"}`}
-                    >
+                    <div key={i} className={`flex ${isAbdul ? "justify-start" : "justify-end"}`}>
                       <div
-                        className={`max-w-[85%] sm:max-w-[70%] p-4 rounded-2xl ${
+                        className={`max-w-[85%] sm:max-w-[70%] p-3 rounded-xl ${
                           isAbdul
-                            ? "bg-[var(--background-subtle)] text-[var(--foreground)] rounded-tl-sm border border-[var(--border-color)]"
-                            : "bg-gradient-to-r from-amber-500 to-yellow-400 text-white dark:text-zinc-950 rounded-tr-sm shadow-md"
+                            ? "bg-[var(--background-subtle)] text-[var(--foreground)] rounded-tl-none border border-[var(--border-color)]"
+                            : "bg-gradient-to-r from-amber-500 to-yellow-400 text-zinc-950 rounded-tr-none shadow-sm font-medium"
                         }`}
                       >
-                        <div className="text-xs font-semibold mb-1 opacity-75 font-mono">
+                        <div className="text-[10px] font-semibold mb-0.5 opacity-75 font-mono">
                           {isAbdul ? "Abdul Moid" : "You"}
                         </div>
-                        <p className="text-sm leading-relaxed">{msg.text}</p>
+                        <p className="text-xs leading-relaxed">{msg.text}</p>
                       </div>
-                    </motion.div>
+                    </div>
                   );
                 })}
               </div>
 
               {/* Quick Prompt Starters */}
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-1.5 mb-3">
                 {[
                   "I want to build an AI SaaS with WebRTC voice",
                   "Let's discuss a full-stack engineering role",
@@ -353,7 +338,7 @@ export default function Contact() {
                   <button
                     key={promptText}
                     onClick={() => sendChatMessage(promptText)}
-                    className="interactive px-3 py-1.5 rounded-full text-xs font-mono bg-[var(--background-subtle)] text-[var(--foreground-muted)] hover:text-[var(--foreground)] border border-[var(--border-color)] hover:border-[var(--primary-vibrant)] transition-colors text-left"
+                    className="interactive px-2.5 py-1 rounded text-[11px] font-mono bg-[var(--background-subtle)] text-[var(--foreground-muted)] hover:text-[var(--foreground)] border border-[var(--border-color)] hover:border-[var(--primary)] transition-colors text-left"
                   >
                     &ldquo;{promptText}&rdquo;
                   </button>
@@ -366,18 +351,18 @@ export default function Contact() {
                   e.preventDefault();
                   sendChatMessage();
                 }}
-                className="flex items-center gap-3 pt-2"
+                className="flex items-center gap-2 pt-1"
               >
                 <input
                   type="text"
                   value={chatInput}
                   onChange={(e) => setChatInput(e.target.value)}
                   placeholder="Type your project overview or message here..."
-                  className="flex-1 px-4 py-3 rounded-xl bg-[var(--background-subtle)] border border-[var(--border-color)] text-[var(--foreground)] text-sm outline-none focus:border-[var(--primary)] transition-colors"
+                  className="flex-1 px-3 py-2 rounded-lg bg-[var(--background-subtle)] border border-[var(--border-color)] text-[var(--foreground)] text-xs outline-none focus:border-[var(--primary)] transition-colors"
                 />
                 <button
                   type="submit"
-                  className="interactive px-6 py-3 rounded-xl bg-[var(--primary)] text-white font-bold text-xs font-mono tracking-wider hover:opacity-90 transition-opacity"
+                  className="interactive px-4 py-2 rounded-lg bg-[var(--primary)] text-zinc-950 font-bold text-xs font-mono tracking-wider hover:opacity-90 transition-opacity"
                 >
                   SEND
                 </button>
@@ -386,46 +371,84 @@ export default function Contact() {
           )}
         </div>
 
-        {/* Direct Coordinates Cards (Email & Phone Quick Copy) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <div className="p-6 rounded-2xl bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-between">
-            <div>
-              <span className="text-[10px] font-mono text-[var(--foreground-muted)] uppercase tracking-wider block mb-1">
+        {/* High-Density 4-Cell Direct Coordinates Bento Strip */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          {/* Inbox */}
+          <div className="p-3.5 rounded-xl bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-between">
+            <div className="min-w-0 pr-2">
+              <span className="text-[9px] font-mono text-[var(--foreground-muted)] uppercase tracking-wider block">
                 DIRECT INBOX
               </span>
               <a
                 href={`mailto:${email}`}
-                className="text-base sm:text-lg font-bold text-[var(--foreground)] hover:text-[var(--primary)] transition-colors"
+                className="text-xs font-bold text-[var(--foreground)] hover:text-[var(--primary)] transition-colors truncate block"
               >
                 {email}
               </a>
             </div>
             <button
               onClick={handleCopyEmail}
-              className="interactive px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-[var(--background-subtle)] border border-[var(--border-color)] hover:border-[var(--primary)] transition-colors"
+              className="interactive px-2.5 py-1 rounded text-[10px] font-mono font-semibold bg-[var(--background-subtle)] border border-[var(--border-color)] hover:border-[var(--primary)] transition-colors shrink-0"
             >
-              {copiedEmail ? "COPIED! ✓" : "COPY"}
+              {copiedEmail ? "COPIED!" : "COPY"}
             </button>
           </div>
 
-          <div className="p-6 rounded-2xl bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-between">
-            <div>
-              <span className="text-[10px] font-mono text-[var(--foreground-muted)] uppercase tracking-wider block mb-1">
+          {/* Mobile */}
+          <div className="p-3.5 rounded-xl bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-between">
+            <div className="min-w-0 pr-2">
+              <span className="text-[9px] font-mono text-[var(--foreground-muted)] uppercase tracking-wider block">
                 MOBILE & WHATSAPP
               </span>
               <a
                 href={`tel:${rawPhone}`}
-                className="text-base sm:text-lg font-bold text-[var(--foreground)] hover:text-[var(--primary)] transition-colors"
+                className="text-xs font-bold text-[var(--foreground)] hover:text-[var(--primary)] transition-colors truncate block"
               >
                 {phone}
               </a>
             </div>
             <button
               onClick={handleCopyPhone}
-              className="interactive px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-[var(--background-subtle)] border border-[var(--border-color)] hover:border-[var(--primary)] transition-colors"
+              className="interactive px-2.5 py-1 rounded text-[10px] font-mono font-semibold bg-[var(--background-subtle)] border border-[var(--border-color)] hover:border-[var(--primary)] transition-colors shrink-0"
             >
-              {copiedPhone ? "COPIED! ✓" : "COPY"}
+              {copiedPhone ? "COPIED!" : "COPY"}
             </button>
+          </div>
+
+          {/* GitHub */}
+          <div className="p-3.5 rounded-xl bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-between">
+            <div>
+              <span className="text-[9px] font-mono text-[var(--foreground-muted)] uppercase tracking-wider block">
+                GITHUB REPOSITORIES
+              </span>
+              <span className="text-xs font-bold text-[var(--foreground)]">@abdulmoiddd</span>
+            </div>
+            <Link
+              href="https://github.com/abdulmoiddd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-2.5 py-1 rounded text-[10px] font-mono font-semibold bg-[var(--background-subtle)] border border-[var(--border-color)] hover:border-[var(--primary)] transition-colors shrink-0 text-[var(--foreground)] hover:text-[var(--primary)]"
+            >
+              OPEN →
+            </Link>
+          </div>
+
+          {/* LinkedIn */}
+          <div className="p-3.5 rounded-xl bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-between">
+            <div>
+              <span className="text-[9px] font-mono text-[var(--foreground-muted)] uppercase tracking-wider block">
+                LINKEDIN NETWORK
+              </span>
+              <span className="text-xs font-bold text-[var(--foreground)]">abdulmoiddd</span>
+            </div>
+            <Link
+              href="https://www.linkedin.com/in/abdulmoiddd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-2.5 py-1 rounded text-[10px] font-mono font-semibold bg-[var(--background-subtle)] border border-[var(--border-color)] hover:border-[var(--primary)] transition-colors shrink-0 text-[var(--foreground)] hover:text-[var(--primary)]"
+            >
+              OPEN →
+            </Link>
           </div>
         </div>
       </div>
