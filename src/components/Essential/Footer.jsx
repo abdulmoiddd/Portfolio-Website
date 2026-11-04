@@ -18,7 +18,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[var(--background)] pt-20 pb-10 overflow-hidden font-sans border-t border-[var(--border-color)]/60">
+    <footer className="relative bg-[var(--background)] pt-12 pb-8 overflow-hidden font-sans border-t border-[var(--border-color)]">
       {/* Top Accent Gradient Border */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[1px] bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-60"></div>
 
@@ -33,8 +33,8 @@ export default function Footer() {
         ABDUL MOID
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-10">
           {/* Brand & Bio (Span 6) */}
           <div className="lg:col-span-6 flex flex-col items-start">
             <Link
@@ -70,8 +70,8 @@ export default function Footer() {
             </p>
 
             {/* Live Platform SLA Telemetry Chip */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-[var(--card-bg)] border border-[var(--border-color)] text-xs font-mono mb-6">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-[var(--card-bg)] border border-[var(--border-color)] text-xs font-mono mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               <span className="text-[var(--foreground)] font-semibold">
                 SYSTEM SLA: 99.9%
               </span>

@@ -124,87 +124,78 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative w-full py-24 md:py-32 bg-[var(--background)] overflow-hidden border-t border-[var(--border-color)]/60"
+      className="relative w-full py-16 md:py-24 bg-[var(--background)] overflow-hidden border-t border-[var(--border-color)]"
     >
       {/* Background Soft Mesh Ambient */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-25">
         <div
           className="w-full h-full"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 80% 20%, rgba(250, 204, 21, 0.12) 0%, transparent 55%), radial-gradient(circle at 10% 70%, rgba(245, 158, 11, 0.08) 0%, transparent 50%)",
+              "radial-gradient(circle at 80% 20%, rgba(250, 204, 21, 0.08) 0%, transparent 50%), radial-gradient(circle at 10% 70%, rgba(217, 119, 6, 0.06) 0%, transparent 45%)",
           }}
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
-        {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-20 border-b border-[var(--border-color)]/70 pb-12">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[var(--card-bg)] border border-[var(--border-color)] mb-5 shadow-sm">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary-vibrant)] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--primary)]"></span>
-              </span>
-              <span className="text-xs font-mono tracking-widest text-[var(--foreground-muted)] uppercase font-semibold">
-                SYSTEM.ARCH // ABOUT & EVOLUTION
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full">
+        {/* Section Header: Compact Bento HUD Bar */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 border-b border-[var(--border-color)] pb-6">
+          <div>
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[var(--background-subtle)] border border-[var(--border-color)] mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]" />
+              <span className="font-mono text-[11px] font-semibold tracking-wider text-[var(--foreground-muted)] uppercase">
+                SPEC // 01 • EVOLUTION & CORE METRICS
               </span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[var(--foreground)] tracking-tight leading-[1.05]">
-              Architecting <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 dark:from-yellow-300 dark:via-amber-400 dark:to-yellow-500">
-                Intelligent Systems.
-              </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[var(--foreground)] tracking-tight">
+              Architecting <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 dark:from-yellow-300 dark:via-amber-400 dark:to-yellow-500">Intelligent Systems</span>
             </h2>
           </div>
 
-          <p className="text-base sm:text-lg text-[var(--foreground-muted)] font-light max-w-xl leading-relaxed">
-            Full-Stack Software Engineer & Technical Lead specializing in
-            multi-tenant SaaS architectures, native AI streaming with OpenAI
-            Realtime WebRTC, and high-uptime platforms. Transitioned from visual
-            design to deep full-stack engineering.
+          <p className="text-xs sm:text-sm text-[var(--foreground-muted)] max-w-md leading-relaxed md:text-right">
+            Full-Stack Software Engineer & Technical Lead specializing in multi-tenant SaaS architectures, native OpenAI Realtime WebRTC voice streaming, and high-uptime platforms.
           </p>
         </div>
 
-        {/* Live Telemetry Metrics Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-24">
+        {/* Live Telemetry Metrics Grid (High-Density) */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-12">
           {METRICS.map((metric, idx) => (
             <motion.div
               key={metric.label}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              whileHover={{ y: -4 }}
-              className="interactive relative p-6 rounded-2xl bg-[var(--card-bg)]/85 backdrop-blur-md border border-[var(--border-color)] hover:border-[var(--primary-vibrant)] transition-all duration-300 shadow-sm hover:shadow-[0_10px_30px_rgba(250,204,21,0.25)] overflow-hidden"
+              transition={{ duration: 0.3, delay: idx * 0.05 }}
+              whileHover={{ y: -2 }}
+              className="interactive relative p-4 rounded-xl bg-[var(--card-bg)] border border-[var(--border-color)] hover:border-[var(--primary)] transition-all shadow-sm overflow-hidden"
             >
               <div
-                className="absolute top-0 left-0 right-0 h-[3px] opacity-75"
+                className="absolute top-0 left-0 right-0 h-[2px] opacity-80"
                 style={{ backgroundColor: metric.color }}
               />
 
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-[10px] font-mono tracking-widest text-[var(--foreground-muted)] uppercase">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] font-mono tracking-wider text-[var(--foreground-muted)] uppercase">
                   {metric.badge}
                 </span>
                 <span
-                  className="w-2 h-2 rounded-full animate-pulse"
+                  className="w-1.5 h-1.5 rounded-full"
                   style={{ backgroundColor: metric.color }}
                 />
               </div>
 
               <div
-                className="text-3xl sm:text-4xl font-black tracking-tight mb-1"
+                className="text-2xl sm:text-3xl font-black tracking-tight mb-0.5"
                 style={{ color: metric.color }}
               >
                 {metric.value}
               </div>
 
-              <div className="text-sm font-semibold text-[var(--foreground)]">
+              <div className="text-xs font-bold text-[var(--foreground)]">
                 {metric.label}
               </div>
-              <div className="text-xs text-[var(--foreground-muted)] mt-0.5">
+              <div className="text-[10px] font-mono text-[var(--foreground-muted)] mt-0.5">
                 {metric.sub}
               </div>
             </motion.div>
@@ -242,14 +233,10 @@ export default function About() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="relative pl-12 md:pl-24 group"
               >
-                {/* Glowing Node on Line */}
+                {/* Static Node on Line */}
                 <div className="absolute left-[17px] md:left-[33px] top-6 -translate-x-1/2 flex items-center justify-center z-10">
-                  <span
-                    className="absolute w-6 h-6 rounded-full animate-ping opacity-35"
-                    style={{ backgroundColor: item.color }}
-                  />
                   <div
-                    className="w-4 h-4 rounded-full border-2 border-[var(--background)] transition-transform duration-300 group-hover:scale-125 shadow-md"
+                    className="w-3.5 h-3.5 rounded-full border-2 border-[var(--background)] transition-transform duration-200 group-hover:scale-125 shadow-sm"
                     style={{ backgroundColor: item.color }}
                   />
                 </div>

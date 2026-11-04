@@ -117,18 +117,15 @@ export default function Technology() {
       <div className="absolute inset-0 bg-gradient-to-r from-[var(--background)] via-amber-400/5 to-[var(--background)] z-10 pointer-events-none" />
 
       {/* Top Telemetry Header */}
-      <div className="max-w-7xl mx-auto px-6 mb-4 flex items-center justify-between relative z-20">
-        <div className="flex items-center gap-3">
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary-vibrant)] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--primary)] shadow-[0_0_8px_var(--primary)]"></span>
-          </span>
+      <div className="max-w-7xl mx-auto px-6 mb-3 flex items-center justify-between relative z-20">
+        <div className="flex items-center gap-2.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]" />
           <span className="text-[11px] font-mono tracking-widest text-[var(--foreground-muted)] uppercase font-semibold">
             ENGINEERING TOOLCHAIN // PRODUCTION READY
           </span>
         </div>
         <div className="hidden sm:flex items-center gap-2 font-mono text-[10px] text-[var(--foreground-muted)]">
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary-vibrant)]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]" />
           <span>REAL-TIME STREAMING</span>
           <span className="mx-1">•</span>
           <span>MULTI-TENANT ARCHITECTURE</span>

@@ -129,7 +129,7 @@ function ServiceCard({ service, index }) {
       transition={{ duration: 0.6, delay: index * 0.1 }}
       onPointerMove={handlePointerMove}
       whileHover={{ y: -6 }}
-      className="interactive group relative flex flex-col justify-between p-8 sm:p-10 rounded-3xl bg-[var(--card-bg)]/85 hover:bg-[var(--card-bg-elevated)] backdrop-blur-xl border border-[var(--border-color)] hover:border-[var(--primary-vibrant)] transition-all duration-500 hover:shadow-[0_20px_45px_-10px_rgba(250,204,21,0.25)] overflow-hidden"
+      className="interactive group relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl bg-[var(--card-bg)] hover:bg-[var(--card-bg-elevated)] border border-[var(--border-color)] hover:border-[var(--primary)] transition-all duration-300 hover:shadow-md overflow-hidden"
     >
       {/* Top Accent Gradient Border */}
       <div
@@ -164,7 +164,7 @@ function ServiceCard({ service, index }) {
 
           <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-[var(--background-subtle)] border border-[var(--border-color)]">
             <span
-              className="w-1.5 h-1.5 rounded-full animate-ping"
+              className="w-1.5 h-1.5 rounded-full"
               style={{ backgroundColor: service.color }}
             />
             <span
@@ -177,9 +177,9 @@ function ServiceCard({ service, index }) {
         </div>
 
         {/* Icon & Live Interactive Graphic Visualizer */}
-        <div className="flex items-center justify-between gap-4 mb-6">
+        <div className="flex items-center justify-between gap-4 mb-5">
           <div
-            className="w-14 h-14 rounded-2xl flex items-center justify-center border shadow-inner transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3 bg-[var(--background-subtle)] relative overflow-hidden"
+            className="w-12 h-12 rounded-xl flex items-center justify-center border shadow-inner transition-transform duration-300 group-hover:scale-105 bg-[var(--background-subtle)] relative overflow-hidden"
             style={{
               color: service.color,
               borderColor: `${service.color}45`,
@@ -189,46 +189,45 @@ function ServiceCard({ service, index }) {
           </div>
 
           {service.liveGraphic === "waveform" && (
-            <div className="flex items-center gap-1 h-8 px-3 rounded-xl bg-[var(--background-subtle)] border border-[var(--border-color)]">
+            <div className="flex items-center gap-1 h-7 px-2.5 rounded-lg bg-[var(--background-subtle)] border border-[var(--border-color)]">
               {[40, 85, 55, 100, 65, 90, 45].map((height, i) => (
                 <span
                   key={i}
-                  className="w-1 rounded-full animate-waveform"
+                  className="w-1 rounded-full"
                   style={{
                     backgroundColor: service.color,
-                    animationDelay: `${i * 0.15}s`,
-                    height: `${height * 0.22}px`,
+                    height: `${height * 0.2}px`,
                   }}
                 />
               ))}
-              <span className="text-[9px] font-mono text-[var(--foreground-muted)] ml-1">
+              <span className="text-[9px] font-mono text-[var(--foreground-muted)] ml-1 font-semibold">
                 RT-AUDIO
               </span>
             </div>
           )}
 
           {service.liveGraphic === "nodes" && (
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[var(--background-subtle)] border border-[var(--border-color)]">
-              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-              <div className="w-6 h-[1px] bg-amber-400/50" />
-              <span className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
-              <span className="text-[9px] font-mono text-[var(--foreground-muted)]">
+            <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-[var(--background-subtle)] border border-[var(--border-color)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+              <div className="w-5 h-[1px] bg-amber-400/50" />
+              <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+              <span className="text-[9px] font-mono text-[var(--foreground-muted)] font-semibold">
                 MULTI-TENANT
               </span>
             </div>
           )}
 
           {service.liveGraphic === "mobile" && (
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[var(--background-subtle)] border border-[var(--border-color)]">
-              <span className="text-[10px] font-mono text-sky-500">
+            <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[var(--background-subtle)] border border-[var(--border-color)]">
+              <span className="text-[10px] font-mono text-sky-500 font-semibold">
                 iOS / ANDROID
               </span>
-              <span className="w-2 h-2 rounded-full bg-sky-500 animate-ping" />
+              <span className="w-1.5 h-1.5 rounded-full bg-sky-500" />
             </div>
           )}
 
           {service.liveGraphic === "pipeline" && (
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[var(--background-subtle)] border border-[var(--border-color)]">
+            <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[var(--background-subtle)] border border-[var(--border-color)]">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
               <span className="text-[9px] font-mono text-amber-500 font-semibold">
                 HOOK → CRON → SYNC
@@ -282,51 +281,41 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative w-full py-28 md:py-36 bg-[var(--background)] overflow-hidden border-t border-[var(--border-color)]/60"
+      className="relative w-full py-16 md:py-24 bg-[var(--background)] overflow-hidden border-t border-[var(--border-color)]"
     >
       {/* Background Ambience */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-25">
         <div
           className="w-full h-full"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 15% 20%, rgba(250, 204, 21, 0.12) 0%, transparent 55%), radial-gradient(circle at 85% 80%, rgba(245, 158, 11, 0.08) 0%, transparent 50%)",
+              "radial-gradient(circle at 15% 20%, rgba(250, 204, 21, 0.08) 0%, transparent 45%), radial-gradient(circle at 85% 80%, rgba(245, 158, 11, 0.06) 0%, transparent 45%)",
           }}
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-[var(--border-color)]/70 pb-12"
-        >
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full">
+        {/* Section Header: Compact Bento HUD Bar */}
+        <div className="mb-8 md:mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[var(--border-color)] pb-6">
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="h-[2px] w-8 bg-[var(--primary-vibrant)]" />
-              <h2 className="text-xs font-mono tracking-widest text-[var(--foreground-muted)] uppercase font-semibold">
-                Core Capabilities & Offerings
-              </h2>
-            </div>
-            <h3 className="text-4xl md:text-6xl font-black text-[var(--foreground)] tracking-tight">
-              Engineering <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 dark:from-yellow-300 dark:via-amber-400 dark:to-yellow-500">
-                Without Limits.
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[var(--background-subtle)] border border-[var(--border-color)] mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]" />
+              <span className="font-mono text-[11px] font-semibold tracking-wider text-[var(--foreground-muted)] uppercase">
+                SPEC // SERVICES • CORE CAPABILITIES
               </span>
-            </h3>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[var(--foreground)] tracking-tight">
+              Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 dark:from-yellow-300 dark:via-amber-400 dark:to-yellow-500">Without Limits</span>
+            </h2>
           </div>
 
-          <p className="text-base sm:text-lg text-[var(--foreground-muted)] font-light max-w-md md:text-right">
-            From low-latency AI voice streaming to multi-tenant cloud platforms
-            and cross-platform mobile apps, tailored for enterprise resilience.
+          <p className="text-xs sm:text-sm text-[var(--foreground-muted)] max-w-md md:text-right leading-relaxed">
+            From low-latency AI voice streaming to multi-tenant cloud platforms and cross-platform mobile apps, tailored for enterprise resilience.
           </p>
-        </motion.div>
+        </div>
 
-        {/* 2x2 Services Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+        {/* 2x2 Services Grid (High-Density) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {SERVICES_DATA.map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} />
           ))}

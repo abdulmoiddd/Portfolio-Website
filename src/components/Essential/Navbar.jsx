@@ -96,7 +96,7 @@ export default function Navbar() {
 
                 {/* Live Status Indicator */}
                 <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[var(--background-subtle)] border border-[var(--border-color)] ml-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                   <span className="text-[9px] font-mono font-semibold uppercase text-emerald-600 dark:text-emerald-400">
                     OPEN TO WORK
                   </span>
@@ -181,7 +181,7 @@ export default function Navbar() {
                 className="interactive hidden sm:inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 text-white dark:text-zinc-950 text-xs font-mono font-bold tracking-wide transition-all duration-300 shadow-[0_0_15px_rgba(250,204,21,0.4)] hover:shadow-[0_0_25px_rgba(250,204,21,0.65)] hover:-translate-y-0.5"
               >
                 <span>CONNECT</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-current" />
               </a>
 
               {/* Mobile Hamburger Toggle */}
