@@ -15,6 +15,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Technology from "@/components/Home/Technology";
 import { useState, useRef, useEffect } from "react";
+import { useTheme } from "@/pages/layout";
 import {
   motion,
   useMotionValue,
@@ -105,21 +106,27 @@ function AmbientMesh() {
 
 // ─── Main Hero Component ──────────────────────────────────────────────────────
 const Hero = () => {
-  // ── ID Badge physics (PRESERVED VERBATIM — zero changes) ──────────────────
-  const [isScanning, setIsScanning]   = useState(false);
-  const [isSticky,   setIsSticky]     = useState(false);
-  const originRef                     = useRef(null);
-  const stickyTimeoutRef              = useRef(null);
+  const { theme, toggleTheme } = useTheme();
+
+  // ── ID Badge physics with Interactive Theme Switcher & Elastic Swing ───
+  const [isScanning, setIsScanning] = useState(false);
+  const [isPullingDown, setIsPullingDown] = useState(false);
+  const [switchedThemeNotice, setSwitchedThemeNotice] = useState(false);
+  const originRef = useRef(null);
 
   const dragX = useMotionValue(0);
   const dragY = useMotionValue(0);
+  const swingZ = useMotionValue(0); // Rotational pendulum swing oscillation
 
-  const dragXSpring = useSpring(dragX, { stiffness: 120, damping: 12, mass: 0.9 });
-  const dragYSpring = useSpring(dragY, { stiffness: 120, damping: 12, mass: 0.9 });
+  const dragXSpring = useSpring(dragX, { stiffness: 140, damping: 14, mass: 0.9 });
+  const dragYSpring = useSpring(dragY, { stiffness: 140, damping: 14, mass: 0.9 });
 
   const rotateZ = useTransform(dragXSpring, [-180, 180], [-10, 10]);
   const rotateY = useTransform(dragXSpring, [-180, 180], [-7, 7]);
   const rotateX = useTransform(dragYSpring, [-180, 180], [7, -7]);
+
+  // Combined rotation Z: blends drag angle with the damped pendulum swing
+  const combinedRotateZ = useTransform([rotateZ, swingZ], ([r, s]) => (r || 0) + (s || 0));
 
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
@@ -132,46 +139,72 @@ const Hero = () => {
 
   const glareBackground = useMotionTemplate`radial-gradient(circle 200px at ${pointerX}px ${pointerY}px, rgba(255,255,255,0.08), transparent 80%)`;
 
+  const handleDrag = () => {
+    const yVal = dragY.get();
+    if (yVal > 45) {
+      if (!isPullingDown) setIsPullingDown(true);
+    } else {
+      if (isPullingDown) setIsPullingDown(false);
+    }
+  };
+
   const handleDragEnd = () => {
-    setIsSticky(true);
-    if (stickyTimeoutRef.current) clearTimeout(stickyTimeoutRef.current);
-    stickyTimeoutRef.current = setTimeout(() => {
-      setIsSticky(false);
-    }, 3000);
+    const pullY = dragY.get();
+    const pullX = dragX.get();
+    setIsPullingDown(false);
+
+    // If dragged downward past threshold (>45px), switch the theme!
+    if (pullY > 45) {
+      toggleTheme();
+      setSwitchedThemeNotice(true);
+      setTimeout(() => setSwitchedThemeNotice(false), 2400);
+    }
+
+    // Elastic snapback with bouncy cord spring on Y (badge bounces up)
+    animate(dragY, 0, {
+      type: "spring",
+      stiffness: 350,
+      damping: 10,
+      mass: 0.75,
+    });
+
+    // Elastic snapback on X
+    animate(dragX, 0, {
+      type: "spring",
+      stiffness: 300,
+      damping: 12,
+      mass: 0.75,
+    });
+
+    // Realistic elastic pendulum swing:
+    // Derives swing amplitude from pull distance (stronger pull = wider swing)
+    const swingMagnitude = Math.min(Math.max((pullY + Math.abs(pullX)) * 0.16, 12), 24);
+    const dir = pullX >= 0 ? -1 : 1;
+
+    // Harmonic damped oscillation simulating a real badge swinging left and right
+    animate(
+      swingZ,
+      [
+        0,
+        swingMagnitude * dir,
+        -swingMagnitude * 0.7 * dir,
+        swingMagnitude * 0.45 * dir,
+        -swingMagnitude * 0.25 * dir,
+        swingMagnitude * 0.12 * dir,
+        0,
+      ],
+      {
+        duration: 1.8,
+        ease: "easeOut",
+      }
+    );
   };
 
   const handleDoubleClick = () => {
-    setIsSticky(false);
-    if (stickyTimeoutRef.current) clearTimeout(stickyTimeoutRef.current);
     if (isScanning) return;
     setIsScanning(true);
     setTimeout(() => setIsScanning(false), 2000);
   };
-
-  useEffect(() => {
-    return () => {
-      if (stickyTimeoutRef.current) clearTimeout(stickyTimeoutRef.current);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isSticky) {
-      const handleGlobalMove = (e) => {
-        if (originRef.current) {
-          const rect    = originRef.current.getBoundingClientRect();
-          const centerX = rect.left + rect.width  / 2;
-          const centerY = rect.top  + rect.height / 2;
-          animate(dragX, e.clientX - centerX, { type: "spring", stiffness: 200, damping: 20, mass: 0.5 });
-          animate(dragY, e.clientY - centerY, { type: "spring", stiffness: 200, damping: 20, mass: 0.5 });
-        }
-      };
-      window.addEventListener("pointermove", handleGlobalMove);
-      return () => window.removeEventListener("pointermove", handleGlobalMove);
-    } else {
-      animate(dragX, 0, { type: "spring", stiffness: 120, damping: 12, mass: 0.9 });
-      animate(dragY, 0, { type: "spring", stiffness: 120, damping: 12, mass: 0.9 });
-    }
-  }, [isSticky, dragX, dragY]);
 
   const ambientFloat = {
     float: {
@@ -296,14 +329,14 @@ const Hero = () => {
           </div>
 
           {/* ════════════════════════════════════════════════════════════════════
-              RIGHT COLUMN — ID Badge Showcase
+              RIGHT COLUMN — ID Badge Showcase (Desktop Only)
               ════════════════════════════════════════════════════════════════════ */}
           <motion.div 
             custom={2}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full lg:w-5/12 relative flex items-center justify-center"
+            className="hidden lg:flex w-full lg:w-5/12 relative items-center justify-center"
           >
             {/* Clean, glowing pedestal background for the badge */}
             <div className="absolute inset-0 bg-gradient-to-b from-[var(--clr-accent)]/5 to-transparent rounded-full blur-[100px] pointer-events-none -z-10" />
@@ -323,20 +356,21 @@ const Hero = () => {
                   animate="float"
                   onPointerMove={handlePointerMove}
                   onDoubleClick={handleDoubleClick}
-                  className={`relative cursor-grab active:cursor-grabbing ${isSticky ? "pointer-events-none" : "pointer-events-auto"}`}
+                  className="relative cursor-grab active:cursor-grabbing pointer-events-auto"
                   style={{
                     x: dragX,
                     y: dragY,
-                    rotateZ,
+                    rotateZ: combinedRotateZ,
                     rotateX,
                     rotateY,
                     transformStyle: "preserve-3d",
                   }}
-                  drag={!isSticky}
-                  dragConstraints={isSticky ? undefined : { top: 0, left: 0, right: 0, bottom: 0 }}
-                  dragElastic={0.25}
+                  drag={true}
+                  dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+                  dragElastic={0.45}
+                  onDrag={handleDrag}
                   onDragEnd={handleDragEnd}
-                  whileDrag={{ scale: 1.03, cursor: "grabbing" }}
+                  whileDrag={{ scale: 1.04, cursor: "grabbing" }}
                 >
                   {/* 1. LANYARD RIBBON */}
                   <div
@@ -448,7 +482,13 @@ const Hero = () => {
                       </div>
                       <div>
                         <span className="text-[8px] font-mono text-[var(--foreground-muted)] uppercase block">Status</span>
-                        <span className="text-[10px] font-mono text-[var(--success)] font-semibold">AUTHORIZED</span>
+                        {isPullingDown ? (
+                          <span className="text-[10px] font-mono text-[var(--clr-accent)] font-bold animate-pulse">RELEASE ☀/☾</span>
+                        ) : switchedThemeNotice ? (
+                          <span className="text-[10px] font-mono text-emerald-400 font-bold">SWITCHED!</span>
+                        ) : (
+                          <span className="text-[10px] font-mono text-[var(--success)] font-semibold">AUTHORIZED</span>
+                        )}
                       </div>
                     </div>
 
@@ -470,11 +510,25 @@ const Hero = () => {
                   {/* ════ END PRESERVED ID BADGE ════ */}
                 </motion.div>
 
-                {/* Hint label below badge */}
-                <div className="absolute bottom-2 font-mono text-[10px] text-[var(--clr-ink-muted)] tracking-widest uppercase flex items-center gap-2 opacity-70">
-                  <span>Drag</span>
-                  <span className="text-[var(--clr-accent)]">•</span>
-                  <span>Double-Click</span>
+                {/* Interactive hint below badge */}
+                <div className="absolute bottom-2 font-mono text-[10px] tracking-widest uppercase flex items-center gap-2 transition-all duration-300">
+                  {isPullingDown ? (
+                    <span className="text-[var(--clr-accent)] font-bold animate-pulse">
+                      ▼ Release to Switch to {theme === "dark" ? "Light" : "Dark"} Mode
+                    </span>
+                  ) : switchedThemeNotice ? (
+                    <span className="text-emerald-500 font-bold">
+                      ✓ Switched to {theme === "dark" ? "Dark" : "Light"} Mode
+                    </span>
+                  ) : (
+                    <>
+                      <span className="text-[var(--clr-accent)] font-semibold">
+                        Pull Down to Switch Theme
+                      </span>
+                      <span className="text-[var(--clr-accent)]">•</span>
+                      <span className="text-[var(--clr-ink-muted)]">Double-Click to Scan</span>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
