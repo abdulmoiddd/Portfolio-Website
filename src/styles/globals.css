@@ -3,112 +3,63 @@
 @tailwind utilities;
 
 /* ==========================================================================
-   PALETTE CONFIGURATION — CUSTOMIZE YOUR WEBSITE COLORS HERE
-   To change your site's color scheme, edit the variables below:
-   - Primary Accent: Change `--primary` (e.g. crimson #FF3B30, cyan #00F0FF, violet #8B5CF6, emerald #10B981)
-   - Secondary Accent: Change `--accent-blue` (e.g. telemetry ice #3DA5FF, purple #A855F7)
-   - Backgrounds: Change `--background` and `--card-bg`
+   THEME CONFIGURATION: LIGHT MODE DEFAULT & RADIANT YELLOW ACCENT
+   - Default Theme: Light Mode (Soft Ivory / Creamy Warm Undertone)
+   - Dark Theme: High-Contrast Cyber-Graphite with Neon Gold
+   - Primary Accent: Vibrant, Modern Yellow / Radiant Amber-Gold
    ========================================================================== */
 
 @layer base {
-  /* --- DARK THEME (Default) --- */
+  /* --- LIGHT THEME (Default) --- */
   :root,
-  :root[data-theme="dark"] {
-    color-scheme: dark;
-    --border-radius: 8px;
-
-    /* Brand Primary Accent */
-    --primary: #FF3B30; /* crimson — energetic active signal */
-    --primary-rgb: 255, 59, 48;
-    --primary-glow: rgba(255, 59, 48, 0.4);
-
-    /* Secondary & Telemetry Accents */
-    --accent-blue: #3DA5FF; /* cold blue telemetry */
-    --accent-blue-rgb: 61, 165, 255;
-    --accent-purple: #A855F7; /* AI & neural violet */
-    --success: #10B981; /* cyber emerald for uptime & positive feedback */
-    --success-rgb: 16, 185, 129;
-    --warning: #F59E0B; /* amber-gold */
-
-    /* Core Backgrounds & Surfaces */
-    --background: #0A0C10; /* near-black steel, cool undertone */
-    --foreground: #ECEEF2; /* primary text */
-    --foreground-muted: #838B99; /* muted text */
-    --secondary: #1D2129; /* surface-alt */
-    --card-bg: #14171D; /* card surface */
-    --card-bg-elevated: #1B2028;
-    --border-color: #23272F; /* crisp tech border */
-    --border-color-hover: #3A4150;
-    --grid-line: rgba(35, 39, 47, 0.7);
-
-    /* Tailwind Mappings */
-    --bg-primary: var(--background);
-    --bg-secondary: var(--secondary);
-    --text-primary: var(--foreground);
-    --text-secondary: var(--foreground-muted);
-    --brand-accent: var(--primary);
-
-    /* Glass & Glow */
-    --glass-bg: rgba(10, 12, 16, 0.8);
-    --glass-card: rgba(20, 23, 29, 0.75);
-    --neon-glow: 0 0 20px rgba(255, 59, 48, 0.4), 0 0 40px rgba(255, 59, 48, 0.15);
-    --spotlight-opacity: 0.14;
-
-    /* Hero Spotlight Gradient (Preserved for Hero section) */
-    --hero-from: #2A0806;
-    --hero-via: #0A0C10;
-    --hero-to: #0A0C10;
-
-    /* Card Gradients */
-    --card-gradient-start: #14171D;
-    --card-gradient-end: #0A0C10;
-
-    /* Lead Magnet */
-    --lead-from: #1D2129;
-    --lead-via: #0A0C10;
-    --lead-to: #0A0C10;
-    --lead-glow: rgba(255, 59, 48, 0.15);
-
-    /* Overlays */
-    --overlay-gradient-start: rgba(10, 12, 16, 0.85);
-    --overlay-gradient-end: rgba(10, 12, 16, 0.98);
-    --image-overlay: rgba(255, 59, 48, 0.85);
-    --footer-bg: #0A0C10;
-
-    /* Logos */
-    --logo-base: #ffffff;
-    --logo-mongo-green: #ffffff;
-    --logo-upwork-green: #ffffff;
-    --logo-politico-red: #ffffff;
-  }
-
-  /* --- LIGHT THEME OVERRIDE --- */
   :root[data-theme="light"] {
     color-scheme: light;
+    --border-radius: 12px;
 
-    /* Brand Primary Accent */
-    --primary: #D92B22; /* deepened crimson for contrast */
-    --primary-rgb: 217, 43, 34;
-    --primary-glow: rgba(217, 43, 34, 0.25);
+    /* Core Backgrounds (Soft warm creamy ivory, never blinding white) */
+    --background: #FAF7F2; /* subtle warm ivory */
+    --background-subtle: #F3EEE5; /* slightly deeper creamy stone */
+    --background-elevated: #FFFDF9; /* soft warm porcelain */
+    --foreground: #181612; /* rich charcoal-espresso, excellent readability */
+    --foreground-muted: #665F53; /* warm stone slate */
 
-    /* Secondary & Telemetry Accents */
-    --accent-blue: #1E7FD9;
-    --accent-blue-rgb: 30, 127, 217;
-    --accent-purple: #7C3AED;
-    --success: #059669;
-    --success-rgb: 5, 150, 105;
-    --warning: #D97706;
+    /* Vibrant Modern Yellow Accents */
+    --primary: #D97706; /* rich warm amber-gold, high contrast on light */
+    --primary-vibrant: #FACC15; /* radiant electric sunflower yellow */
+    --primary-light: #FEF08A; /* soft butter-yellow wash */
+    --primary-rgb: 217, 119, 6;
+    --primary-glow: rgba(250, 204, 21, 0.45);
 
-    /* Core Backgrounds & Surfaces */
-    --background: #F5F6F8; /* cool steel white */
-    --foreground: #0E1015; /* crisp dark text */
-    --foreground-muted: #565C67; /* muted slate */
-    --secondary: #DCE0E6;
-    --card-bg: #EAEDF1;
-    --card-bg-elevated: #FDFDFE;
-    --border-color: #D2D7DE;
-    --border-color-hover: #B4BCC8;
-    --grid-line: rgba(210, 215, 222, 0.6);
+    /* Secondary Telemetry & Accents */
+    --accent-blue: #0284C7; /* sky sapphire */
+    --accent-purple: #9333EA; /* modern purple */
+    --success: #059669; /* emerald uptime */
+    --warning: #D97706; /* amber-gold */
+
+    /* Surfaces & Cards */
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --card-bg-elevated: #FFFFFF;
+    --secondary: #F0EAE1;
+    --border-color: #E8E1D5;
+    --border-color-hover: #D4C7B4;
+    --grid-line: rgba(212, 199, 180, 0.45);
+
+    /* Gradients */
+    --gradient-accent: linear-gradient(135deg, #FACC15 0%, #F59E0B 50%, #D97706 100%);
+    --gradient-text: linear-gradient(135deg, #B45309 0%, #D97706 50%, #CA8A04 100%);
+    --gradient-mesh: radial-gradient(at 0% 0%, rgba(250, 204, 21, 0.14) 0px, transparent 55%), radial-gradient(at 100% 100%, rgba(245, 158, 11, 0.12) 0px, transparent 55%);
+    --card-gradient-start: rgba(255, 255, 255, 0.95);
+    --card-gradient-end: rgba(250, 247, 242, 0.7);
+
+    /* Hero Spotlight Preserved for Hero Section */
+    --hero-from: #FEF9C3; /* soft golden warm glow */
+    --hero-via: #FAF7F2;
+    --hero-to: #FAF7F2;
+
+    /* Glass & Glow */
+    --glass-bg: rgba(250, 247, 242, 0.85);
+    --glass-card: rgba(255, 255, 255, 0.8);
+    --neon-glow: 0 4px 20px rgba(245, 158, 11, 0.35);
 
     /* Tailwind Mappings */
     --bg-primary: var(--background);
@@ -116,43 +67,67 @@
     --text-primary: var(--foreground);
     --text-secondary: var(--foreground-muted);
     --brand-accent: var(--primary);
+  }
+
+  /* --- DARK THEME OVERRIDE --- */
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+
+    /* Core Backgrounds (Deep graphite cyber) */
+    --background: #0B0D11; /* near-black graphite */
+    --background-subtle: #12151B;
+    --background-elevated: #161A22;
+    --foreground: #F8F9FA; /* crisp white */
+    --foreground-muted: #9BA3AF; /* muted steel */
+
+    /* Vibrant Modern Yellow Accents */
+    --primary: #FACC15; /* radiant electric yellow */
+    --primary-vibrant: #FFE600; /* blinding cyber-yellow */
+    --primary-light: #FEF08A;
+    --primary-rgb: 250, 204, 21;
+    --primary-glow: rgba(250, 204, 21, 0.5);
+
+    /* Secondary Telemetry & Accents */
+    --accent-blue: #38BDF8; /* electric ice */
+    --accent-purple: #C084FC;
+    --success: #10B981;
+    --warning: #F59E0B;
+
+    /* Surfaces & Cards */
+    --card-bg: rgba(20, 23, 30, 0.8);
+    --card-bg-elevated: #191D26;
+    --secondary: #161A22;
+    --border-color: #272C38;
+    --border-color-hover: #3E4657;
+    --grid-line: rgba(39, 44, 56, 0.7);
+
+    /* Gradients */
+    --gradient-accent: linear-gradient(135deg, #FFE600 0%, #FACC15 50%, #F59E0B 100%);
+    --gradient-text: linear-gradient(135deg, #FFE600 0%, #FACC15 50%, #FBBF24 100%);
+    --gradient-mesh: radial-gradient(at 0% 0%, rgba(250, 204, 21, 0.16) 0px, transparent 55%), radial-gradient(at 100% 100%, rgba(245, 158, 11, 0.10) 0px, transparent 55%);
+    --card-gradient-start: rgba(22, 26, 34, 0.9);
+    --card-gradient-end: rgba(11, 13, 17, 0.75);
+
+    /* Hero Spotlight Preserved for Hero Section */
+    --hero-from: #26200A; /* dark golden cyber glow */
+    --hero-via: #0B0D11;
+    --hero-to: #0B0D11;
 
     /* Glass & Glow */
-    --glass-bg: rgba(245, 246, 248, 0.82);
-    --glass-card: rgba(234, 237, 241, 0.8);
-    --neon-glow: 0 4px 18px rgba(217, 43, 34, 0.2);
-    --spotlight-opacity: 0.15;
+    --glass-bg: rgba(11, 13, 17, 0.85);
+    --glass-card: rgba(20, 23, 30, 0.8);
+    --neon-glow: 0 0 25px rgba(250, 204, 21, 0.45), 0 0 50px rgba(250, 204, 21, 0.15);
 
-    /* Hero Spotlight Gradient */
-    --hero-from: #FCE8E7;
-    --hero-via: #F5F6F8;
-    --hero-to: #F5F6F8;
-
-    /* Card Gradients */
-    --card-gradient-start: #EAEDF1;
-    --card-gradient-end: #F5F6F8;
-
-    /* Lead Magnet */
-    --lead-from: #DCE0E6;
-    --lead-via: #F5F6F8;
-    --lead-to: #F5F6F8;
-    --lead-glow: rgba(217, 43, 34, 0.08);
-
-    /* Overlays */
-    --overlay-gradient-start: rgba(245, 246, 248, 0.85);
-    --overlay-gradient-end: rgba(245, 246, 248, 0.98);
-    --image-overlay: rgba(217, 43, 34, 0.9);
-    --footer-bg: #EAEDF1;
-
-    /* Logos */
-    --logo-base: #1e292c;
-    --logo-mongo-green: #2ed06e;
-    --logo-upwork-green: #25841f;
-    --logo-politico-red: #d71920;
+    /* Tailwind Mappings */
+    --bg-primary: var(--background);
+    --bg-secondary: var(--secondary);
+    --text-primary: var(--foreground);
+    --text-secondary: var(--foreground-muted);
+    --brand-accent: var(--primary);
   }
 }
 
-/* Base Body Smoothing */
+/* Base Body Styles & Smooth Theme Switching */
 html {
   scroll-behavior: smooth;
 }
@@ -161,12 +136,13 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+    background-color 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
-/* Custom Scrollbar */
+/* Custom Sleek Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -182,63 +158,92 @@ body {
   background: var(--primary);
 }
 
-/* Custom Utility Classes */
-.glass-panel {
-  background-color: var(--glass-bg);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border-color);
+/* Gradient Text Utility */
+.text-gradient-yellow {
+  background-image: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.glass-card {
-  background-color: var(--glass-card);
+.text-gradient-accent {
+  background-image: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Gradient Border Card Utility */
+.card-gradient-border {
+  position: relative;
+  background: var(--card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Live Animation Utilities */
-@keyframes pulse-ring {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.8;
+.card-gradient-border:hover {
+  border-color: var(--primary);
+  box-shadow: var(--neon-glow);
+}
+
+/* Animated Ambient Blobs */
+@keyframes float-blob-1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
   }
-  50% {
-    transform: scale(1.3);
-    opacity: 0;
+  33% {
+    transform: translate(30px, -40px) scale(1.08);
   }
-  100% {
-    transform: scale(0.95);
-    opacity: 0;
+  66% {
+    transform: translate(-25px, 20px) scale(0.94);
   }
 }
 
-.animate-pulse-ring {
-  animation: pulse-ring 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+@keyframes float-blob-2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(-35px, 35px) scale(0.95);
+  }
+  66% {
+    transform: translate(30px, -25px) scale(1.06);
+  }
 }
 
+.animate-blob-1 {
+  animation: float-blob-1 16s ease-in-out infinite;
+}
+
+.animate-blob-2 {
+  animation: float-blob-2 20s ease-in-out infinite;
+}
+
+/* Live Audio Waveform Animation */
 @keyframes waveform {
   0%, 100% { height: 4px; }
-  50% { height: 18px; }
+  50% { height: 20px; }
 }
 
 .animate-waveform {
-  animation: waveform 1.2s ease-in-out infinite;
+  animation: waveform 1.1s ease-in-out infinite;
 }
 
-/* High Contrast / Accessibility Overrides */
-@media (forced-colors: active) {
-  .glass-card,
-  .glass-panel {
-    border: 1px solid ButtonText !important;
+/* Hide Default Cursor on Desktop when Custom Cursor is Active */
+@media (pointer: fine) {
+  body.has-custom-cursor {
+    cursor: default;
   }
 }
 
+/* Accessibility: Respect Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  .animate-blob-1,
+  .animate-blob-2,
+  .animate-waveform {
+    animation: none !important;
   }
 }

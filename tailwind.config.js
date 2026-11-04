@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  // Enables toggling dark mode manually via a class on the HTML tag
+  // Enables toggling dark mode manually via a class or data-theme on HTML tag
   darkMode: ['class', '[data-theme="dark"]'], 
   content: [
     "./src/pages/**/*.{js,jsx}",
@@ -10,12 +10,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Mapping Tailwind classes to CSS variables
         primary: 'var(--bg-primary)',
         secondary: 'var(--bg-secondary)',
         textMain: 'var(--text-primary)',
         textMuted: 'var(--text-secondary)',
         brand: 'var(--brand-accent)',
+        brandVibrant: 'var(--primary-vibrant)',
         brandGlow: 'var(--primary-glow)',
         accentBlue: 'var(--accent-blue)',
         accentPurple: 'var(--accent-purple)',
@@ -28,16 +28,15 @@ module.exports = {
       },
       fontFamily: {
         mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+      },
+      backgroundImage: {
+        'yellow-gradient': 'var(--gradient-accent)',
+        'yellow-text-gradient': 'var(--gradient-text)',
       },
       animation: {
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float-slow': 'float 6s ease-in-out infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-6px)' },
-        },
+        'blob-1': 'float-blob-1 16s ease-in-out infinite',
+        'blob-2': 'float-blob-2 20s ease-in-out infinite',
       },
     },
   },
