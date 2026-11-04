@@ -46,8 +46,8 @@ export default function Footer() {
             </p>
 
             {/* Live Platform SLA Telemetry Chip */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--clr-surface-card)] border border-[var(--clr-border)] text-xs font-mono mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <div className="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-lg bg-[var(--clr-surface-card)] border border-[var(--clr-border)] text-[11px] sm:text-xs font-mono mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
               <span className="text-[var(--clr-ink)] font-semibold">
                 SYSTEM SLA: 99.9%
               </span>
