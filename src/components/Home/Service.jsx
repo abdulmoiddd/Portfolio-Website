@@ -115,11 +115,11 @@ export default function Services() {
           {SERVICES_DATA.map((service) => (
             <div
               key={service.id}
-              className="p-5 sm:p-6 rounded-2xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] hover:border-[var(--clr-accent)] transition-all flex flex-col justify-between group"
+              className="p-4 sm:p-6 rounded-2xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] hover:border-[var(--clr-accent)] transition-all flex flex-col justify-between group"
             >
               <div>
                 {/* Module Header Bar */}
-                <div className="flex items-center justify-between pb-4 mb-4 border-b border-[var(--clr-border)]">
+                <div className="flex flex-wrap items-center justify-between gap-2 pb-3 sm:pb-4 mb-3 sm:mb-4 border-b border-[var(--clr-border)]">
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] font-mono tracking-widest text-[var(--clr-ink-muted)] uppercase">
                       [ MOD // {service.id} ]
