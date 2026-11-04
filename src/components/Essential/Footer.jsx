@@ -11,7 +11,7 @@ export default function Footer() {
     { name: "Services", href: "#services" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
-    { name: "Beyond Code", href: "#beyond-code" },
+    // { name: "Beyond Code", href: "#beyond-code" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -46,13 +46,7 @@ export default function Footer() {
             </p>
 
             {/* Live Platform SLA Telemetry Chip */}
-            <div className="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-lg bg-[var(--clr-surface-card)] border border-[var(--clr-border)] text-[11px] sm:text-xs font-mono mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
-              <span className="text-[var(--clr-ink)] font-semibold">
-                SYSTEM SLA: 99.9%
-              </span>
-              <span className="text-[var(--clr-ink-muted)]">• ALL PIPELINES OPERATIONAL</span>
-            </div>
+           
 
             {/* Social Channels */}
             <div className="flex items-center gap-2">
