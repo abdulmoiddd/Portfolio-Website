@@ -90,12 +90,7 @@ export default function About() {
         {/* Section Header: Compact Bento HUD Bar */}
         <div className="mb-8 md:mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[var(--clr-border)] pb-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--clr-accent)]" />
-              <span className="font-mono text-[11px] font-semibold tracking-wider text-[var(--clr-ink-muted)] uppercase">
-                SPEC // 01 • EVOLUTION &amp; ARCHITECTURAL LOG
-              </span>
-            </div>
+            
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[var(--clr-ink)] tracking-tight">
               Architecting <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500">Intelligent Systems</span>
