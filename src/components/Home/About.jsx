@@ -108,37 +108,37 @@ export default function About() {
         </div>
 
         {/* 4-Cell Telemetry Metrics Bento Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 mb-8 sm:mb-10">
           {METRICS.map((metric) => (
             <div
               key={metric.label}
-              className={`p-4 rounded-xl border transition-all ${
+              className={`p-3 sm:p-4 rounded-xl border transition-all ${
                 metric.accent
                   ? "bg-[var(--clr-surface-card)] border-[var(--clr-accent)] shadow-sm"
                   : "bg-[var(--clr-surface-card)] border-[var(--clr-border)]"
               }`}
             >
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] font-mono tracking-wider text-[var(--clr-ink-muted)] uppercase">
+              <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+                <span className="text-[9px] sm:text-[10px] font-mono tracking-wider text-[var(--clr-ink-muted)] uppercase truncate">
                   {metric.spec}
                 </span>
                 <span
-                  className="w-1.5 h-1.5 rounded-full"
+                  className="w-1.5 h-1.5 rounded-full shrink-0"
                   style={{ backgroundColor: metric.accent ? "var(--clr-accent)" : "var(--clr-ink-muted)" }}
                 />
               </div>
 
               <div
-                className="text-2xl sm:text-3xl font-black tracking-tight mb-0.5 font-mono"
+                className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight mb-0.5 font-mono"
                 style={{ color: metric.accent ? "var(--clr-accent)" : "var(--clr-ink)" }}
               >
                 {metric.value}
               </div>
 
-              <div className="text-xs font-bold text-[var(--clr-ink)]">
+              <div className="text-[11px] sm:text-xs font-bold text-[var(--clr-ink)] truncate">
                 {metric.label}
               </div>
-              <div className="text-[10px] font-mono text-[var(--clr-ink-muted)] mt-0.5">
+              <div className="text-[9px] sm:text-[10px] font-mono text-[var(--clr-ink-muted)] mt-0.5 truncate">
                 {metric.sub}
               </div>
             </div>
@@ -150,7 +150,7 @@ export default function About() {
           {CAREER_LOG.map((item) => (
             <div
               key={item.id}
-              className="p-5 sm:p-6 rounded-2xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] hover:border-[var(--clr-accent)] transition-all flex flex-col justify-between"
+              className="p-4 sm:p-6 rounded-2xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] hover:border-[var(--clr-accent)] transition-all flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
