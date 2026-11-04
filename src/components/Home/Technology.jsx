@@ -112,20 +112,17 @@ export default function Technology() {
   const [isPaused, setIsPaused] = useState(false);
 
   return (
-    <section className="relative w-full py-8 md:py-10 bg-[var(--background)] overflow-hidden border-y border-[var(--border-color)]/60">
-      {/* Ambient Gradient Mesh Background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--background)] via-amber-400/5 to-[var(--background)] z-10 pointer-events-none" />
-
+    <section className="relative w-full py-6 md:py-8 bg-[var(--clr-surface)] overflow-hidden border-y border-[var(--clr-border)]">
       {/* Top Telemetry Header */}
-      <div className="max-w-7xl mx-auto px-6 mb-3 flex items-center justify-between relative z-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-3 flex items-center justify-between relative z-20">
         <div className="flex items-center gap-2.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]" />
-          <span className="text-[11px] font-mono tracking-widest text-[var(--foreground-muted)] uppercase font-semibold">
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--clr-accent)]" />
+          <span className="text-[11px] font-mono tracking-widest text-[var(--clr-ink-muted)] uppercase font-semibold">
             ENGINEERING TOOLCHAIN // PRODUCTION READY
           </span>
         </div>
-        <div className="hidden sm:flex items-center gap-2 font-mono text-[10px] text-[var(--foreground-muted)]">
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]" />
+        <div className="hidden sm:flex items-center gap-2 font-mono text-[10px] text-[var(--clr-ink-muted)]">
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--clr-accent)]" />
           <span>REAL-TIME STREAMING</span>
           <span className="mx-1">•</span>
           <span>MULTI-TENANT ARCHITECTURE</span>
@@ -145,22 +142,21 @@ export default function Technology() {
         }}
       >
         <motion.div
-          className="flex whitespace-nowrap gap-5 sm:gap-7 items-center px-4 py-2"
+          className="flex whitespace-nowrap gap-4 sm:gap-6 items-center px-4 py-1"
           animate={{ x: isPaused ? undefined : ["0%", "-50%"] }}
           transition={{
             ease: "linear",
-            duration: 30,
+            duration: 28,
             repeat: Infinity,
           }}
         >
           {MARQUEE_ITEMS.map((tech, idx) => (
             <div
               key={`${tech.name}-${idx}`}
-              className="interactive group relative flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-[var(--card-bg)] hover:bg-[var(--card-bg-elevated)] border border-[var(--border-color)] hover:border-[var(--primary-vibrant)] transition-all duration-300 shadow-sm hover:shadow-[0_8px_25px_-5px_rgba(250,204,21,0.3)] hover:-translate-y-1 cursor-pointer"
+              className="interactive group relative flex items-center gap-3 px-3.5 py-2 rounded-xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] hover:border-[var(--clr-accent)] transition-all duration-200 shadow-sm hover:-translate-y-0.5 cursor-pointer"
             >
-              {/* Vibrant Accent Badge */}
               <div
-                className="w-9 h-9 rounded-xl flex items-center justify-center p-1.5 transition-transform duration-300 group-hover:scale-110 shadow-inner"
+                className="w-8 h-8 rounded-lg flex items-center justify-center p-1.5 transition-transform duration-200 group-hover:scale-105"
                 style={{
                   backgroundColor: `${tech.color}18`,
                   color: tech.color,
@@ -170,17 +166,16 @@ export default function Technology() {
                 {tech.svg}
               </div>
 
-              {/* Text Info */}
               <div className="flex flex-col text-left">
                 <div className="flex items-center gap-2">
-                  <span className="font-bold text-sm sm:text-base text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors">
+                  <span className="font-bold text-xs sm:text-sm text-[var(--clr-ink)] group-hover:text-[var(--clr-accent)] transition-colors">
                     {tech.name}
                   </span>
-                  <span className="text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded bg-[var(--background-subtle)] text-[var(--foreground-muted)] border border-[var(--border-color)]">
+                  <span className="text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.2 rounded bg-[var(--clr-surface-sub)] text-[var(--clr-ink-muted)] border border-[var(--clr-border)]">
                     {tech.category}
                   </span>
                 </div>
-                <span className="text-[11px] font-mono text-[var(--foreground-muted)] group-hover:text-[var(--foreground)] transition-colors">
+                <span className="text-[10px] font-mono text-[var(--clr-ink-muted)]">
                   {tech.role}
                 </span>
               </div>
