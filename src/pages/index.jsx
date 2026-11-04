@@ -9,11 +9,12 @@ import Services from "@/components/Home/Service";
 import BeyondTheCode from "@/components/Home/BeyondTheCode";
 import Contact from "@/components/Home/Contact";
 import CustomCursor from "@/components/Essential/CustomCursor";
-import DynamicBackground from "@/components/Essential/DynamicBackground";
+// DynamicBackground removed — ambient mesh now lives in layout.jsx (global)
+// and Hero.jsx (section-local mouse-reactive mesh)
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] flex flex-col font-sans overflow-x-hidden scroll-smooth relative">
+    <div className="flex flex-col">
       <Head>
         {/* --- Primary SEO Tags --- */}
         <title>Abdul Moid | AI & Full-Stack Software Engineer | Technical Lead</title>
@@ -63,17 +64,15 @@ export default function Home() {
         <meta name="twitter:image" content="/og-image.jpg" />
       </Head>
 
-      {/* Interactive Custom Animated Cursor (Desktop only) */}
+      {/* Precision geometric cursor (desktop only) */}
       <CustomCursor />
-
-      {/* Dynamic Ambient Background Blobs & Mesh */}
-      <DynamicBackground />
 
       {/* Global Navigation Bar */}
       <Navbar />
 
-      <main className="relative z-10">
-        {/* Existing Hero Section (Preserved completely untouched) */}
+      {/* Page Sections */}
+      <div className="relative z-10">
+        {/* Existing Hero Section */}
         <div id="home">
           <Hero />
         </div>
@@ -107,7 +106,7 @@ export default function Home() {
         <div id="contact">
           <Contact />
         </div>
-      </main>
+      </div>
 
       {/* Global Footer */}
       <Footer />

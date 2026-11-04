@@ -162,43 +162,32 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative w-full py-16 md:py-24 bg-[var(--background)] overflow-hidden border-t border-[var(--border-color)]"
+      className="relative w-full py-16 md:py-24 border-t border-[var(--clr-border)]"
     >
-      {/* Background Subtle Mesh */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-25">
-        <div
-          className="w-full h-full"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 50% 50%, rgba(250, 204, 21, 0.08) 0%, transparent 60%)",
-          }}
-        />
-      </div>
-
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 w-full">
         {/* Section Header: Compact Bento HUD Bar */}
-        <div className="mb-8 md:mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[var(--border-color)] pb-6">
+        <div className="mb-8 md:mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[var(--clr-border)] pb-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[var(--background-subtle)] border border-[var(--border-color)] mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]" />
-              <span className="font-mono text-[11px] font-semibold tracking-wider text-[var(--foreground-muted)] uppercase">
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--clr-accent)]" />
+              <span className="font-mono text-[11px] font-semibold tracking-wider text-[var(--clr-ink-muted)] uppercase">
                 SPEC // 05 • DISPATCH INTERFACE
               </span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[var(--foreground)] tracking-tight">
-              Initialize <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 dark:from-yellow-300 dark:via-amber-400 dark:to-yellow-500">Connection</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[var(--clr-ink)] tracking-tight">
+              Initialize <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500">Connection</span>
             </h2>
           </div>
 
           {/* Mode Switcher Tabs */}
-          <div className="flex items-center gap-1.5 p-1 rounded-lg bg-[var(--background-subtle)] border border-[var(--border-color)]">
+          <div className="flex items-center gap-1.5 p-1 rounded-lg bg-[var(--clr-surface-sub)] border border-[var(--clr-border)]">
             <button
               onClick={() => setActiveMode("terminal")}
               className={`px-3 py-1.5 rounded font-mono text-xs font-semibold transition-colors flex items-center gap-1.5 ${
                 activeMode === "terminal"
-                  ? "bg-[var(--card-bg-elevated)] text-[var(--foreground)] shadow-sm border border-[var(--border-color)]"
-                  : "text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
+                  ? "bg-[var(--clr-surface-card)] text-[var(--clr-ink)] shadow-sm border border-[var(--clr-border)]"
+                  : "text-[var(--clr-ink-muted)] hover:text-[var(--clr-ink)]"
               }`}
             >
               <span>&gt;_ CLI TERMINAL</span>
@@ -207,8 +196,8 @@ export default function Contact() {
               onClick={() => setActiveMode("chat")}
               className={`px-3 py-1.5 rounded font-mono text-xs font-semibold transition-colors flex items-center gap-1.5 ${
                 activeMode === "chat"
-                  ? "bg-[var(--card-bg-elevated)] text-[var(--foreground)] shadow-sm border border-[var(--border-color)]"
-                  : "text-[var(--foreground-muted)] hover:text-[var(--foreground)]"
+                  ? "bg-[var(--clr-surface-card)] text-[var(--clr-ink)] shadow-sm border border-[var(--clr-border)]"
+                  : "text-[var(--clr-ink-muted)] hover:text-[var(--clr-ink)]"
               }`}
             >
               <span>DISPATCH CHAT</span>
@@ -217,20 +206,20 @@ export default function Contact() {
         </div>
 
         {/* Main Interface Window */}
-        <div className="rounded-2xl border border-[var(--border-color)] bg-[var(--card-bg-elevated)] shadow-sm overflow-hidden mb-5">
+        <div className="rounded-2xl border border-[var(--clr-border)] bg-[var(--clr-surface-card)] shadow-sm overflow-hidden mb-5">
           {/* Window Titlebar */}
-          <div className="px-4 py-2.5 bg-[var(--background-subtle)] border-b border-[var(--border-color)] flex items-center justify-between">
+          <div className="px-4 py-2.5 bg-[var(--clr-surface-sub)] border-b border-[var(--clr-border)] flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
               <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-              <span className="text-[11px] font-mono text-[var(--foreground-muted)] ml-2">
+              <span className="text-[11px] font-mono text-[var(--clr-ink-muted)] ml-2">
                 {activeMode === "terminal" ? "bash — amoid@dispatch: ~" : "dispatch-agent — active"}
               </span>
             </div>
 
-            <div className="flex items-center gap-2 font-mono text-[10px] text-[var(--foreground-muted)]">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <div className="flex items-center gap-2 font-mono text-[10px] text-[var(--clr-ink-muted)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--clr-accent)]" />
               <span>{localTime || "Active PKT"}</span>
               <span className="hidden sm:inline">• RAWALPINDI / ISLAMABAD</span>
             </div>
@@ -244,21 +233,21 @@ export default function Contact() {
                 {terminalHistory.map((item, idx) => (
                   <div key={idx} className="leading-relaxed">
                     {item.type === "system" && (
-                      <span className="text-[var(--foreground-muted)] opacity-75">{item.text}</span>
+                      <span className="text-[var(--clr-ink-muted)] opacity-75">{item.text}</span>
                     )}
                     {item.type === "user" && (
                       <div>
-                        <span className="text-amber-500 dark:text-yellow-400 font-bold">amoid@dispatch:~$ </span>
-                        <span className="text-[var(--foreground)]">{item.text}</span>
+                        <span className="text-[var(--clr-accent)] font-bold">amoid@dispatch:~$ </span>
+                        <span className="text-[var(--clr-ink)]">{item.text}</span>
                       </div>
                     )}
                     {item.type === "output" && (
-                      <pre className="text-emerald-600 dark:text-emerald-400 whitespace-pre-wrap font-mono mt-0.5 text-xs">
+                      <pre className="text-emerald-500 whitespace-pre-wrap font-mono mt-0.5 text-xs">
                         {item.text}
                       </pre>
                     )}
                     {item.type === "error" && (
-                      <div className="text-rose-500 mt-0.5 text-xs">{item.text}</div>
+                      <div className="text-rose-400 mt-0.5 text-xs">{item.text}</div>
                     )}
                   </div>
                 ))}
@@ -266,15 +255,15 @@ export default function Contact() {
               </div>
 
               {/* Command Quick-Click Pills */}
-              <div className="pt-3 border-t border-[var(--border-color)] mb-3 flex flex-wrap gap-1.5 items-center">
-                <span className="text-[10px] text-[var(--foreground-muted)] uppercase tracking-wider mr-1">
+              <div className="pt-3 border-t border-[var(--clr-border)] mb-3 flex flex-wrap gap-1.5 items-center">
+                <span className="text-[10px] text-[var(--clr-ink-muted)] uppercase tracking-wider mr-1">
                   QUICK RUN:
                 </span>
                 {["help", "email", "phone", "github", "linkedin", "status", "clear"].map((cmd) => (
                   <button
                     key={cmd}
                     onClick={() => executeCommand(cmd)}
-                    className="interactive px-2 py-0.5 rounded text-[10px] bg-[var(--background-subtle)] hover:bg-[var(--primary)] hover:text-zinc-950 border border-[var(--border-color)] transition-colors"
+                    className="interactive px-2 py-0.5 rounded text-[10px] bg-[var(--clr-surface-sub)] hover:bg-[var(--clr-accent)] hover:text-[var(--brand-charcoal)] border border-[var(--clr-border)] transition-colors"
                   >
                     {cmd}
                   </button>
@@ -283,18 +272,18 @@ export default function Contact() {
 
               {/* Terminal Input Line */}
               <form onSubmit={handleTerminalSubmit} className="flex items-center gap-2 pt-1">
-                <span className="text-amber-500 dark:text-yellow-400 font-bold text-xs">amoid@dispatch:~$</span>
+                <span className="text-[var(--clr-accent)] font-bold text-xs">amoid@dispatch:~$</span>
                 <input
                   type="text"
                   value={terminalInput}
                   onChange={(e) => setTerminalInput(e.target.value)}
                   placeholder="type 'email', 'status', 'help' or any custom message..."
-                  className="flex-1 bg-transparent text-[var(--foreground)] outline-none border-none font-mono text-xs placeholder:text-[var(--foreground-muted)]/50"
+                  className="flex-1 bg-transparent text-[var(--clr-ink)] outline-none border-none font-mono text-xs placeholder:text-[var(--clr-ink-muted)]/50"
                   autoFocus
                 />
                 <button
                   type="submit"
-                  className="interactive px-3 py-1 rounded bg-[var(--primary)] text-zinc-950 font-mono text-xs font-bold hover:opacity-90"
+                  className="interactive px-3 py-1 rounded bg-[var(--clr-accent)] text-[var(--brand-charcoal)] font-mono text-xs font-bold hover:opacity-90"
                 >
                   EXECUTE
                 </button>
@@ -314,8 +303,8 @@ export default function Contact() {
                       <div
                         className={`max-w-[85%] sm:max-w-[70%] p-3 rounded-xl ${
                           isAbdul
-                            ? "bg-[var(--background-subtle)] text-[var(--foreground)] rounded-tl-none border border-[var(--border-color)]"
-                            : "bg-gradient-to-r from-amber-500 to-yellow-400 text-zinc-950 rounded-tr-none shadow-sm font-medium"
+                            ? "bg-[var(--clr-surface-sub)] text-[var(--clr-ink)] rounded-tl-none border border-[var(--clr-border)]"
+                            : "bg-[var(--clr-accent)] text-[var(--brand-charcoal)] rounded-tr-none shadow-sm font-semibold"
                         }`}
                       >
                         <div className="text-[10px] font-semibold mb-0.5 opacity-75 font-mono">
@@ -338,7 +327,7 @@ export default function Contact() {
                   <button
                     key={promptText}
                     onClick={() => sendChatMessage(promptText)}
-                    className="interactive px-2.5 py-1 rounded text-[11px] font-mono bg-[var(--background-subtle)] text-[var(--foreground-muted)] hover:text-[var(--foreground)] border border-[var(--border-color)] hover:border-[var(--primary)] transition-colors text-left"
+                    className="interactive px-2.5 py-1 rounded text-[11px] font-mono bg-[var(--clr-surface-sub)] text-[var(--clr-ink-muted)] hover:text-[var(--clr-ink)] border border-[var(--clr-border)] hover:border-[var(--clr-accent)] transition-colors text-left"
                   >
                     &ldquo;{promptText}&rdquo;
                   </button>
@@ -358,11 +347,11 @@ export default function Contact() {
                   value={chatInput}
                   onChange={(e) => setChatInput(e.target.value)}
                   placeholder="Type your project overview or message here..."
-                  className="flex-1 px-3 py-2 rounded-lg bg-[var(--background-subtle)] border border-[var(--border-color)] text-[var(--foreground)] text-xs outline-none focus:border-[var(--primary)] transition-colors"
+                  className="flex-1 px-3 py-2 rounded-lg bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] text-[var(--clr-ink)] text-xs outline-none focus:border-[var(--clr-accent)] transition-colors"
                 />
                 <button
                   type="submit"
-                  className="interactive px-4 py-2 rounded-lg bg-[var(--primary)] text-zinc-950 font-bold text-xs font-mono tracking-wider hover:opacity-90 transition-opacity"
+                  className="interactive px-4 py-2 rounded-lg bg-[var(--clr-accent)] text-[var(--brand-charcoal)] font-bold text-xs font-mono tracking-wider hover:opacity-90 transition-opacity"
                 >
                   SEND
                 </button>
@@ -374,78 +363,78 @@ export default function Contact() {
         {/* High-Density 4-Cell Direct Coordinates Bento Strip */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {/* Inbox */}
-          <div className="p-3.5 rounded-xl bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-between">
+          <div className="p-3.5 rounded-xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] flex items-center justify-between">
             <div className="min-w-0 pr-2">
-              <span className="text-[9px] font-mono text-[var(--foreground-muted)] uppercase tracking-wider block">
+              <span className="text-[9px] font-mono text-[var(--clr-ink-muted)] uppercase tracking-wider block">
                 DIRECT INBOX
               </span>
               <a
                 href={`mailto:${email}`}
-                className="text-xs font-bold text-[var(--foreground)] hover:text-[var(--primary)] transition-colors truncate block"
+                className="text-xs font-bold text-[var(--clr-ink)] hover:text-[var(--clr-accent)] transition-colors truncate block"
               >
                 {email}
               </a>
             </div>
             <button
               onClick={handleCopyEmail}
-              className="interactive px-2.5 py-1 rounded text-[10px] font-mono font-semibold bg-[var(--background-subtle)] border border-[var(--border-color)] hover:border-[var(--primary)] transition-colors shrink-0"
+              className="interactive px-2.5 py-1 rounded text-[10px] font-mono font-semibold bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] hover:border-[var(--clr-accent)] transition-colors shrink-0"
             >
               {copiedEmail ? "COPIED!" : "COPY"}
             </button>
           </div>
 
           {/* Mobile */}
-          <div className="p-3.5 rounded-xl bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-between">
+          <div className="p-3.5 rounded-xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] flex items-center justify-between">
             <div className="min-w-0 pr-2">
-              <span className="text-[9px] font-mono text-[var(--foreground-muted)] uppercase tracking-wider block">
-                MOBILE & WHATSAPP
+              <span className="text-[9px] font-mono text-[var(--clr-ink-muted)] uppercase tracking-wider block">
+                MOBILE &amp; WHATSAPP
               </span>
               <a
                 href={`tel:${rawPhone}`}
-                className="text-xs font-bold text-[var(--foreground)] hover:text-[var(--primary)] transition-colors truncate block"
+                className="text-xs font-bold text-[var(--clr-ink)] hover:text-[var(--clr-accent)] transition-colors truncate block"
               >
                 {phone}
               </a>
             </div>
             <button
               onClick={handleCopyPhone}
-              className="interactive px-2.5 py-1 rounded text-[10px] font-mono font-semibold bg-[var(--background-subtle)] border border-[var(--border-color)] hover:border-[var(--primary)] transition-colors shrink-0"
+              className="interactive px-2.5 py-1 rounded text-[10px] font-mono font-semibold bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] hover:border-[var(--clr-accent)] transition-colors shrink-0"
             >
               {copiedPhone ? "COPIED!" : "COPY"}
             </button>
           </div>
 
           {/* GitHub */}
-          <div className="p-3.5 rounded-xl bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-between">
+          <div className="p-3.5 rounded-xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] flex items-center justify-between">
             <div>
-              <span className="text-[9px] font-mono text-[var(--foreground-muted)] uppercase tracking-wider block">
+              <span className="text-[9px] font-mono text-[var(--clr-ink-muted)] uppercase tracking-wider block">
                 GITHUB REPOSITORIES
               </span>
-              <span className="text-xs font-bold text-[var(--foreground)]">@abdulmoiddd</span>
+              <span className="text-xs font-bold text-[var(--clr-ink)]">@abdulmoiddd</span>
             </div>
             <Link
               href="https://github.com/abdulmoiddd"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-2.5 py-1 rounded text-[10px] font-mono font-semibold bg-[var(--background-subtle)] border border-[var(--border-color)] hover:border-[var(--primary)] transition-colors shrink-0 text-[var(--foreground)] hover:text-[var(--primary)]"
+              className="px-2.5 py-1 rounded text-[10px] font-mono font-semibold bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] hover:border-[var(--clr-accent)] transition-colors shrink-0 text-[var(--clr-ink)] hover:text-[var(--clr-accent)]"
             >
               OPEN →
             </Link>
           </div>
 
           {/* LinkedIn */}
-          <div className="p-3.5 rounded-xl bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-between">
+          <div className="p-3.5 rounded-xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] flex items-center justify-between">
             <div>
-              <span className="text-[9px] font-mono text-[var(--foreground-muted)] uppercase tracking-wider block">
+              <span className="text-[9px] font-mono text-[var(--clr-ink-muted)] uppercase tracking-wider block">
                 LINKEDIN NETWORK
               </span>
-              <span className="text-xs font-bold text-[var(--foreground)]">abdulmoiddd</span>
+              <span className="text-xs font-bold text-[var(--clr-ink)]">abdulmoiddd</span>
             </div>
             <Link
               href="https://www.linkedin.com/in/abdulmoiddd"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-2.5 py-1 rounded text-[10px] font-mono font-semibold bg-[var(--background-subtle)] border border-[var(--border-color)] hover:border-[var(--primary)] transition-colors shrink-0 text-[var(--foreground)] hover:text-[var(--primary)]"
+              className="px-2.5 py-1 rounded text-[10px] font-mono font-semibold bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] hover:border-[var(--clr-accent)] transition-colors shrink-0 text-[var(--clr-ink)] hover:text-[var(--clr-accent)]"
             >
               OPEN →
             </Link>
