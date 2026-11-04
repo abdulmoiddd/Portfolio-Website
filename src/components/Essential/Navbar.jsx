@@ -4,11 +4,8 @@ import Link from "next/link";
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  // Theme state: defaults to 'dark'
   const [theme, setTheme] = useState("dark");
 
-  // 1. Detect scroll to morph the navbar
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -17,7 +14,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 2. On initial mount, check if the user has a saved theme preference
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "dark";
     setTheme(savedTheme);
@@ -28,7 +24,6 @@ export default function Navbar() {
     }
   }, []);
 
-  // 3. Theme Toggle Function
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
@@ -53,32 +48,27 @@ export default function Navbar() {
     <>
       <nav
         className={`fixed w-full top-0 z-[100] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-          isScrolled ? "pt-4" : "pt-6"
+          isScrolled ? "pt-3.5" : "pt-6"
         }`}
       >
-        {/* Floating Morphing Container */}
         <div
           className={`mx-auto transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             isScrolled ? "max-w-6xl px-4" : "max-w-7xl px-6"
           }`}
         >
-          {/* Solid Background & Border Panel */}
           <div
-            className={`relative flex justify-between items-center transition-all duration-700 group/nav ${
+            className={`relative flex justify-between items-center transition-all duration-700 ${
               isScrolled
-                ? "bg-[var(--card-bg)] border border-[var(--border-color)] rounded-full py-3 px-6 shadow-xl"
+                ? "bg-[var(--card-bg)]/90 backdrop-blur-2xl border border-[var(--border-color)] rounded-full py-2.5 px-6 shadow-2xl shadow-black/30"
                 : "bg-transparent py-2 border-transparent rounded-none px-0"
             }`}
           >
-            {/* ========================================== */}
-            {/* LEFT: Brand Logo                           */}
-            {/* ========================================== */}
+            {/* Brand Logo */}
             <Link
               href="/"
-              className="relative text-2xl font-black tracking-tight cursor-pointer z-50 flex items-center gap-2 group"
+              className="relative text-2xl font-black tracking-tight cursor-pointer z-50 flex items-center gap-2.5 group"
             >
-              {/* Shield Icon */}
-              <div className="text-[var(--primary)] transition-transform duration-300 group-hover:scale-110">
+              <div className="text-[var(--primary)] transition-transform duration-300 group-hover:scale-110 drop-shadow-[0_0_12px_rgba(255,59,48,0.5)]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -93,36 +83,39 @@ export default function Navbar() {
                 </svg>
               </div>
 
-              <span className="text-[var(--foreground)] transition-colors duration-300">
-                Abdul
-              </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--accent-blue)]">
-                Moid
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-[var(--foreground)] font-black tracking-tight">
+                  Abdul
+                </span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--accent-blue)] font-black">
+                  Moid
+                </span>
+
+                {/* Live Status Pill */}
+                <div className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[var(--background)]/80 border border-[var(--border-color)] ml-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--success)] animate-pulse" />
+                  <span className="text-[9px] font-mono font-semibold uppercase text-[var(--success)]">
+                    ONLINE
+                  </span>
+                </div>
+              </div>
             </Link>
 
-            {/* ========================================== */}
-            {/* CENTER: Navigation Links (Desktop)         */}
-            {/* ========================================== */}
-            <ul className="hidden md:flex items-center space-x-2 lg:space-x-4 text-[var(--foreground-muted)] font-medium z-50">
+            {/* Navigation Links (Desktop) */}
+            <ul className="hidden md:flex items-center space-x-1 lg:space-x-3 text-[var(--foreground-muted)] font-medium z-50">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="relative px-3 py-2 text-sm tracking-wide transition-colors duration-300 group flex items-center overflow-hidden"
+                    className="relative px-3 py-1.5 text-xs lg:text-sm font-mono tracking-wide transition-colors duration-300 group flex items-center"
                   >
-                    {/* Left Bracket */}
-                    <span className="text-[var(--primary)] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 mr-1 font-mono font-bold">
+                    <span className="text-[var(--primary)] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 mr-0.5">
                       [
                     </span>
-
-                    {/* Link Text */}
-                    <span className="relative z-10 group-hover:text-[var(--foreground)] group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] transition-all duration-300">
+                    <span className="group-hover:text-[var(--foreground)] transition-colors">
                       {link.name}
                     </span>
-
-                    {/* Right Bracket */}
-                    <span className="text-[var(--accent-blue)] opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ml-1 font-mono font-bold">
+                    <span className="text-[var(--accent-blue)] opacity-0 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ml-0.5">
                       ]
                     </span>
                   </Link>
@@ -130,24 +123,25 @@ export default function Navbar() {
               ))}
             </ul>
 
-            {/* ========================================== */}
-            {/* RIGHT: Toggles & Call to Action            */}
-            {/* ========================================== */}
-            <div className="flex items-center gap-3 lg:gap-4 z-50">
-              {/* Theme Toggle */}
+            {/* Right Action Area */}
+            <div className="flex items-center gap-2 sm:gap-3 z-50">
+              {/* Theme Toggle Button */}
               <button
                 onClick={toggleTheme}
-                className="relative flex items-center justify-center w-10 h-10 rounded-full bg-[var(--background)]/40 border border-[var(--border-color)] text-[var(--foreground-muted)] hover:text-[var(--primary)] hover:border-[var(--primary)]/50 transition-all duration-300 focus:outline-none group overflow-hidden"
+                className="relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[var(--background)]/60 border border-[var(--border-color)] text-[var(--foreground-muted)] hover:text-[var(--primary)] hover:border-[var(--primary)]/50 transition-all duration-300 focus:outline-none overflow-hidden"
                 aria-label="Toggle Theme"
               >
-                <div className="absolute inset-0 bg-gradient-to-tr from-[var(--primary)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  strokeWidth={1.5}
+                  strokeWidth={1.8}
                   stroke="currentColor"
-                  className={`absolute w-4 h-4 transition-all duration-500 transform ${theme === "dark" ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-50"}`}
+                  className={`absolute w-4 h-4 transition-all duration-500 transform ${
+                    theme === "dark"
+                      ? "opacity-100 rotate-0 scale-100 text-yellow-400"
+                      : "opacity-0 -rotate-90 scale-50"
+                  }`}
                 >
                   <path
                     strokeLinecap="round"
@@ -159,9 +153,13 @@ export default function Navbar() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  strokeWidth={1.5}
+                  strokeWidth={1.8}
                   stroke="currentColor"
-                  className={`absolute w-4 h-4 transition-all duration-500 transform ${theme === "light" ? "opacity-100 rotate-0 scale-100" : "opacity-0 rotate-90 scale-50"}`}
+                  className={`absolute w-4 h-4 transition-all duration-500 transform ${
+                    theme === "light"
+                      ? "opacity-100 rotate-0 scale-100 text-slate-800"
+                      : "opacity-0 rotate-90 scale-50"
+                  }`}
                 >
                   <path
                     strokeLinecap="round"
@@ -171,21 +169,20 @@ export default function Navbar() {
                 </svg>
               </button>
 
-              {/* Desktop CTA Button */}
+              {/* Contact CTA */}
               <a
                 href="#contact"
-                className="hidden md:flex relative overflow-hidden group px-6 py-2.5 bg-[var(--primary)] text-white font-bold rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(255,59,48,0.3)] hover:shadow-[0_0_25px_rgba(255,59,48,0.5)] hover:-translate-y-0.5"
+                className="hidden sm:inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-[var(--primary)] text-white text-xs font-mono font-bold tracking-wide transition-all duration-300 shadow-[0_0_15px_rgba(255,59,48,0.35)] hover:shadow-[0_0_25px_rgba(255,59,48,0.55)] hover:-translate-y-0.5"
               >
-                <div className="absolute inset-0 w-0 bg-gradient-to-r from-[var(--primary)] to-[var(--accent-blue)] transition-all duration-500 ease-out group-hover:w-full"></div>
-                <span className="relative z-10 transition-colors duration-300">
-                  Get Started
-                </span>
+                <span>CONNECT</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
               </a>
 
-              {/* Mobile Menu Icon */}
+              {/* Mobile Hamburger Toggle */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-[var(--background)]/40 border border-[var(--border-color)] text-[var(--foreground)] hover:text-[var(--primary)] transition-colors focus:outline-none"
+                className="md:hidden flex items-center justify-center w-9 h-9 rounded-full bg-[var(--background)]/60 border border-[var(--border-color)] text-[var(--foreground)] hover:text-[var(--primary)] transition-colors focus:outline-none"
+                aria-label="Toggle Navigation Menu"
               >
                 {isMobileMenuOpen ? (
                   <svg
@@ -194,7 +191,7 @@ export default function Navbar() {
                     viewBox="0 0 24 24"
                     strokeWidth={2}
                     stroke="currentColor"
-                    className="w-5 h-5 transform rotate-90 transition-transform duration-300"
+                    className="w-5 h-5"
                   >
                     <path
                       strokeLinecap="round"
@@ -203,7 +200,7 @@ export default function Navbar() {
                     />
                   </svg>
                 ) : (
-                  <div className="flex flex-col gap-1.5 w-5">
+                  <div className="flex flex-col gap-1.5 w-4">
                     <span className="w-full h-0.5 bg-current rounded-full transition-all duration-300"></span>
                     <span className="w-3/4 h-0.5 bg-current rounded-full transition-all duration-300"></span>
                   </div>
@@ -213,9 +210,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* ========================================== */}
-        {/* MOBILE MENU DROPDOWN PANEL                 */}
-        {/* ========================================== */}
+        {/* Mobile Menu Dropdown */}
         <div
           className={`md:hidden absolute top-[110%] left-4 right-4 bg-[var(--card-bg)]/95 backdrop-blur-3xl border border-[var(--border-color)] rounded-2xl shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-top overflow-hidden ${
             isMobileMenuOpen
@@ -229,47 +224,20 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center justify-between px-4 py-3.5 rounded-xl hover:bg-[var(--primary)]/10 text-[var(--foreground-muted)] hover:text-[var(--primary)] transition-colors duration-300 text-base group"
+                  className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-[var(--primary)]/10 text-[var(--foreground-muted)] hover:text-[var(--primary)] transition-colors duration-300 text-sm font-mono group"
                 >
-                  {link.name}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                    />
-                  </svg>
+                  <span>{link.name}</span>
+                  <span className="text-[var(--primary)] text-xs">→</span>
                 </Link>
               </li>
             ))}
-            <li className="pt-4 mt-2 border-t border-[var(--border-color)]/50">
+            <li className="pt-3 border-t border-[var(--border-color)]/50">
               <a
                 href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="w-full flex justify-center items-center gap-2 px-6 py-4 bg-gradient-to-r from-[var(--primary)] to-[var(--accent-blue)] text-white font-bold rounded-xl shadow-[0_0_20px_rgba(255,59,48,0.3)] hover:shadow-[0_0_30px_rgba(255,59,48,0.5)] transition-all duration-300"
+                className="w-full flex justify-center items-center gap-2 px-6 py-3 bg-[var(--primary)] text-white font-mono text-xs font-bold rounded-xl shadow-[0_0_20px_rgba(255,59,48,0.3)] transition-all duration-300"
               >
-                Get Started
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-4 h-4"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                  />
-                </svg>
+                INITIALIZE CONTACT
               </a>
             </li>
           </ul>
