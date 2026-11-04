@@ -3,25 +3,24 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-const CREATIVE_PASSIONS = [
+const IDENTITY_MODULES = [
   {
     id: "calligraphy",
+    index: "01",
     title: "Marker-Style Calligraphy",
-    subtitle: "The Architecture of the Stroke",
-    category: "Visual Craft",
+    discipline: "Typographic Physics & Stroke Alignment",
     badge: "PRECISION & KERNING",
     accent: "#FACC15",
-    gradient: "from-amber-400/20 via-yellow-400/10 to-transparent",
     description:
-      "Long before crafting CSS grid tokens, I fell in love with ink flow, pressure modulation, and spatial kerning. Marker calligraphy is an exercise in absolute intentionality: once the chisel tip touches paper, there is no undo command.",
-    takeaway:
-      "This discipline directly informs my frontend obsession with typographic hierarchy, optical alignment, and pixel-perfect UI execution.",
-    stats: [
-      { label: "MEDIUM", value: "Broad & Chisel Marker" },
-      { label: "PHILOSOPHY", value: "Intentional Vector Flow" },
+      "Before writing code, I mastered broad-nib chisel calligraphy. The medium has no rollback buffer: every stroke demands deliberate pressure modulation, angle consistency, and spatial kerning.",
+    engineeringParallel:
+      "Directly translates to frontend design tokens, optical layout balance, and obsession with sub-pixel rendering accuracy.",
+    meta: [
+      { label: "Medium", value: "Chisel & Broad Nib" },
+      { label: "Principle", value: "Permanent Vector Trajectory" },
     ],
     icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -30,35 +29,39 @@ const CREATIVE_PASSIONS = [
         />
       </svg>
     ),
-    visualDetail: (
-      <div className="relative w-full h-32 rounded-2xl bg-[var(--background)]/80 border border-[var(--border-color)] p-4 flex items-center justify-center overflow-hidden">
-        <div className="text-4xl sm:text-5xl font-black italic tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 font-serif select-none transform -rotate-3">
+    visualDemo: (
+      <div className="relative w-full h-24 rounded-lg bg-[var(--background-subtle)] border border-[var(--border-color)] p-3 flex items-center justify-between overflow-hidden">
+        <div className="text-3xl font-black italic tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 font-serif select-none">
           Abdul Moid
         </div>
-        <div className="absolute bottom-2 right-3 text-[9px] font-mono text-[var(--foreground-muted)] opacity-70">
-          INK // FLOW 100%
+        <div className="text-right">
+          <span className="font-mono text-[9px] text-[var(--primary)] font-bold uppercase block">
+            CHISEL // 45°
+          </span>
+          <span className="font-mono text-[9px] text-[var(--foreground-muted)] block">
+            OPTICAL KERNING
+          </span>
         </div>
       </div>
     ),
   },
   {
     id: "crochet",
+    index: "02",
     title: "Crocheting Custom Keychains",
-    subtitle: "Physical Algorithmic Recursion",
-    category: "Tactile Engineering",
-    badge: "MODULAR LOOPS & TENSION",
+    discipline: "Physical Algorithmic Recursion",
+    badge: "MODULAR LOOPS & STATE",
     accent: "#F59E0B",
-    gradient: "from-yellow-400/20 via-amber-500/10 to-transparent",
     description:
-      "Crochet is pure state management in the physical realm: each loop depends strictly on the tension, stitch count, and state of the previous row. A single dropped stitch ripples through the entire build.",
-    takeaway:
-      "Crafting bespoke tactile keychains keeps my hands connected to physical engineering, building infinite patience and an appreciation for clean, modular structures.",
-    stats: [
-      { label: "CRAFT", value: "Tactile Keychains" },
-      { label: "STRUCTURE", value: "Zero-Drop Recursion" },
+      "Crochet is physical state management: each row is mathematically dependent on the stitch count, tension, and loop parity of the preceding row. A dropped stitch corrupts downstream geometry.",
+    engineeringParallel:
+      "Reinforces clean modular decomposition, deterministic recursion, and deep patience for tracking edge cases in asynchronous state machines.",
+    meta: [
+      { label: "Output", value: "Bespoke Tactile Keychains" },
+      { label: "Principle", value: "Zero-Drop State Chain" },
     ],
     icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -67,44 +70,47 @@ const CREATIVE_PASSIONS = [
         />
       </svg>
     ),
-    visualDetail: (
-      <div className="relative w-full h-32 rounded-2xl bg-[var(--background)]/80 border border-[var(--border-color)] p-4 flex items-center justify-center gap-3 overflow-hidden">
-        {/* Woven Loop Graphic Illustration */}
-        <div className="flex items-center gap-2">
-          {[1, 2, 3, 4, 5].map((i) => (
+    visualDemo: (
+      <div className="relative w-full h-24 rounded-lg bg-[var(--background-subtle)] border border-[var(--border-color)] p-3 flex items-center justify-between overflow-hidden">
+        {/* Crisp Static Interlocking Loops (NO pulsing/blinking) */}
+        <div className="flex items-center gap-1.5">
+          {[1, 2, 3, 4, 5, 6].map((i) => (
             <div
               key={i}
-              className="w-8 h-8 rounded-full border-2 border-dashed border-amber-400/80 flex items-center justify-center animate-pulse"
-              style={{ animationDelay: `${i * 0.2}s` }}
+              className="w-7 h-7 rounded-full border-2 border-amber-400/80 flex items-center justify-center bg-[var(--card-bg)]"
             >
-              <div className="w-3 h-3 rounded-full bg-amber-400" />
+              <div className="w-2 h-2 rounded-full bg-amber-400" />
             </div>
           ))}
         </div>
-        <div className="absolute bottom-2 right-3 text-[9px] font-mono text-[var(--foreground-muted)] opacity-70">
-          STATE // TACTILE 3D
+        <div className="text-right">
+          <span className="font-mono text-[9px] text-[var(--primary)] font-bold uppercase block">
+            LOOP N+1
+          </span>
+          <span className="font-mono text-[9px] text-[var(--foreground-muted)] block">
+            DETERMINISTIC
+          </span>
         </div>
       </div>
     ),
   },
   {
     id: "touring",
+    index: "03",
     title: "Mountain Motorcycle Touring",
-    subtitle: "High-Altitude Exploration & Focus",
-    category: "High-Altitude Focus",
+    discipline: "High-Altitude Exploration & Telemetry",
     badge: "ZERO ROOM FOR ERROR",
     accent: "#EAB308",
-    gradient: "from-amber-500/20 via-yellow-500/10 to-transparent",
     description:
-      "Navigating alpine switchbacks, high mountain passes, and unpaved riverbeds on two wheels demands acute mindfulness. In the twisties, your eyes look where you want to go—never at the cliff edge.",
-    takeaway:
-      "This hyper-focus directly mirrors managing high-stakes SaaS production fires: absolute calm, rapid hazard assessment, and unwavering confidence under shifting terrain.",
-    stats: [
-      { label: "TERRAIN", value: "High Karakoram Passes" },
-      { label: "MINDSET", value: "Hyper-Focus Under Pressure" },
+      "Riding alpine switchbacks and gravel passes across high-altitude ranges requires total presence of mind. On extreme corners, fixating on the ravine ensures a spill; survival mandates looking strictly where you intend to go.",
+    engineeringParallel:
+      "Direct parallel to operating mission-critical production systems: absolute focus under pressure, rapid telemetry assessment, and decisive risk mitigation.",
+    meta: [
+      { label: "Terrain", value: "Alpine Passes & Karakoram" },
+      { label: "Altitude", value: "4,200m+ Above Sea Level" },
     ],
     icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -113,20 +119,19 @@ const CREATIVE_PASSIONS = [
         />
       </svg>
     ),
-    visualDetail: (
-      <div className="relative w-full h-32 rounded-2xl bg-[var(--background)]/80 border border-[var(--border-color)] p-4 flex items-center justify-center overflow-hidden">
-        {/* Topographic Altitude Contour Silhouette */}
-        <svg className="w-full h-full text-amber-500/30" viewBox="0 0 200 60" fill="none">
-          <path d="M0 50 Q 30 20, 60 40 T 120 15 T 180 35 T 200 45" stroke="currentColor" strokeWidth="2" fill="none" />
-          <path d="M0 55 Q 40 30, 80 45 T 140 25 T 200 40" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" fill="none" />
+    visualDemo: (
+      <div className="relative w-full h-24 rounded-lg bg-[var(--background-subtle)] border border-[var(--border-color)] p-3 flex items-center justify-between overflow-hidden">
+        <svg className="w-40 h-16 text-amber-500/40" viewBox="0 0 160 50" fill="none" aria-hidden="true">
+          <path d="M0 45 Q 25 10, 50 35 T 100 12 T 140 28 T 160 38" stroke="currentColor" strokeWidth="2" fill="none" />
+          <path d="M0 48 Q 30 20, 70 38 T 130 20 T 160 32" stroke="currentColor" strokeWidth="1.2" strokeDasharray="2 2" fill="none" />
         </svg>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="font-mono text-xs font-bold text-[var(--foreground)] px-3 py-1 rounded-full bg-[var(--card-bg)] border border-[var(--border-color)] shadow-sm">
-            ALTITUDE // 4,200M+
+        <div className="text-right">
+          <span className="font-mono text-[9px] text-[var(--primary)] font-bold uppercase block">
+            ELEVATION // 4.2KM
           </span>
-        </div>
-        <div className="absolute bottom-2 right-3 text-[9px] font-mono text-[var(--foreground-muted)] opacity-70">
-          EXPLORATION // ALPINE PASSES
+          <span className="font-mono text-[9px] text-[var(--foreground-muted)] block">
+            CALM UNDER LOAD
+          </span>
         </div>
       </div>
     ),
@@ -141,15 +146,15 @@ export default function BeyondTheCode() {
   const checkScroll = () => {
     if (scrollRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      setCanScrollLeft(scrollLeft > 20);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 20);
+      setCanScrollLeft(scrollLeft > 15);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 15);
     }
   };
 
   const scroll = (direction) => {
     if (scrollRef.current) {
       const { clientWidth } = scrollRef.current;
-      const scrollAmount = direction === "left" ? -clientWidth * 0.75 : clientWidth * 0.75;
+      const scrollAmount = direction === "left" ? -clientWidth * 0.8 : clientWidth * 0.8;
       scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
@@ -157,63 +162,49 @@ export default function BeyondTheCode() {
   return (
     <section
       id="beyond-code"
-      className="relative w-full py-28 md:py-36 bg-[var(--background)] overflow-hidden border-t border-[var(--border-color)]/60"
+      className="relative w-full py-16 md:py-24 bg-[var(--background)] overflow-hidden border-t border-[var(--border-color)]"
     >
-      {/* Background Soft Mesh Ambient */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+      {/* Background Subtle Mesh */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-25">
         <div
           className="w-full h-full"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 80% 20%, rgba(250, 204, 21, 0.12) 0%, transparent 60%), radial-gradient(circle at 10% 80%, rgba(245, 158, 11, 0.10) 0%, transparent 50%)",
+              "radial-gradient(circle at 75% 25%, rgba(250, 204, 21, 0.08) 0%, transparent 45%), radial-gradient(circle at 25% 75%, rgba(217, 119, 6, 0.06) 0%, transparent 45%)",
           }}
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-14 flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-[var(--border-color)]/70 pb-10"
-        >
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full">
+        {/* Section Header: Compact Bento HUD Bar */}
+        <div className="mb-8 md:mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[var(--border-color)] pb-6">
           <div>
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[var(--card-bg)] border border-[var(--border-color)] mb-4 shadow-sm">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary-vibrant)] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--primary)]"></span>
-              </span>
-              <span className="text-xs font-mono tracking-widest text-[var(--foreground-muted)] uppercase font-semibold">
-                PERSONAL TOUCH // CREATIVE PURSUITS
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[var(--background-subtle)] border border-[var(--border-color)] mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]" />
+              <span className="font-mono text-[11px] font-semibold tracking-wider text-[var(--foreground-muted)] uppercase">
+                SPEC // 04 • PERSONAL IDENTITY BOARD
               </span>
             </div>
 
-            <h3 className="text-4xl md:text-6xl font-black text-[var(--foreground)] tracking-tight">
-              Beyond the <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 dark:from-yellow-300 dark:via-amber-400 dark:to-yellow-500">
-                Codebase.
-              </span>
-            </h3>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[var(--foreground)] tracking-tight">
+              Beyond The <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 dark:from-yellow-300 dark:via-amber-400 dark:to-yellow-500">Codebase</span>
+            </h2>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <p className="text-base sm:text-lg text-[var(--foreground-muted)] font-light max-w-md">
-              Software is craft and discipline. Here is how physical calligraphy,
-              tactile loops, and mountain passes shape my engineering mindset.
-            </p>
-
-            {/* Carousel Navigation Buttons */}
-            <div className="flex items-center gap-2 shrink-0">
+          {/* Navigation Arrows for Horizontal Track */}
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-xs text-[var(--foreground-muted)] hidden sm:inline">
+              [HORIZONTAL MASONRY BOARD]
+            </span>
+            <div className="flex items-center gap-1.5">
               <button
                 onClick={() => scroll("left")}
                 disabled={!canScrollLeft}
                 aria-label="Scroll left"
-                className={`interactive w-11 h-11 rounded-full border border-[var(--border-color)] flex items-center justify-center transition-all ${
+                className={`w-8 h-8 rounded-lg border border-[var(--border-color)] flex items-center justify-center transition-colors font-mono text-xs ${
                   canScrollLeft
-                    ? "bg-[var(--card-bg)] text-[var(--foreground)] hover:border-[var(--primary-vibrant)] shadow-sm"
-                    : "opacity-40 cursor-not-allowed bg-[var(--background-subtle)] text-[var(--foreground-muted)]"
+                    ? "bg-[var(--card-bg)] text-[var(--foreground)] hover:border-[var(--primary)]"
+                    : "opacity-35 cursor-not-allowed bg-[var(--background-subtle)] text-[var(--foreground-muted)]"
                 }`}
               >
                 ←
@@ -222,108 +213,99 @@ export default function BeyondTheCode() {
                 onClick={() => scroll("right")}
                 disabled={!canScrollRight}
                 aria-label="Scroll right"
-                className={`interactive w-11 h-11 rounded-full border border-[var(--border-color)] flex items-center justify-center transition-all ${
+                className={`w-8 h-8 rounded-lg border border-[var(--border-color)] flex items-center justify-center transition-colors font-mono text-xs ${
                   canScrollRight
-                    ? "bg-[var(--card-bg)] text-[var(--foreground)] hover:border-[var(--primary-vibrant)] shadow-sm"
-                    : "opacity-40 cursor-not-allowed bg-[var(--background-subtle)] text-[var(--foreground-muted)]"
+                    ? "bg-[var(--card-bg)] text-[var(--foreground)] hover:border-[var(--primary)]"
+                    : "opacity-35 cursor-not-allowed bg-[var(--background-subtle)] text-[var(--foreground-muted)]"
                 }`}
               >
                 →
               </button>
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Horizontally Scrolling Interactive Track */}
+        {/* Tightly Packed Horizontally Scrolling Track */}
         <div
           ref={scrollRef}
           onScroll={checkScroll}
-          className="flex gap-7 overflow-x-auto pb-8 pt-2 scrollbar-none snap-x snap-mandatory scroll-smooth"
+          className="flex gap-4 overflow-x-auto pb-4 pt-1 scrollbar-none snap-x snap-mandatory scroll-smooth"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
-          {CREATIVE_PASSIONS.map((item, idx) => (
-            <motion.div
+          {IDENTITY_MODULES.map((item) => (
+            <div
               key={item.id}
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.15 }}
-              whileHover={{ y: -6 }}
-              className="interactive snap-center shrink-0 w-[85vw] sm:w-[480px] lg:w-[420px] p-8 sm:p-9 rounded-3xl bg-[var(--card-bg)]/85 backdrop-blur-2xl border border-[var(--border-color)] hover:border-[var(--primary-vibrant)] shadow-xl hover:shadow-[0_20px_45px_rgba(250,204,21,0.25)] transition-all duration-300 flex flex-col justify-between group overflow-hidden relative"
+              className="snap-start shrink-0 w-[90vw] sm:w-[380px] lg:w-[400px] p-5 rounded-2xl bg-[var(--card-bg)] border border-[var(--border-color)] hover:border-[var(--primary)] shadow-sm hover:shadow-md transition-all flex flex-col justify-between group"
             >
-              {/* Soft Gradient Ambient Card Corner Glow */}
-              <div
-                className={`absolute top-0 right-0 w-52 h-52 rounded-full bg-gradient-to-bl ${item.gradient} blur-[70px] pointer-events-none`}
-              />
-
-              <div className="relative z-10">
-                {/* Header Row */}
-                <div className="flex items-center justify-between pb-4 mb-6 border-b border-[var(--border-color)]/60">
+              <div>
+                {/* Header: Icon + Index + Title */}
+                <div className="flex items-start justify-between mb-3.5">
                   <div className="flex items-center gap-3">
                     <div
-                      className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-inner"
+                      className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 border"
                       style={{
-                        backgroundColor: `${item.accent}20`,
+                        backgroundColor: `${item.accent}14`,
                         color: item.accent,
-                        border: `1px solid ${item.accent}40`,
+                        borderColor: `${item.accent}30`,
                       }}
                     >
                       {item.icon}
                     </div>
                     <div>
-                      <span className="text-[10px] font-mono tracking-widest uppercase text-[var(--foreground-muted)]">
-                        {item.category}
-                      </span>
-                      <h4 className="text-xl sm:text-2xl font-black text-[var(--foreground)] tracking-tight">
+                      <h3 className="font-bold text-base text-[var(--foreground)] tracking-tight group-hover:text-[var(--primary)] transition-colors leading-tight">
                         {item.title}
-                      </h4>
+                      </h3>
+                      <span className="font-mono text-[10px] text-[var(--foreground-muted)] uppercase tracking-wider block">
+                        {item.discipline}
+                      </span>
                     </div>
                   </div>
+
+                  <span className="font-mono text-[10px] text-[var(--foreground-muted)] font-bold">
+                    #{item.index}
+                  </span>
                 </div>
 
-                {/* Subtitle & Badge */}
-                <div className="mb-4">
-                  <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-md uppercase tracking-wider bg-amber-400/15 text-[var(--primary)] border border-amber-400/30 inline-block mb-2">
+                {/* Badge */}
+                <div className="mb-3">
+                  <span className="inline-block text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-[var(--background-subtle)] text-[var(--primary)] border border-[var(--border-color)]">
                     {item.badge}
                   </span>
-                  <div className="text-sm font-semibold text-[var(--foreground)]">
-                    {item.subtitle}
-                  </div>
                 </div>
 
-                {/* Narrative Description */}
-                <p className="text-sm sm:text-base text-[var(--foreground-muted)] font-light leading-relaxed mb-6">
+                {/* Description */}
+                <p className="text-xs sm:text-sm text-[var(--foreground-muted)] leading-relaxed mb-4">
                   {item.description}
                 </p>
 
-                {/* Visual Accent Demonstration Card */}
-                <div className="mb-6">{item.visualDetail}</div>
+                {/* Visual Demonstration Block */}
+                <div className="mb-4">{item.visualDemo}</div>
 
-                {/* Engineering Connection / Takeaway */}
-                <div className="p-4 rounded-2xl bg-[var(--background-subtle)] border border-[var(--border-color)]/70">
-                  <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-[var(--primary)] block mb-1">
-                    ENGINEERING CORRELATION
+                {/* Engineering Correlation */}
+                <div className="p-3 rounded-lg bg-[var(--background-subtle)] border border-[var(--border-color)]">
+                  <span className="font-mono text-[9px] uppercase tracking-wider font-bold text-[var(--primary)] block mb-1">
+                    ENGINEERING CONNECTION
                   </span>
-                  <p className="text-xs text-[var(--foreground-muted)] leading-relaxed">
-                    {item.takeaway}
+                  <p className="text-xs text-[var(--foreground)] leading-relaxed">
+                    {item.engineeringParallel}
                   </p>
                 </div>
               </div>
 
-              {/* Stats Footer */}
-              <div className="grid grid-cols-2 gap-3 pt-5 mt-6 border-t border-[var(--border-color)]/60 text-xs font-mono">
-                {item.stats.map((s, i) => (
-                  <div key={i}>
-                    <span className="block text-[10px] text-[var(--foreground-muted)] uppercase">
-                      {s.label}
+              {/* Meta Specs Footer */}
+              <div className="grid grid-cols-2 gap-2 pt-3 mt-4 border-t border-[var(--border-color)] text-xs font-mono">
+                {item.meta.map((m) => (
+                  <div key={m.label}>
+                    <span className="block text-[9px] text-[var(--foreground-muted)] uppercase">
+                      {m.label}
                     </span>
-                    <span className="font-bold text-[var(--foreground)] text-[11px]">
-                      {s.value}
+                    <span className="font-bold text-[var(--foreground)] text-[11px] truncate block">
+                      {m.value}
                     </span>
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
