@@ -28,7 +28,7 @@ const IDENTITY_MODULES = [
     ),
     visualDemo: (
       <div className="relative w-full h-24 rounded-lg bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] p-3 flex items-center justify-between overflow-hidden">
-        <div className="text-3xl font-black italic tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 font-serif select-none">
+        <div className="text-2xl sm:text-3xl font-black italic tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 font-serif select-none">
           Abdul Moid
         </div>
         <div className="text-right">
@@ -113,7 +113,7 @@ const IDENTITY_MODULES = [
     ),
     visualDemo: (
       <div className="relative w-full h-24 rounded-lg bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] p-3 flex items-center justify-between overflow-hidden">
-        <svg className="w-40 h-16 text-[var(--clr-accent)]/50" viewBox="0 0 160 50" fill="none" aria-hidden="true">
+        <svg className="w-28 sm:w-40 h-16 text-[var(--clr-accent)]/50" viewBox="0 0 160 50" fill="none" aria-hidden="true">
           <path d="M0 45 Q 25 10, 50 35 T 100 12 T 140 28 T 160 38" stroke="currentColor" strokeWidth="2" fill="none" />
           <path d="M0 48 Q 30 20, 70 38 T 130 20 T 160 32" stroke="currentColor" strokeWidth="1.2" strokeDasharray="2 2" fill="none" />
         </svg>
@@ -216,7 +216,7 @@ export default function BeyondTheCode() {
           {IDENTITY_MODULES.map((item) => (
             <div
               key={item.id}
-              className="snap-start shrink-0 w-[90vw] sm:w-[380px] lg:w-[400px] p-5 rounded-2xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] hover:border-[var(--clr-accent)] shadow-sm transition-all flex flex-col justify-between group"
+              className="snap-start shrink-0 w-[85vw] max-w-[340px] sm:max-w-none sm:w-[380px] lg:w-[400px] p-4 sm:p-5 rounded-2xl bg-[var(--clr-surface-card)] border border-[var(--clr-border)] hover:border-[var(--clr-accent)] shadow-sm transition-all flex flex-col justify-between group"
             >
               <div>
                 {/* Header: Icon + Index + Title */}
