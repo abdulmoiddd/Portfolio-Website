@@ -75,10 +75,10 @@ export default function Navbar() {
             
            
 
-            {/* Theme Toggle Button */}
+            {/* Theme Toggle Button — Mobile / Tablet Only (Desktop uses the ID Badge Pull-Down) */}
             <button
               onClick={toggleTheme}
-              className="flex items-center justify-center w-9 h-9 rounded-full bg-[var(--clr-surface-sub)] text-[var(--clr-ink)] hover:bg-[var(--clr-border)] hover:scale-105 transition-all duration-200"
+              className="flex lg:hidden items-center justify-center w-9 h-9 rounded-full bg-[var(--clr-surface-sub)] text-[var(--clr-ink)] hover:bg-[var(--clr-border)] hover:scale-105 transition-all duration-200"
               aria-label="Toggle Theme"
             >
               {theme === "light" ? (
@@ -141,6 +141,15 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
+            <div className="pt-2 mt-1 border-t border-[var(--clr-border)] flex items-center justify-between px-3 py-2">
+              <span className="text-xs font-mono text-[var(--clr-ink-muted)] uppercase">Theme Preference</span>
+              <button
+                onClick={toggleTheme}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--clr-surface-sub)] border border-[var(--clr-border)] text-xs font-mono font-bold text-[var(--clr-ink)] hover:border-[var(--clr-accent)] transition-colors"
+              >
+                <span>{theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}</span>
+              </button>
+            </div>
             <Link
               href="#contact"
               onClick={() => setIsMobileMenuOpen(false)}
